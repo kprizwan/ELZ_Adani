@@ -20,13 +20,13 @@ key_vault_variables = {
     key_vault_access_policy_certificate_permissions = ["Backup", "Create", "Delete", "DeleteIssuers", "Get", "GetIssuers", "Import", "List", "ListIssuers", "ManageContacts", "ManageIssuers", "Purge", "Recover", "Restore", "SetIssuers", "Update"] # (Optional) List of certificate permissions, must be one or more from the following: Backup, Create, Delete, DeleteIssuers, Get, GetIssuers, Import, List, ListIssuers, ManageContacts, ManageIssuers, Purge, Recover, Restore, SetIssuers and Update.
     #(Optional) A mapping of tags which should be assigned to the key vault.
     key_vault_tags = { #(Optional) A mapping of tags which should be assigned to the key vault.
-      BU= "ELZ",
-      Role= "Landing Zone",
-      Environment= "PLZ-DC",
-      Owner= "Manish Kumar",
-      Criticality= "High",
-      Classification= "Diamond",
-      IAC = "Terraform",
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
       Contact= "Manish.kumar10@adani.com"
     }
     key_vault_network_acls_enabled        = true            #(Optional) A network_acls block as defined below to be enabled or disabled
