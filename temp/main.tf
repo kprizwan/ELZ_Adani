@@ -29,6 +29,9 @@ provider "azurerm" {
   
 }
 
+provider "azuread" {
+  
+}
 
 
 #KEYVAULT
