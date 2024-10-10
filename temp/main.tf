@@ -12,7 +12,7 @@ terraform {
 }
 
 provider "azurerm" {
-  alias = "Managment"
+  alias = "management"
   features {}
   use_msi         = true
   skip_provider_registration = true
@@ -38,7 +38,7 @@ provider "azuread" {
 module "key_vault" {
   source              = "./Modules/key_vault"
   providers = {
-    azurerm = azurerm.Managment
+    azurerm = azurerm.management
   }
   key_vault_variables = var.key_vault_variables
 }
@@ -47,7 +47,7 @@ module "key_vault" {
 module "private_dns_zone" {
   source = "./Modules/private_dns_zone/v1.3.0"
   providers = {
-    azurerm = azurerm.Managment
+    azurerm = azurerm.management
   }
   private_dns_zone_variables = var.private_dns_zone_variables
   depends_on                 = [module.key_vault]
@@ -57,7 +57,7 @@ module "private_dns_zone" {
 module "private_endpoint" {
   source = "./Modules/private_endpoint/v1.3.0"
   providers = {
-    azurerm = azurerm.Managment
+    azurerm = azurerm.management
   }
   private_endpoint_variables = var.private_endpoint_variables
   depends_on                 = [module.key_vault, module.private_dns_zone]
