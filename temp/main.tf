@@ -23,7 +23,7 @@ provider "azurerm" {
   alias = "connectivity"
   features {}
   use_msi         = true
-  subscription_id = ""
+  subscription_id = "4d4b41f0-5e56-49da-9bc1-713a4a21ddf1"
   tenant_id       = "5ee36159-43e4-4b5d-a15b-076176333df1"
 }
 provider "azuread" {
