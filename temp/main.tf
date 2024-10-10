@@ -4,7 +4,7 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "=3.75.0"
     }
-
+}
 }
 
 provider "azurerm" {
