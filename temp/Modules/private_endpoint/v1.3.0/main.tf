@@ -16,7 +16,6 @@ data "azurerm_subnet" "subnet_id" {
 
 #DATA RESOURCE FOR PRIVATE DNS ZONE
 data "azurerm_private_dns_zone" "private_dns_zone" {
-  provider            = azurerm.private_dns_zone_sub
   for_each            = { for j in local.private_dns_zone_name : "${j.main_key}:${j.private_dns_zone_name}" => j }
   name                = each.value.private_dns_zone_name
   resource_group_name = each.value.private_dns_zone_resource_group_name
