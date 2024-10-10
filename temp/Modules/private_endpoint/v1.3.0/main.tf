@@ -31,7 +31,6 @@ data "azurerm_resources" "private_connection_resource" {
 
 #PRIVATE ENDPOINT RESOURCE
 resource "azurerm_private_endpoint" "private_endpoint" {
-  provider                      = azurerm.private_endpoint_sub
   for_each                      = var.private_endpoint_variables
   name                          = each.value.private_endpoint_name
   resource_group_name           = each.value.private_endpoint_resource_group_name
