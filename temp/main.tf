@@ -14,7 +14,7 @@ terraform {
 provider "azurerm" {
   alias = "Managment"
   features {}
-  use_msi         = false
+  use_msi         = true
   subscription_id = "d326a752-74a2-4442-8813-abc9087e7813"
   tenant_id       = "5ee36159-43e4-4b5d-a15b-076176333df1"
 }
@@ -22,7 +22,7 @@ provider "azurerm" {
 provider "azurerm" {
   alias = "connectivity"
   features {}
-  use_msi         = false
+  use_msi         = true
   subscription_id = ""
   tenant_id       = "5ee36159-43e4-4b5d-a15b-076176333df1"
 }
