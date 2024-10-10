@@ -42,3 +42,25 @@ module "key_vault" {
   }
   key_vault_variables = var.key_vault_variables
 }
+
+#PRIVATE DNS ZONE
+module "private_dns_zone" {
+  source = "../../../private_dns_zone/v1.3.0"
+  providers = {
+    azurerm = azurerm.private_dns_zone_sub
+  }
+  private_dns_zone_variables = var.private_dns_zone_variables
+  depends_on                 = [module.key_vault]
+}
+
+#PRIVATE ENDPOINT
+module "private_endpoint" {
+  source = "../"
+  providers = {
+    azurerm.private_endpoint_sub   = azurerm.private_endpoint_sub
+    azurerm.private_connection_sub = azurerm.private_connection_sub
+    azurerm.private_dns_zone_sub   = azurerm.private_dns_zone_sub
+  }
+  private_endpoint_variables = var.private_endpoint_variables
+  depends_on                 = [module.key_vault, module.private_dns_zone]
+}
