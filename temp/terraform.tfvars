@@ -27,7 +27,7 @@ key_vault_variables = {
       Criticality    = "High",
       Classification = "Diamond",
       IAC            = "Terraform",
-      Contact= "Manish.kumar10@adani.com"
+      Contact        = "Manish.kumar10@adani.com"
     }
     key_vault_network_acls_enabled        = true            #(Optional) A network_acls block as defined below to be enabled or disabled
     key_vault_network_acls_bypass         = "AzureServices" #(Required) Specifies which traffic can bypass the network rules. Possible values are AzureServices and None.
