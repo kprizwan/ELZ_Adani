@@ -30,7 +30,7 @@ provider "azurerm" {
 }
 
 provider "azuread" {
-  
+  use_msi         = true
 }
 
 
