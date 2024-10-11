@@ -80,7 +80,14 @@ module "container_registry" {
 /*module "aks" {
   source                = "./Modules/aks/v1.1.0"
   providers = {
-    azurerm.management = azurerm.management
+    azurerm.keyvault_sub = azurerm.management
+    azurerm.log_analytics_oms_sub = azurerm.management
+    azurerm.log_analytics_defender_sub = azurerm.management
+    azurerm.kubernetes_cluster_sub = azurerm.management
+    azurerm.private_dns_zone_sub = azurerm.management
+    azurerm.user_assigned_identity_sub = azurerm.management
+    azurerm.ingress_application_gateway_sub = azurerm.management
+    
   }
   aks_cluster_variables = var.aks_cluster_variables
   depends_on                 = [module.container_registry]
