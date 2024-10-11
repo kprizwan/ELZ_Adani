@@ -43,22 +43,16 @@ module "key_vault" {
   key_vault_variables = var.key_vault_variables
 }
 
-#PRIVATE DNS ZONE
-module "private_dns_zone" {
-  source = "./Modules/private_dns_zone/v1.3.0"
+#CONTAINER REGISTRY
+module "container_registry" {
+  source = "../"
   providers = {
-    azurerm = azurerm.management
+    azurerm.management          = azurerm.management
   }
-  private_dns_zone_variables = var.private_dns_zone_variables
-  depends_on                 = [module.key_vault]
+  container_registry_variables = var.container_registry_variables
+  depends_on                   = [module.subnet, module.key_vault_key]
 }
 
-#PRIVATE ENDPOINT
-module "private_endpoint" {
-  source = "./Modules/private_endpoint/v1.3.0"
-  providers = {
-    azurerm = azurerm.management
-  }
-  private_endpoint_variables = var.private_endpoint_variables
-  depends_on                 = [module.key_vault, module.private_dns_zone]
-}
+
+
+
