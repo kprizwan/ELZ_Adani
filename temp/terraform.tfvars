@@ -72,7 +72,7 @@ private_dns_zone_variables = {
   }
 
 #PRIVATE ENDPOINT
-private_endpoint_variables = {
+/*private_endpoint_variables = {
   "private_endpoint_1" = {
 
     private_endpoint_name                                = "sd-management-vault-pep-01" # (Required) private endpoint name
@@ -116,7 +116,7 @@ private_endpoint_variables = {
       Contact        = "Manish.kumar10@adani.com"
     }
   }
-}
+}*/
 
 
 
@@ -202,7 +202,7 @@ container_registry_variables = {
 }
 
 #AKS CLUSTER
-/*aks_cluster_variables = {
+aks_cluster_variables = {
   "aks_1" = {
     vnet_name                                                = "sd-plz-management-vnet" #Optional parameter - Use only if specific subnet needs to be defined for Kubernetes cluster, if not keep it as null
     resource_group_name                                      = "sd-plz-management-rg"
@@ -315,4 +315,4 @@ container_registry_variables = {
       Contact        = "Manish.kumar10@adani.com"
     }
   }
-}*/
+}
