@@ -19,6 +19,15 @@ provider "azurerm" {
   subscription_id = "d326a752-74a2-4442-8813-abc9087e7813"
   
 }
+
+provider "azurerm" {
+  alias = "container_registry_sub"
+  features {}
+  use_msi         = true
+  skip_provider_registration = true
+  subscription_id = "d326a752-74a2-4442-8813-abc9087e7813"
+  
+}
  
 provider "azuread" {
   use_msi         = true
@@ -39,6 +48,7 @@ module "container_registry" {
   source = "./Modules/container_registry/v1.3.0"
   providers = {
     azurerm.management          = azurerm.management
+   azurerm.container_registry_sub = azurerm.container_registry_sub
   }
   container_registry_variables = var.container_registry_variables
   
