@@ -79,7 +79,6 @@ module "aks" {
   source                = "./Modules/aks/v1.1.0"
   providers = {
     azurerm.management = azurerm.management
-    azurerm.container_registry_sub = azurerm.container_registry_sub
   }
   aks_cluster_variables = var.aks_cluster_variables
 }
