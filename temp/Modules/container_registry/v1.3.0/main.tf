@@ -36,31 +36,31 @@ locals {
   ])
 }
 data "azurerm_key_vault" "key_vault" {
-  provider            = azurerm.management
+  provider            = azurerm.key_vault_sub
   for_each            = local.is_container_registry_encryption_required
   name                = each.value.container_registry_encryption.encryption_keyvault_name
   resource_group_name = each.value.container_registry_encryption.encryption_keyvault_resource_group_name
 }
 data "azurerm_key_vault_key" "key_vault_key" {
-  provider     = azurerm.management
+  provider     = azurerm.key_vault_sub
   for_each     = local.is_container_registry_encryption_required
   name         = each.value.container_registry_encryption.encryption_keyvault_key_name
   key_vault_id = data.azurerm_key_vault.key_vault[each.key].id
 }
 data "azurerm_user_assigned_identity" "user_assigned_ids" {
-  provider            = azurerm.management
+  provider            = azurerm.container_registry_sub
   for_each            = { for v in local.identities_list : "${v.main_key},${v.identity_name}" => v }
   name                = each.value.identity_name
   resource_group_name = each.value.identity_resource_group_name
 }
 data "azurerm_user_assigned_identity" "user_assigned_identity" {
-  provider            = azurerm.management
+  provider            = azurerm.container_registry_sub
   for_each            = local.is_container_registry_encryption_required
   name                = each.value.container_registry_encryption.encryption_identity_name
   resource_group_name = each.value.container_registry_encryption.encryption_identity_resource_group_name
 }
 data "azurerm_subnet" "subnet" {
-  provider             = azurerm.management
+  provider             = azurerm.container_registry_sub
   for_each             = { for v in local.virtual_network_list : "${v.main_key},${v.subnet_name}" => v }
   name                 = each.value.subnet_name
   virtual_network_name = each.value.virtual_network_name
@@ -69,7 +69,7 @@ data "azurerm_subnet" "subnet" {
 
 #CONTAINER REGISTRY
 resource "azurerm_container_registry" "container_registry" {
-  provider                      = azurerm.management
+  provider                      = azurerm.container_registry_sub
   for_each                      = var.container_registry_variables
   name                          = each.value.container_registry_name
   location                      = each.value.container_registry_location
