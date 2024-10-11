@@ -185,7 +185,7 @@ variable "aks_cluster_variables" {
     application_gateway_name                   = string
     http_application_routing_enabled           = bool
     oms_agent_enabled                          = bool
-    log_analytics_workspace_name               = string
+    # log_analytics_workspace_name               = string
     user_identity_name                         = string
     http_proxy                                 = string
     https_proxy                                = string
