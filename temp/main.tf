@@ -73,11 +73,11 @@ module "container_registry" {
     azurerm.container_registry_sub = azurerm.container_registry_sub
   }
   container_registry_variables = var.container_registry_variables
-  depends_on                 = [module.private_dns_zone]
+  depends_on                 = [module.private_endpoint]
 }
 
 #AKS CLUSTER
-/*module "aks" {
+module "aks" {
   source                = "./Modules/kubernetes_cluster/v1.3.0"
   providers = {
     azurerm.keyvault_sub = azurerm.management
@@ -90,8 +90,8 @@ module "container_registry" {
     
   }
   aks_cluster_variables = var.aks_cluster_variables
-  depends_on                 = [module.container_registry]
-}*/
+  depends_on                 = [module.private_endpoint]
+}
 
 
 
