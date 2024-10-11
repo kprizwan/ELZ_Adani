@@ -3,7 +3,6 @@ terraform {
     azurerm = {
       source  = "hashicorp/azurerm"
       version = "=3.75.0"
-      configuration_aliases = [azurerm.management]
     }
      azuread = {
       source  = "hashicorp/azuread"
@@ -21,15 +20,6 @@ provider "azurerm" {
   
 }
  
-provider "azurerm" {
-  alias = "connectivity"
-  features {}
-  use_msi         = true
-  skip_provider_registration = true
-  subscription_id = "4d4b41f0-5e56-49da-9bc1-713a4a21ddf1" 
-  
-}
-
 provider "azuread" {
   use_msi         = true
 }
