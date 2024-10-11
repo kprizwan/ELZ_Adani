@@ -71,7 +71,7 @@ module "container_registry" {
    azurerm.container_registry_sub = azurerm.container_registry_sub
   }
   container_registry_variables = var.container_registry_variables
-  depends_on                 = [module.private_endpoint]
+  depends_on                 = [module.private_dns_zone]
 }
 
 #AKS CLUSTER
