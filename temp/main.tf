@@ -77,9 +77,9 @@ module "container_registry" {
 #AKS CLUSTER
 module "aks" {
   source                = "./Modules/aks/v1.1.0"
-  providers = {
+  /*providers = {
     azurerm.management = azurerm.management
-  }
+  }*/
   aks_cluster_variables = var.aks_cluster_variables
 }
 
