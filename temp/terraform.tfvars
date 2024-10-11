@@ -35,13 +35,13 @@ key_vault_variables = {
     key_vault_network_acls_ip_rules       = null            # (Optional) One or more IP Addresses, or CIDR Blocks which should be able to access the Key Vault.
 
     #(Optional) One or more Subnet ID's which should be able to access this Key Vault.
-    key_vault_network_acls_virtual_networks = [ #(Optional) One or more Subnet ID's which should be able to access this Key Vault.
+    key_vault_network_acls_virtual_networks = null /* [ #(Optional) One or more Subnet ID's which should be able to access this Key Vault.
       {
         key_vault_network_acls_virtual_networks_virtual_network_name    =  null                    #(Required) Vitural Network name to be associated.
         key_vault_network_acls_virtual_networks_subnet_name             =  null                    #(Required) Subnet Name to be associated.
         key_vault_network_acls_virtual_networks_subscription_id         =  null                    #(Required) Subscription Id where Vnet is created.
         key_vault_network_acls_virtual_networks_virtual_network_rg_name =  null                    #(Required) Resource group where Vnet is created.
-      }
+      }*/
     ]
     key_vault_contact_information_enabled = false #(Optional) One or more contact block as defined below to be enabled or disabled.
     key_vault_contact_email               = null  #(Required) E-mail address of the contact.
