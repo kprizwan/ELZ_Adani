@@ -54,14 +54,14 @@ module "private_dns_zone" {
 }
 
 #PRIVATE ENDPOINT
-module "private_endpoint" {
+/*module "private_endpoint" {
   source = "./Modules/private_endpoint/v1.3.0"
   providers = {
     azurerm.management = azurerm.management
   }
   private_endpoint_variables = var.private_endpoint_variables
   depends_on                 = [module.key_vault, module.private_dns_zone]
-}
+}*/
 
 #CONTAINER REGISTRY
 module "container_registry" {
@@ -71,7 +71,7 @@ module "container_registry" {
     azurerm.container_registry_sub = azurerm.container_registry_sub
   }
   container_registry_variables = var.container_registry_variables
-  depends_on                 = [module.private_endpoint]
+  depends_on                 = [module.private_dns_zone]
 }
 
 #AKS CLUSTER
