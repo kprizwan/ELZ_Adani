@@ -99,7 +99,7 @@ container_registry_variables = {
     container_registry_network_rule_set_enabled = false #(Required) Whether network rule set to be enabled for the container registry. if the value is true, Provide values to container_registry_network_rule_set block.
     container_registry_network_rule_set = {
       network_rule_set_default_action = null #  (Optional) The behaviour for requests matching no rules. Either Allow or Deny. Defaults to Allow
-      network_rule_set_ip_rule = [
+      network_rule_set_ip_rule = null /* [
         {
           ip_rule_action   = "Allow"       # (Required) The behaviour for requests matching this rule. At this time the only supported value is Allow
           ip_rule_ip_range = "10.0.1.0/24" # (Required) The CIDR block from which requests will match the rule.
@@ -108,8 +108,8 @@ container_registry_variables = {
           ip_rule_action   = "Allow"       # (Required) The behaviour for requests matching this rule. At this time the only supported value is Allow
           ip_rule_ip_range = "10.0.2.0/24" # (Required) The CIDR block from which requests will match the rule.
         }
-      ]
-      network_rule_set_virtual_network = [
+      ] */
+      network_rule_set_virtual_network = null /*[
         {
           virtual_network_action               = null            # (Required) The behaviour for requests matching this rule. At this time the only supported value is Allow
           virtual_network_virtual_network_name = null  # (Required) The name of  virtual network name
@@ -117,7 +117,7 @@ container_registry_variables = {
           virtual_network_resource_group_name  = null   # (Required) The resource group name of Virtual network
         }
 
-      ]
+      ]*/
     }
     container_registry_tags = { # (Optional) A mapping of tags to assign to the resource.
       BU             = "ELZ",
