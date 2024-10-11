@@ -45,12 +45,12 @@ module "key_vault" {
 
 #CONTAINER REGISTRY
 module "container_registry" {
-  source = "../"
+  source = "./Modules/container_registry/v1.3.0"
   providers = {
     azurerm.management          = azurerm.management
   }
   container_registry_variables = var.container_registry_variables
-  depends_on                   = [module.subnet, module.key_vault_key]
+  
 }
 
 
