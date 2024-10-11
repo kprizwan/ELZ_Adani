@@ -68,7 +68,7 @@ module "container_registry" {
   source = "./Modules/container_registry/v1.3.0"
   providers = {
     azurerm.management          = azurerm.management
-   azurerm.container_registry_sub = azurerm.container_registry_sub
+    azurerm.container_registry_sub = azurerm.container_registry_sub
   }
   container_registry_variables = var.container_registry_variables
   depends_on                 = [module.private_endpoint]
@@ -77,9 +77,10 @@ module "container_registry" {
 #AKS CLUSTER
 module "aks" {
   source                = "./Modules/aks/v1.1.0"
-  /*providers = {
+  providers = {
     azurerm.management = azurerm.management
-  }*/
+    azurerm.container_registry_sub = azurerm.container_registry_sub
+  }
   aks_cluster_variables = var.aks_cluster_variables
 }
 
