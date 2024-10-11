@@ -7,7 +7,7 @@
       configuration_aliases = [azurerm.management]
     }
   }
-}*?
+}*/
 
 terraform {
   required_providers {
