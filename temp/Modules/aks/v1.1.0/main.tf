@@ -137,7 +137,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     network_plugin     = each.value.network_plugin
     network_policy     = each.value.network_plugin == "azure" ? "azure" : each.value.network_policy
     dns_service_ip     = each.value.dns_service_ip
-    docker_bridge_cidr = each.value.docker_bridge_cidr
+    # docker_bridge_cidr = each.value.docker_bridge_cidr
     outbound_type      = each.value.outbound_type
     pod_cidr           = each.value.network_plugin == "kubenet" ? each.value.pod_cidr : null
     service_cidr       = each.value.service_cidr
