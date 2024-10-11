@@ -173,7 +173,7 @@ variable "container_registry_variables" {
 }
 
 #AKS CLUSTER VARIABLE
-variable "aks_cluster_variables" {
+/*variable "aks_cluster_variables" {
   type = map(object({
     vnet_name                                                = string
     resource_group_name                                      = string
@@ -277,5 +277,5 @@ variable "aks_cluster_variables" {
     linux_profile_ssh_key                      = string
     aks_cluster_tags                           = map(string)
   }))
-}
+}*/
 
