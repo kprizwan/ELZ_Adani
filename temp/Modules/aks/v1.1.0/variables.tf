@@ -59,7 +59,7 @@ variable "aks_cluster_variables" {
     network_plugin                                           = string
     network_policy                                           = string
     dns_service_ip                                           = string
-    docker_bridge_cidr                                       = string
+    # docker_bridge_cidr                                       = string
     outbound_type                                            = string
     pod_cidr                                                 = string
     service_cidr                                             = string
