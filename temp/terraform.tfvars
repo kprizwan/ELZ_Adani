@@ -51,6 +51,27 @@ key_vault_variables = {
   }
 }
 
+#PRIVATE_DNS_ZONE
+private_dns_zone_variables = {
+  "dnszone1" = {
+    private_dns_zone_name                = "privatelink.vault.core.windows.net" #(Required) The name of the Private DNS Zone. Must be a valid domain name.
+    private_dns_zone_resource_group_name = "sd-management-vault-pdz-01"                 #(Required) Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
+    private_dns_zone_soa_record          = null                              ##(Optional) An soa_record block as defined below. Changing this forces a new resource to be created.
+    private_dns_zone_tags = {
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+  }
+  
+  }
+
+
 #CONTAINER REGISTRY
 container_registry_variables = {
   "container_registry_1" = {
