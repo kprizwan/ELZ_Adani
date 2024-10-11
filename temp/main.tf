@@ -54,6 +54,14 @@ module "container_registry" {
   
 }
 
+#AKS CLUSTER
+module "aks" {
+  source                = "./Modules/aks/v1.3.0"
+  aks_cluster_variables = var.aks_cluster_variables
+  
+  ]
+}
+
 
 
 
