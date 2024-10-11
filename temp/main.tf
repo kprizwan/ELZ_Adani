@@ -78,7 +78,7 @@ module "container_registry" {
 
 #AKS CLUSTER
 /*module "aks" {
-  source                = "./Modules/aks/v1.1.0"
+  source                = "./Modules/kubernetes_cluster/v1.3.0"
   providers = {
     azurerm.keyvault_sub = azurerm.management
     azurerm.log_analytics_oms_sub = azurerm.management
