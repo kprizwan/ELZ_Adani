@@ -81,6 +81,7 @@ module "aks" {
     azurerm.management = azurerm.management
   }
   aks_cluster_variables = var.aks_cluster_variables
+  depends_on                 = [module.container_registry]
 }
 
 
