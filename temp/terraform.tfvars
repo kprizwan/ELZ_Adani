@@ -82,11 +82,11 @@ container_registry_variables = {
     container_registry_network_rule_bypass_option = "AzureServices" # (Optional) Whether to allow trusted Azure services to access a network restricted Container Registry? Possible values are None and AzureServices. Defaults to AzureServices.
     container_registry_encryption = {
       encryption_enabled                      = false                   #  (Required) Boolean value that indicates whether encryption is enabled. Set to false, if customer managed encryption is not required.
-      encryption_keyvault_name                = "keyvault000001" # (Required)The name of the KeyVault where key is stored
-      encryption_keyvault_key_name            = "kvkey000001"    # (Required) # The name of the keyvault key name
-      encryption_keyvault_resource_group_name = "rg000002"       #(Required) # Resource group of the KeyVault
-      encryption_identity_name                = "ai000001"      # (Required) The Name of the managed identity
-      encryption_identity_resource_group_name = "rg000002"       # (Required) The name of resource group where identity is created.
+      encryption_keyvault_name                = null # (Required)The name of the KeyVault where key is stored
+      encryption_keyvault_key_name            = null   # (Required) # The name of the keyvault key name
+      encryption_keyvault_resource_group_name = null       #(Required) # Resource group of the KeyVault
+      encryption_identity_name                = null      # (Required) The Name of the managed identity
+      encryption_identity_resource_group_name = null      # (Required) The name of resource group where identity is created.
     }
     container_registry_identity = {                  #(Optional) Set to null if managed identity configuration is not required.
       identity_type = null # (Required) Specifies the type of Managed Service Identity that should be configured on this Container Registry. Possible values are SystemAssigned, UserAssigned, SystemAssigned, UserAssigned (to enable both).
