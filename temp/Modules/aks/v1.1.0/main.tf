@@ -23,12 +23,14 @@ locals {
 
 
 data "azurerm_virtual_network" "vnet_id" {
+  provider             = azurerm.management
   for_each            = local.is_subnet_exists
   name                = each.value.vnet_name
   resource_group_name = each.value.resource_group_name
 }
 
 data "azurerm_subnet" "subnet_id" {
+  provider             = azurerm.management
   for_each             = local.is_subnet_exists
   name                 = each.value.subnet_name
   virtual_network_name = each.value.vnet_name
@@ -36,30 +38,35 @@ data "azurerm_subnet" "subnet_id" {
 }
 
 data "azurerm_disk_encryption_set" "disk_encryption_set" {
+  provider             = azurerm.management
   for_each            = local.is_disk_encryption_set_exists
   name                = each.value.disk_encryption_set_name
   resource_group_name = each.value.resource_group_name
 }
 
 data "azurerm_application_gateway" "application_gateway_id" {
+  provider             = azurerm.management
   for_each            = local.is_application_gateway_exists
   name                = each.value.application_gateway_name
   resource_group_name = each.value.resource_group_name
 }
 
 data "azurerm_log_analytics_workspace" "log_analytics_workspace" {
+  provider             = azurerm.management
   for_each            = local.is_log_analytics_workspace_exists
   name                = each.value.log_analytics_workspace_name
   resource_group_name = each.value.resource_group_name
 }
 
 data "azurerm_user_assigned_identity" "aks_user_identity" {
+  provider             = azurerm.management
   for_each            = local.is_user_identity_required
   name                = each.value.user_identity_name
   resource_group_name = each.value.resource_group_name
 }
 
 resource "azurerm_kubernetes_cluster" "aks_cluster" {
+  provider             = azurerm.management
   for_each                        = var.aks_cluster_variables
   name                            = each.value.aks_name
   location                        = each.value.location
