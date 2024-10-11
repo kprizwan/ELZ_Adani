@@ -402,12 +402,11 @@ kubernetes_cluster_variables = {
     kubernetes_cluster_image_cleaner_enabled                                 = false #(Optional) Specifies whether Image Cleaner is enabled.
     kubernetes_cluster_image_cleaner_interval_hours                          = null  #(Optional) Specifies the interval in hours when images should be cleaned up. Defaults to 48.
     kubernetes_cluster_http_proxy_config                                     = null
-    kubernetes_cluster_identity = null 
-     /*{  #One of either identity or service_principal must be specified. Assign null if not required. Defines the kubernetes cluster identity to be used
-      identity_type = null #(Required) Specifies the type of Managed Service Identity that should be configured on this Kubernetes Cluster. Possible values are SystemAssigned, UserAssigned, SystemAssigned, UserAssigned (to enable both).
+    kubernetes_cluster_identity = {  #One of either identity or service_principal must be specified. Assign null if not required. Defines the kubernetes cluster identity to be used
+      identity_type = "SystemAssigned" #(Required) Specifies the type of Managed Service Identity that should be configured on this Kubernetes Cluster. Possible values are SystemAssigned, UserAssigned, SystemAssigned, UserAssigned (to enable both).
       identity_ids = [{
-        identity_name = null
-      identity_resource_group_name = null }]
+        identity_name = "5bcd79c7-7094-44fc-b87a-f9c2f24f517c"
+      identity_resource_group_name = "sd-plz-management-node-rg" }]
     }*/
     kubernetes_cluster_ingress_application_gateway = null
     #  {                                  #(Optional) Assign null if not required. Defines AGIC ingress controller application gateway
