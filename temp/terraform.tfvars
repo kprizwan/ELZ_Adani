@@ -202,7 +202,7 @@ container_registry_variables = {
 }
 
 #AKS CLUSTER
-aks_cluster_variables = {
+/*aks_cluster_variables = {
   "aks_1" = {
     vnet_name                                                = "sd-plz-management-vnet" #Optional parameter - Use only if specific subnet needs to be defined for Kubernetes cluster, if not keep it as null
     resource_group_name                                      = "sd-plz-management-rg"
@@ -315,4 +315,4 @@ aks_cluster_variables = {
       Contact        = "Manish.kumar10@adani.com"
     }
   }
-}
+}*/
