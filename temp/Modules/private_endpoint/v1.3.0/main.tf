@@ -7,7 +7,7 @@ locals {
 
 #DATA RESOURCE FOR SUBNET
 data "azurerm_subnet" "subnet_id" {
-  provider             = azurerm.private_endpoint_sub
+  provider             = azurerm.management
   for_each             = var.private_endpoint_variables
   name                 = each.value.private_endpoint_subnet_name
   virtual_network_name = each.value.private_endpoint_virtual_network_name
@@ -23,7 +23,7 @@ data "azurerm_private_dns_zone" "private_dns_zone" {
 
 #DATA RESOURCE FOR RESOURCES TO CONNECT PRIVATELY
 data "azurerm_resources" "private_connection_resource" {
-  provider            = azurerm.private_connection_sub
+  provider            = azurerm.management
   for_each            = { for k, v in var.private_endpoint_variables : k => v.private_endpoint_private_service_connection }
   name                = each.value.private_connection_resource_name
   resource_group_name = each.value.private_connection_resource_resource_group_name
