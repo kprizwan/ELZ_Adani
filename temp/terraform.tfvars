@@ -88,14 +88,14 @@ container_registry_variables = {
       encryption_identity_name                = "testid"      # (Required) The Name of the managed identity
       encryption_identity_resource_group_name = "sd-plz-management-rg"      # (Required) The name of resource group where identity is created.
     }
-    container_registry_identity = {                  #(Optional) Set to null if managed identity configuration is not required.
+    container_registry_identity = null /*{                  #(Optional) Set to null if managed identity configuration is not required.
       identity_type = null # (Required) Specifies the type of Managed Service Identity that should be configured on this Container Registry. Possible values are SystemAssigned, UserAssigned, SystemAssigned, UserAssigned (to enable both).
       identity_identity_ids = [{
         identity_ids_identity_name                = null # (Required) The Name of the managed identity
         identity_ids_identity_resource_group_name = null  # (Required) The name of resource group where identity is created.
         }
       ]
-    }
+    }*/
     container_registry_network_rule_set_enabled = false #(Required) Whether network rule set to be enabled for the container registry. if the value is true, Provide values to container_registry_network_rule_set block.
     container_registry_network_rule_set = {
       network_rule_set_default_action = null #  (Optional) The behaviour for requests matching no rules. Either Allow or Deny. Defaults to Allow
