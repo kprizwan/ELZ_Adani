@@ -62,7 +62,7 @@ variable "private_dns_zone_variables" {
 }
 
 #PRIVATE ENDPOINT VARIABLES
-variable "private_endpoint_variables" {
+/*variable "private_endpoint_variables" {
   type = map(object({
     private_endpoint_name                                = string #(Required) Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
     private_endpoint_resource_group_name                 = string #(Required) Specifies the Name of the Resource Group within which the Private Endpoint should exist. Changing this forces a new resource to be created.
@@ -101,7 +101,7 @@ variable "private_endpoint_variables" {
   }))
   description = "Map of private endpoint objects. name, subnet_id, is_manual_connection, private_connection_resource_id and subresource_names supported"
   default     = {}
-}
+}*/
 
 
 # CONTAINER REGISTRY VARIABLES
@@ -173,7 +173,7 @@ variable "container_registry_variables" {
 }
 
 #AKS CLUSTER VARIABLE
-/*variable "aks_cluster_variables" {
+variable "aks_cluster_variables" {
   type = map(object({
     vnet_name                                                = string
     resource_group_name                                      = string
@@ -277,5 +277,5 @@ variable "container_registry_variables" {
     linux_profile_ssh_key                      = string
     aks_cluster_tags                           = map(string)
   }))
-}*/
+}
 
