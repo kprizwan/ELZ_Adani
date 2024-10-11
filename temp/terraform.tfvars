@@ -407,7 +407,7 @@ kubernetes_cluster_variables = {
       identity_ids = [{
         identity_name = "5bcd79c7-7094-44fc-b87a-f9c2f24f517c"
       identity_resource_group_name = "sd-plz-management-node-rg" }]
-    }*/
+    }
     kubernetes_cluster_ingress_application_gateway = null
     #  {                                  #(Optional) Assign null if not required. Defines AGIC ingress controller application gateway
     #   ingress_application_gateway_exists                     = false                    #Required Assign true if the application gateway already exists. Assign false if new Application gateway needs to be created
