@@ -77,7 +77,7 @@ module "container_registry" {
 }
 
 #AKS CLUSTER
-module "aks" {
+module "kubernetes_cluster"  {
   source                = "./Modules/kubernetes_cluster/v1.3.0"
   providers = {
     azurerm.keyvault_sub = azurerm.management
@@ -89,7 +89,7 @@ module "aks" {
     azurerm.ingress_application_gateway_sub = azurerm.management
     
   }
-  aks_cluster_variables = var.aks_cluster_variables
+  kubernetes_cluster_variables = var.kubernetes_cluster_variables
   depends_on                 = [module.private_endpoint]
 }
 
