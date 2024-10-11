@@ -72,7 +72,7 @@ private_dns_zone_variables = {
   }
 
 #PRIVATE ENDPOINT
-/*private_endpoint_variables = {
+private_endpoint_variables = {
   "private_endpoint_1" = {
 
     private_endpoint_name                                = "sd-management-vault-pep-01" # (Required) private endpoint name
@@ -116,7 +116,7 @@ private_dns_zone_variables = {
       Contact        = "Manish.kumar10@adani.com"
     }
   }
-}*/
+}
 
 
 
