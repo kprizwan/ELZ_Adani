@@ -57,7 +57,7 @@ module "private_dns_zone" {
 module "private_endpoint" {
   source = "./Modules/private_endpoint/v1.3.0"
   providers = {
-    azurerm = azurerm.management
+    azurerm.management = azurerm.management
   }
   private_endpoint_variables = var.private_endpoint_variables
   depends_on                 = [module.key_vault, module.private_dns_zone]
