@@ -74,7 +74,7 @@ container_registry_variables = {
     container_registry_georeplication_enabled = true #(Required) Whether georeplications should be enabled for the container registry.If the this is true, Provide values to georeplications block
     container_registry_georeplications = [{
       georeplications_location                  = "South India" # (Required) A location where the container registry should be geo-replicated.
-      georeplications_regional_endpoint_enabled = true     # (Optional) Whether regional endpoint is enabled for this Container Registry? Defaults to false.
+      georeplications_regional_endpoint_enabled = false     # (Optional) Whether regional endpoint is enabled for this Container Registry? Defaults to false.
       georeplications_zone_redundancy_enabled   = false    # (Optional) Whether zone redundancy is enabled for this replication location? Defaults to false.
       georeplications_tags                      = null     # (Optional) A mapping of tags to assign to this replication location.
     }]
@@ -98,7 +98,7 @@ container_registry_variables = {
     }
     container_registry_network_rule_set_enabled = false #(Required) Whether network rule set to be enabled for the container registry. if the value is true, Provide values to container_registry_network_rule_set block.
     container_registry_network_rule_set = {
-      network_rule_set_default_action = "Allow" #  (Optional) The behaviour for requests matching no rules. Either Allow or Deny. Defaults to Allow
+      network_rule_set_default_action = "Deny" #  (Optional) The behaviour for requests matching no rules. Either Allow or Deny. Defaults to Allow
       network_rule_set_ip_rule = [
         {
           ip_rule_action   = "Allow"       # (Required) The behaviour for requests matching this rule. At this time the only supported value is Allow
@@ -111,7 +111,7 @@ container_registry_variables = {
       ]
       network_rule_set_virtual_network = [
         {
-          virtual_network_action               = "Allow"             # (Required) The behaviour for requests matching this rule. At this time the only supported value is Allow
+          virtual_network_action               = "Deny"             # (Required) The behaviour for requests matching this rule. At this time the only supported value is Allow
           virtual_network_virtual_network_name = "sd-plz-management-vnet" # (Required) The name of  virtual network name
           virtual_network_subnet_name          = "sd-plz-management-vnet-pe-snet-01"  # (Required) The name of subnet
           virtual_network_resource_group_name  = "sd-plz-management-rg1"   # (Required) The resource group name of Virtual network
