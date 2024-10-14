@@ -162,7 +162,75 @@ container_registry_variables = {
   }
 }
 
+#EVENTHUB NAMESPACE
+eventhub_namespace_variables = {
+  "eventhub_namespace_1" = {
+    eventhub_namespace_location                             = "Central India"           # (Required) Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
+    eventhub_namespace_name                                 = "sd-plz-eventhub-ns" # (Required) Specifies the name of the EventHub Namespace resource. Changing this forces a new resource to be created.
+    eventhub_namespace_resource_group_name                  = "sd-plz-management-rg"  # (Required) The name of the resource group in which to create the namespace. Changing this forces a new resource to be created.
+    eventhub_namespace_sku                                  = "Standard"         # (Required) Defines which tier to use. Valid options are Basic, Standard, and Premium. Please note that setting this field to Premium will force the creation of a new resource.
+    eventhub_namespace_capacity                             = "2"                # (Optional) Specifies the Capacity / Throughput Units for a Standard SKU namespace. Default capacity has a maximum of 2, but can be increased in blocks of 2 on a committed purchase basis.
+    eventhub_namespace_auto_inflate_enabled                 = true               # (Optional) Is Auto Inflate enabled for the EventHub Namespace?
+    eventhub_namespace_maximum_throughput_units             = 2                  # (Optional) Specifies the maximum number of throughput units when Auto Inflate is Enabled. Valid values range from 1 - 20.
+    eventhub_namespace_zone_redundant                       = false              # (Optional) Specifies if the EventHub Namespace should be Zone Redundant (created across Availability Zones). Changing this forces a new resource to be created. Defaults to false.
+    eventhub_namespace_dedicated_eventhub_cluster_name      = null               # (Optional) Specifies the name of the EventHub Cluster resource. Required, when the namespace needs a dedicated eventhub_cluster
+    eventhub_namespace_eventhub_cluster_resource_group_name = null               # (Optional) The name of the resource group in which the EventHub Cluster exists. Required, when the namespace needs a dedicated eventhub_cluster 
+    eventhub_namespace_local_authentication_enabled         = false              # (Optional) Is SAS authentication enabled for the EventHub Namespace?
+    eventhub_namespace_public_network_access_enabled        = false              # (Optional) Is public network access enabled for the EventHub Namespace? Defaults to true.
+    eventhub_namespace_minimum_tls_version                  = null               # (Optional) Specifies the maximum number of throughput units when Auto Inflate is Enabled. Valid values range from 1 - 20.
+    eventhub_namespace_identity = {
+      eventhub_namespace_identity_type = "SystemAssigned" # (Required) Specifies the type of Managed Service Identity that should be configured on this Eventhub Namespace. Possible values are SystemAssigned, UserAssigned, SystemAssigned, UserAssigned (to enable both).# Other values could be "UserAssigned", "SystemAssigned" 
+      # If given as "SystemAssigned" , then give below parameter as null
+      eventhub_namespace_user_assigned_identities = null # (Optional) Eventhub namespace user assigned identities
+    }
+    eventhub_namespace_network_rulesets = { # (Optional) A network_rulesets block as defined below.
+      "eventhub_namespace_network_rulesets_1" = {
+        network_rulesets_default_action                 = "Deny"                                       # (Required) The default action to take when a rule is not matched. Possible values are Allow and Deny.
+        network_rulesets_trusted_service_access_enabled = false                                        # (Optional) Whether Trusted Microsoft Services are allowed to bypass firewall.
+        network_rulesets_public_network_access_enabled  = false                                        # (Optional) Is public network access enabled for the EventHub Namespace? Defaults to true.
+        network_rulesets_virtual_network_rule = null 
+        network_rulesets_ip_rule = null # (Optional) One or more ip_rule blocks can be defined with ip_mask & action
+      }
+    }
+    eventhub_namespace_tags = { # (Optional) A mapping of tags to assign to the resource.
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+  }
+}
 
+#EVENTHUB
+eventhub_variables = {
+  "eventhub_1" = {
+    eventhub_capture_description = null /*{                                                                                                               #(Optional) A capture_description block supports the following
+      capture_description_destination = {                                                                                                          #(Required) A destination block as defined below.
+        capture_description_destination_archive_name_format = "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" #(Required) The Blob naming convention for archiving. e.g. {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order
+        capture_description_destination_blob_container_name = "ploceusstrcon000001"                                                                #(Required) The name of the Container within the Blob Storage Account where messages should be archived.
+        capture_description_destination_name                = "EventHubArchive.AzureBlockBlob"                                                     #(Required) The Name of the Destination where the capture should take place. At this time the only supported value is EventHubArchive.AzureBlockBlob.
+      }
+      capture_description_enabled             = true     #(Required) Specifies if the Capture Description is Enabled.
+      capture_description_encoding            = "Avro"   #(Required) Specifies the Encoding used for the Capture Description. Possible values are Avro and AvroDeflate.
+      capture_description_interval_in_seconds = 60       #(Optional) Specifies the time interval in seconds at which the capture will happen. Values can be between 60 and 900 seconds. Defaults to 300 seconds.
+      capture_description_size_limit_in_bytes = 10485760 #(Optional) Specifies the amount of data built up in your EventHub before a Capture Operation occurs. Value should be between 10485760 and 524288000 bytes. Defaults to 314572800 bytes.
+      capture_description_skip_empty_archives = false    #(Optional) Specifies if empty files should not be emitted if no events occur during the Capture time window. Defaults to false.
+    }*/
+    eventhub_message_retention                                = 1                       #(Required) Specifies the number of days to retain the events for this Event Hub.
+    eventhub_name                                             = "sd-plz-eventhub" #(Required) Specifies the name of the EventHub resource. Changing this forces a new resource to be created.
+    eventhub_namespace_name                                   = "sd-plz-eventhub-ns"      #(Required) Specifies the name of the EventHub Namespace. Changing this forces a new resource to be created.
+    eventhub_partition_count                                  = 1                       #(Required) Specifies the current number of shards on the Event Hub. Changing this will force-recreate the resource.
+    eventhub_resource_group_name                              = "sd-plz-management-rg"       #(Required) The name of the resource group in which the EventHub's parent Namespace exists. Changing this forces a new resource to be created.
+    eventhub_status                                           = "Active"                #(Optional) Specifies the status of the Event Hub resource. Possible values are Active, Disabled and SendDisabled. Defaults to Active.
+    eventhub_storage_blob_storage_account_name                = null    #(Optional) To fetch The ID of the Blob Storage Account where messages should be archived.
+    eventhub_storage_blob_storage_account_resource_group_name = null       #(Required) Specifies the name of the resource group the Storage Account is located in. if capture description is enabled.
+    eventhub_storage_blob_storage_container_name              = null   #(Required) The name of the Container within the Blob Storage Account where messages should be archived. if capture description is enabled.
+  }
+}
 
 #KUBERNETES CLUSTER
 kubernetes_cluster_variables = {

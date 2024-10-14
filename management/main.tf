@@ -40,6 +40,25 @@ module "container_registry" {
   depends_on                 = [module.private_endpoint]
 }
 
+#EVENTHUB NAMESPACE
+module "eventhub_namespace" {
+  source                       = "../Azure/eventhub_namespace/v1.3.0"
+  providers = {
+    azurerm = azurerm.management
+  }
+  eventhub_namespace_variables = var.eventhub_namespace_variables
+}
+
+#EVENTHUB
+module "eventhub" {
+  source             = "../Azure/eventhub/v1.3.0"
+  providers = {
+    azurerm = azurerm.management
+  }
+  eventhub_variables = var.eventhub_variables
+  depends_on         = [module.eventhub_namespace]
+}
+
 #AKS CLUSTER
 /*module "kubernetes_cluster"  {
   source                = "../Azure/kubernetes_cluster/v1.3.0"
