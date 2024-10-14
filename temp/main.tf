@@ -91,6 +91,14 @@ module "kubernetes_cluster"  {
   depends_on                 = [module.private_endpoint]
 }*/
 
+### Connectivity Subscription ########
 
-
+#RESOURCE GROUP
+module "resource_group" {
+  source                   = "./Modules/resource_group/v1.3.0"
+  providers = {
+    azurerm = azurerm.connectivity
+  }
+  resource_group_variables = var.resource_group_variables
+}
 
