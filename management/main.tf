@@ -1,6 +1,6 @@
 #KEYVAULT
 module "key_vault" {
-  source = "../Azure/key_vault"
+  source = "../Azure/key_vault/v1.3.0"
   providers = {
     azurerm = azurerm.management
   }
@@ -8,7 +8,7 @@ module "key_vault" {
 }
 
 #PRIVATE DNS ZONE
-/*module "private_dns_zone" {
+module "private_dns_zone" {
   source = "./Modules/private_dns_zone/v1.3.0"
   providers = {
     azurerm = azurerm.management
@@ -22,8 +22,8 @@ module "private_endpoint" {
   source = "./Modules/private_endpoint/v1.3.0"
   providers = {
     azurerm.private_connection_sub = azurerm.management
-    azurerm.private_dns_zone_sub = azurerm.management
-    azurerm.private_endpoint_sub = azurerm.management  
+    azurerm.private_dns_zone_sub   = azurerm.management
+    azurerm.private_endpoint_sub   = azurerm.management
   }
   private_endpoint_variables = var.private_endpoint_variables
   depends_on                 = [module.key_vault, module.private_dns_zone]
