@@ -60,7 +60,7 @@ module "eventhub" {
 }
 
 #AKS CLUSTER
-/*module "kubernetes_cluster"  {
+module "kubernetes_cluster"  {
   source                = "../Azure/kubernetes_cluster/v1.3.0"
   providers = {
     azurerm.keyvault_sub = azurerm.management
@@ -73,6 +73,5 @@ module "eventhub" {
     
   }
   kubernetes_cluster_variables = var.kubernetes_cluster_variables
-  depends_on                 = [module.private_endpoint]
-}*/
+}
 

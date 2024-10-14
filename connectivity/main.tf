@@ -49,3 +49,15 @@ module "application_gateway" {
   depends_on                    = [module.subnet]
 }
 
+#LINUX VM
+module "linux_virtual_machine" {
+  source = "../Azure/linux_virtual_machine/v1.3.0"
+  providers = {
+    azurerm.linux_vm_sub  = azurerm.connectivity
+    azurerm.key_vault_sub = azurerm.connectivity
+    azurerm.gallery_sub   = azurerm.connectivity
+  }
+  linux_virtual_machine_variables = var.linux_virtual_machine_variables
+  depends_on                      = [module.subnet]
+}
+
