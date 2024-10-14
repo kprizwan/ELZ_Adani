@@ -55,7 +55,7 @@ virtual_network_variables = {
       },
       {
         virtual_network_subnet_name                                       = "sd-plz-Connectivity-Hub-VNET-FW-UnTrust-SNET-01" #(Optional) Can be specified multiple times to define multiple subnets
-        virtual_network_subnet_address_prefix                             = "	10.248.7.0/26"         #(Required) The address prefix to use for the subnet.
+        virtual_network_subnet_address_prefix                             = "10.248.7.0/26"         #(Required) The address prefix to use for the subnet.
         virtual_network_subnet_network_security_group_name                = null                  #(Optional) The Network Security Group to associate with the subnet.
         virtual_network_subnet_network_security_group_resource_group_name = null                  #(Optional) The Network Security Group to associate with the subnet.
       },
