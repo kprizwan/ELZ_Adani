@@ -412,3 +412,4 @@ resource_group_variables = {
       IAC            = "Terraform",
       Contact        = "Manish.kumar10@adani.com"
     }
+}
