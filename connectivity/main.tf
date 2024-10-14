@@ -31,6 +31,21 @@ module "subnet" {
 
 module "network_interface" {
   source                      = "../Azure/network_interface/v1.3.0"
+  providers = {
+    azurerm = azurerm.connectivity
+  }
   network_interface_variables = var.network_interface_variables
-  depends_on                  = [module.resource_group, module.virtual_network, module.subnet, module.public_ip, module.lb]
+  depends_on                  = [module.resource_group, module.virtual_network, module.subnet]
 }
+
+
+#APPLICATION GATEWAY
+module "application_gateway" {
+  source                        = "../Azure/application_gateway/v1.3.0"
+  providers = {
+    azurerm = azurerm.connectivity
+  }
+  application_gateway_variables = var.application_gateway_variables
+  depends_on                    = [module.subnet]
+}
+
