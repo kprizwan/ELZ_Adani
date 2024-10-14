@@ -10,7 +10,7 @@ terraform {
     }
 }
 }
-
+# subscription 1 - Management
 provider "azurerm" {
   alias = "management"
   features {}
@@ -19,29 +19,27 @@ provider "azurerm" {
   subscription_id = "d326a752-74a2-4442-8813-abc9087e7813"
   
 }
-
+# subscription 2 - Connectivity
 provider "azurerm" {
-  alias = "container_registry_sub"
+  alias = "connectivity"
   features {}
   use_msi         = true
   skip_provider_registration = true
-  subscription_id = "d326a752-74a2-4442-8813-abc9087e7813"
-  
+  subscription_id = "4d4b41f0-5e56-49da-9bc1-713a4a21ddf1"  
 }
- 
+
 provider "azuread" {
   use_msi         = true
 }
 
-
 #KEYVAULT
-module "key_vault" {
+/*module "key_vault" {
   source              = "./Modules/key_vault"
   providers = {
     azurerm = azurerm.management
   }
   key_vault_variables = var.key_vault_variables
-}
+}*/
 
 #PRIVATE DNS ZONE
 /*module "private_dns_zone" {
@@ -70,7 +68,7 @@ module "key_vault" {
   source = "./Modules/container_registry/v1.3.0"
   providers = {
     azurerm.key_vault_sub          = azurerm.management
-    azurerm.container_registry_sub = azurerm.container_registry_sub
+    azurerm.container_registry_sub = azurerm.management
   }
   container_registry_variables = var.container_registry_variables
   depends_on                 = [module.private_endpoint]
