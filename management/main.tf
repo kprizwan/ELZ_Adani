@@ -9,7 +9,7 @@ module "key_vault" {
 
 #PRIVATE DNS ZONE
 module "private_dns_zone" {
-  source = "./Modules/private_dns_zone/v1.3.0"
+  source = "../Azure/private_dns_zone/v1.3.0"
   providers = {
     azurerm = azurerm.management
   }
@@ -19,7 +19,7 @@ module "private_dns_zone" {
 
 #PRIVATE ENDPOINT
 module "private_endpoint" {
-  source = "./Modules/private_endpoint/v1.3.0"
+  source = "../Azure/private_endpoint/v1.3.0"
   providers = {
     azurerm.private_connection_sub = azurerm.management
     azurerm.private_dns_zone_sub   = azurerm.management
@@ -31,7 +31,7 @@ module "private_endpoint" {
 
 #CONTAINER REGISTRY
 /*module "container_registry" {
-  source = "./Modules/container_registry/v1.3.0"
+  source = "../Azure/container_registry/v1.3.0"
   providers = {
     azurerm.key_vault_sub          = azurerm.management
     azurerm.container_registry_sub = azurerm.management
@@ -42,7 +42,7 @@ module "private_endpoint" {
 
 #AKS CLUSTER
 module "kubernetes_cluster"  {
-  source                = "./Modules/kubernetes_cluster/v1.3.0"
+  source                = "../Azure/kubernetes_cluster/v1.3.0"
   providers = {
     azurerm.keyvault_sub = azurerm.management
     azurerm.log_analytics_oms_sub = azurerm.management
