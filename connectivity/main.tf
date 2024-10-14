@@ -28,3 +28,9 @@ module "subnet" {
   subnet_variables = var.subnet_variables
   depends_on       = [module.virtual_network]
 }
+
+module "network_interface" {
+  source                      = "../Azure/network_interface/v1.3.0"
+  network_interface_variables = var.network_interface_variables
+  depends_on                  = [module.resource_group, module.virtual_network, module.subnet, module.public_ip, module.lb]
+}
