@@ -44,17 +44,17 @@ module "key_vault" {
 }
 
 #PRIVATE DNS ZONE
-module "private_dns_zone" {
+/*module "private_dns_zone" {
   source = "./Modules/private_dns_zone/v1.3.0"
   providers = {
     azurerm = azurerm.management
   }
   private_dns_zone_variables = var.private_dns_zone_variables
   depends_on                 = [module.key_vault]
-}
+}*/
 
 #PRIVATE ENDPOINT
-module "private_endpoint" {
+/*module "private_endpoint" {
   source = "./Modules/private_endpoint/v1.3.0"
   providers = {
     azurerm.private_connection_sub = azurerm.management
@@ -63,10 +63,10 @@ module "private_endpoint" {
   }
   private_endpoint_variables = var.private_endpoint_variables
   depends_on                 = [module.key_vault, module.private_dns_zone]
-}
+}*/
 
 #CONTAINER REGISTRY
-module "container_registry" {
+/*module "container_registry" {
   source = "./Modules/container_registry/v1.3.0"
   providers = {
     azurerm.key_vault_sub          = azurerm.management
@@ -91,7 +91,7 @@ module "kubernetes_cluster"  {
   }
   kubernetes_cluster_variables = var.kubernetes_cluster_variables
   depends_on                 = [module.private_endpoint]
-}
+}*/
 
 
 
