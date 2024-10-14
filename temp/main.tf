@@ -32,6 +32,13 @@ provider "azuread" {
   use_msi         = true
 }
 
+terraform {
+  backend "azurerm" {
+    use_msi = true
+ 
+  }
+}
+
 #KEYVAULT
 /*module "key_vault" {
   source              = "./Modules/key_vault"
