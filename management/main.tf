@@ -1,6 +1,6 @@
 #KEYVAULT
 module "key_vault" {
-  source = "./Modules/key_vault"
+  source = "../Azure/key_vault"
   providers = {
     azurerm = azurerm.management
   }
