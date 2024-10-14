@@ -30,7 +30,7 @@ module "private_endpoint" {
 }
 
 #CONTAINER REGISTRY
-/*module "container_registry" {
+module "container_registry" {
   source = "../Azure/container_registry/v1.3.0"
   providers = {
     azurerm.key_vault_sub          = azurerm.management
@@ -41,7 +41,7 @@ module "private_endpoint" {
 }
 
 #AKS CLUSTER
-module "kubernetes_cluster"  {
+/*module "kubernetes_cluster"  {
   source                = "../Azure/kubernetes_cluster/v1.3.0"
   providers = {
     azurerm.keyvault_sub = azurerm.management
