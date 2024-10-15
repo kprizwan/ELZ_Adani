@@ -235,7 +235,7 @@ eventhub_variables = {
 #KUBERNETES CLUSTER
 kubernetes_cluster_variables = {
   "aks_1" = {
-    kubernetes_cluster_name                                                            = "sd-plz-management-aks-01"  #(Required) The name of the Managed Kubernetes Cluster to create. Changing this forces a new resource to be created.
+    kubernetes_cluster_name                                                            = "sdplzmgmtaks01"  #(Required) The name of the Managed Kubernetes Cluster to create. Changing this forces a new resource to be created.
     kubernetes_cluster_location                                                        = "Central India"             #(Required) The location where the Managed Kubernetes Cluster should be created. Changing this forces a new resource to be created.
     kubernetes_cluster_resource_group_name                                             = "sd-plz-management-node-rg" # (Required) Specifies the Resource Group where the Managed Kubernetes Cluster should exist. Changing this forces a new resource to be created.
     kubernetes_cluster_key_vault_name                                                  = null           #(Optional) Incase if any secret value is passed for linux_profile, windows_profile, azure_active_directory_role_based_access_control(azure_active_directory_role_based_access_control_server_app_secret) or service_principal(client_secret). Pass null if not required
