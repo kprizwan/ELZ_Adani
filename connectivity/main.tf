@@ -64,7 +64,7 @@ module "network_interface" {
 
 #PUBLIC IP
 module "public_ip" {
-  source              = "../Azure/public_ip/v1.3.0"
+  source = "../Azure/public_ip/v1.3.0"
   providers = {
     azurerm = azurerm.connectivity
   }
@@ -80,7 +80,7 @@ module "application_gateway" {
     azurerm = azurerm.connectivity
   }
   application_gateway_variables = var.application_gateway_variables
-  depends_on                    = [module.subnet,module.public_ip]
+  depends_on                    = [module.subnet, module.public_ip]
 }
 
 
@@ -97,17 +97,36 @@ module "application_gateway" {
   depends_on                      = [module.subnet, module.network_interface]
 }*/
 
-/*
+
 #LB
 module "lb" {
-  source       = "../Azure/lb/v1.3.0"
+  source = "../Azure/lb/v1.3.0"
   providers = {
     azurerm = azurerm.connectivity
   }
   lb_variables = var.lb_variables
   depends_on   = [module.resource_group, module.virtual_network, module.subnet, module.public_ip]
 }
-*/
+
+#NAT GATEWAY
+module "nat_gateway" {
+  source = "../Azure/nat_gateway/v1.3.0"
+  providers = {
+    azurerm = azurerm.connectivity
+  }
+  nat_gateway_variables = var.nat_gateway_variables
+  depends_on            = [module.resource_group]
+}
+
+#NAT GATEWAY PUBLIC IP ASSOCIATION
+module "nat_gateway_public_ip_association" {
+  source = "../Azure/nat_gateway_public_ip_association/v.1.3.0"
+  providers = {
+    azurerm = azurerm.connectivity
+  }
+  nat_gateway_public_ip_association_variables = var.nat_gateway_public_ip_association_variables
+  depends_on                                  = [module.public_ip, module.nat_gateway]
+}
 
 #VPN GATEWAY
 /*module "vpn_gateway" {
@@ -118,25 +137,5 @@ module "lb" {
   vpn_gateway_variables = var.vpn_gateway_variables
   //depends_on            = [module.virtual_]
 }*/
-/*
-#NAT GATEWAY
-module "nat_gateway" {
-  source                = "../Azure/nat_gateway/v1.3.0"
-  providers = {
-    azurerm = azurerm.connectivity
-  }
-  nat_gateway_variables = var.nat_gateway_variables
-  depends_on            = [module.resource_group]
-}
 
-#NAT GATEWAY PUBLIC IP ASSOCIATION
-module "nat_gateway_public_ip_association" {
-  source                                      = "../Azure/nat_gateway_public_ip_association/v.1.3.0"
-    providers = {
-    azurerm = azurerm.connectivity
-  }
-  nat_gateway_public_ip_association_variables = var.nat_gateway_public_ip_association_variables
-  depends_on                                  = [module.public_ip, module.nat_gateway]
-}
-*/
 
