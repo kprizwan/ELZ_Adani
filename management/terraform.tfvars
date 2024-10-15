@@ -410,6 +410,6 @@ kubernetes_cluster_variables = {
     }*/
   }
   }
-}
+
 
 
