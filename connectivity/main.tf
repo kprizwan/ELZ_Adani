@@ -30,7 +30,7 @@ module "subnet" {
 }
 
 module "network_interface" {
-  source                      = "../Azure/network_interface/v1.3.0"
+  source = "../Azure/network_interface/v1.3.0"
   providers = {
     azurerm = azurerm.connectivity
   }
@@ -41,7 +41,7 @@ module "network_interface" {
 
 #APPLICATION GATEWAY
 module "application_gateway" {
-  source                        = "../Azure/application_gateway/v1.3.0"
+  source = "../Azure/application_gateway/v1.3.0"
   providers = {
     azurerm = azurerm.connectivity
   }
