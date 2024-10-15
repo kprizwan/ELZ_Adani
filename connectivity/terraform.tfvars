@@ -1068,9 +1068,9 @@ lb_variables = {
           public_ip_prefix_resource_group_name = null     # public ip prefix resource group name
         }
         frontend_ip_configuration_subnet = {
-          subnet_name                    = null # Subnet name
-          subnet_virtual_network_name    = null                        # virtual network name where subnet resides.
-          virtual_network_resource_group = null                           # Resource group name where the virtual network resides.
+          subnet_name                    = "sd-plz-Connectivity-Hub-VNET-FW-Intranet-LB-SNET-01" # Subnet name
+          subnet_virtual_network_name    = "sd-plz-Connectivity-Hub-VNET"                        # virtual network name where subnet resides.
+          virtual_network_resource_group = "sd-plz-connectivity-rg-01"                           # Resource group name where the virtual network resides.
         }
         frontend_ip_configuration_zones = null #(Optional) Specifies a list of Availability Zones in which the IP Address for this Load Balancer should be located. Changing this forces a new Load Balancer to be created.
       }
