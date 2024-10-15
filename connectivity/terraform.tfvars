@@ -656,7 +656,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_admin_username = "palovm1"          #(Required) The username of the local administrator used for the Virtual Machine. Changing this forces a new resource to be created.
     linux_virtual_machine_location       = "Central India"    #(Required) The Azure location where the Linux Virtual Machine should exist. Changing this forces a new resource to be created.
     linux_virtual_machine_license_type   = null               #(Optional) Specifies the BYOL Type for this Virtual Machine. Possible values are RHEL_BYOS and SLES_BYOS.
-    linux_virtual_machine_name           = "sd-plz-palovm-01" #(Required) The name of the Linux Virtual Machine. Changing this forces a new resource to be created.
+    linux_virtual_machine_name           = "SDLVMFWP01" #(Required) The name of the Linux Virtual Machine. Changing this forces a new resource to be created.
     linux_virtual_machine_os_disk = {                         #(Required) A os_disk block as defined below.
       os_disk_caching              = null                     #(Required) The Type of Caching which should be used for the Internal OS Disk. Possible values are None, ReadOnly and ReadWrite.
       os_disk_storage_account_type = "Standard_LRS"           #(Required) The Type of Storage Account which should back this the Internal OS Disk. Possible values are Standard_LRS, StandardSSD_LRS, Premium_LRS, StandardSSD_ZRS and Premium_ZRS. Changing this forces a new resource to be created.
@@ -665,18 +665,18 @@ linux_virtual_machine_variables = {
         diff_disk_settings_placement = null                   #(Optional) Specifies where to store the Ephemeral Disk. Possible values are CacheDisk and ResourceDisk. Defaults to CacheDisk. Changing this forces a new resource to be created.
       }
       os_disk_disk_size_gb              = 120                      #(Optional) The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
-      os_disk_name                      = "sd-plz-palovm1-disk-01" #(Optional) The name which should be used for the Internal OS Disk. Changing this forces a new resource to be created.
+      os_disk_name                      = "SDLVMFWP01-disk-01" #(Optional) The name which should be used for the Internal OS Disk. Changing this forces a new resource to be created.
       os_disk_security_encryption_type  = null                     #(Optional) Encryption Type when the Virtual Machine is a Confidential VM. Possible values are VMGuestStateOnly and DiskWithVMGuestState. Changing this forces a new resource to be created.
       os_disk_write_accelerator_enabled = false                    #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
     }
     linux_virtual_machine_resource_group_name = "sd-plz-connectivity-rg-01" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
-    linux_virtual_machine_size                = "Standard"                  #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
+    linux_virtual_machine_size                = "Standard D4s_v5"                  #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
     linux_virtual_machine_additional_capabilities = {                       #(Optional) A additional_capabilities block as defined below.
       additional_capabilities_ultra_ssd_enabled = false                     #(Optional) Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine? Defaults to false.
     }
     linux_virtual_machine_allow_extension_operations            = false #(Optional) Should Extension Operations be allowed on this Virtual Machine?
     linux_virtual_machine_boot_diagnostics_storage_account_name = null  # Provide storage account name value if linux_virtual_machine_is_storage_blob_required or linux_virtual_machine_is_boot_diagnostics_required is set to true
-    linux_virtual_machine_computer_name                         = null  #(Optional) Specifies the Hostname which should be used for this Virtual Machine. If unspecified this defaults to the value for the name field. If the value of the name field is not a valid computer_name, then you must specify computer_name. Changing this forces a new resource to be created.
+    linux_virtual_machine_computer_name                         = "SDLVMFWP01"  #(Optional) Specifies the Hostname which should be used for this Virtual Machine. If unspecified this defaults to the value for the name field. If the value of the name field is not a valid computer_name, then you must specify computer_name. Changing this forces a new resource to be created.
     linux_virtual_machine_custom_data                           = null  #(Optional) The Base64-Encoded Custom Data which should be used for this Virtual Machine. Changing this forces a new resource to be created.
     linux_virtual_machine_disable_password_authentication       = false #(Optional) Should Password Authentication be disabled on this Virtual Machine? Defaults to true. Changing this forces a new resource to be created.
     linux_virtual_machine_edge_zone                             = null  #(Optional) Specifies the Edge Zone within the Azure Region where this Linux Virtual Machine should exist. Changing this forces a new Linux Virtual Machine to be created.
@@ -728,7 +728,7 @@ linux_virtual_machine_variables = {
       Contact        = "Manish.kumar10@adani.com"
     }
 
-    linux_virtual_machine_use_existing_vm_username                   = false #(Required)should be set true if existing user name is used
+    linux_virtual_machine_use_existing_vm_username                   = true #(Required)should be set true if existing user name is used
     linux_virtual_machine_generate_new_admin_password                = true  #(Required)admin_password should be generated if disable_password_authentication is false
     linux_virtual_machine_generate_new_ssh_key                       = true  #(Required)Should be true/false if linux_virtual_machine_disable_password_authentication is true
     linux_virtual_machine_admin_login_key_vault_name                 = null  #"existingkeyvaultscenario"
