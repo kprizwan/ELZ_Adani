@@ -463,7 +463,7 @@ application_gateway_variables = {
     application_gateway_is_waf_policy_required            = false                                      #(Optional) A waf_configuration block                 
     application_gateway_waf_policy_name                   = null                                       #Name of the waf Policy                  
     application_gateway_waf_policy_resource_group_name    = null                                       #Resource Group of the waf policy                
-    application_gateway_public_ip_name                    = "sd-plz-appgw-publicip-01"                 #(Optional) The ublic IP Address which the Application Gateway should use. The allocation method for the Public IP Address depends on the sku of this Application Gateway. Please refer to the Azure documentation for public IP addresses for details.
+    application_gateway_public_ip_name                    = "sd-plz-appgw-publicip-01"                 #(Optional) The public IP Address which the Application Gateway should use. The allocation method for the Public IP Address depends on the sku of this Application Gateway. Please refer to the Azure documentation for public IP addresses for details.
     application_gateway_fips_enabled                      = false                                      #(Optional) Is FIPS enabled on the Application Gateway?               
     application_gateway_identity                          = null                                       #(Optional)
     application_gateway_zones                             = null                                       #(Optional) Specifies a list of Availability Zones in which this Application Gateway should be located. Changing this forces a new Application Gateway to be created.
@@ -731,12 +731,12 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_use_existing_vm_username                   = true #(Required)should be set true if existing user name is used
     linux_virtual_machine_generate_new_admin_password                = true  #(Required)admin_password should be generated if disable_password_authentication is false
     linux_virtual_machine_generate_new_ssh_key                       = true  #(Required)Should be true/false if linux_virtual_machine_disable_password_authentication is true
-    linux_virtual_machine_admin_login_key_vault_name                 = null  #"existingkeyvaultscenario"
+    linux_virtual_machine_admin_login_key_vault_name                 = "sdplzmgmtdckv01"  #"existingkeyvaultscenario"
     linux_virtual_machine_tls_private_key_algorithm                  = null  #Provide Algorithm used for TLS private key if linux_virtual_machine_generate_new_ssh_key is true
     linux_virtual_machine_tls_private_key_rsa_bits                   = null  #Provide number if bits for TLS private key if linux_virtual_machine_generate_new_ssh_key is true
     linux_virtual_machine_admin_ssh_key_vault_secret_expiration_date = null
     linux_virtual_machine_admin_ssh_key_vault_secret_content_type    = null
-    linux_virtual_machine_admin_ssh_key_vault_secret_name            = null  #Key vault secret name to store the ssh key if linux_virtual_machine_generate_new_ssh_key is true
+    linux_virtual_machine_admin_ssh_key_vault_secret_name            = "SDLMVMFWP01-sshkey"  #Key vault secret name to store the ssh key if linux_virtual_machine_generate_new_ssh_key is true
     linux_virtual_machine_is_disk_encryption_set_required            = false #(Required)Boolean value if disk encryption set is required or not
     linux_virtual_machine_is_storage_blob_required                   = false #(Required)Boolean value if blob storage is required
     linux_virtual_machine_storage_blob_name                          = null  #Provide blob storage name value if linux_virtual_machine_is_storage_blob_required is set to true.
@@ -783,7 +783,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_dedicated_host_resource_group_name                     = null  # Provide host resource group name if linux_virtual_machine_is_dedicated_host_id_required is set true
     linux_virtual_machine_proximity_placement_group_name                         = null  # Provide proximity palcement group name if linux_virtual_machine_is_proximity_placement_group_id_required is set true
     linux_virtual_machine_proximity_placement_group_resource_group_name          = null  # Provide proximity palcement group resource group name if linux_virtual_machine_is_proximity_placement_group_id_required is set true
-    linux_virtual_machine_generated_admin_password_secret_name                   = null  #Provide Key vault secret name to store random password if linux_virtual_machine_generate_new_admin_password is true
+    linux_virtual_machine_generated_admin_password_secret_name                   = "SDLMVMFWP01-password"  #Provide Key vault secret name to store random password if linux_virtual_machine_generate_new_admin_password is true
     linux_virtual_machine_generated_admin_password_secret_expiration_date        = null
     linux_virtual_machine_generated_admin_password_secret_content_type           = null
     linux_virtual_machine_existing_admin_password_secret_name                    = null            #Provide Key vault secret name where the existing password exists if linux_virtual_machine_generate_new_admin_password is false
@@ -794,7 +794,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_shared_image_resource_group_name                       = null            #Provide image resource group name if linux_virtual_machine_source_image_type is "SharedImage"
     linux_virtual_machine_existing_image_name                                    = null            #Provide image name if linux_virtual_machine_source_image_type is "VMImage"
     linux_virtual_machine_existing_image_resource_group_name                     = null            #Provide existing image resource group name if image type is "VMImage"
-    linux_virtual_machine_admin_key_vault_resource_group_name                    = null            #Provide key vault resource group name to store credentials
+    linux_virtual_machine_admin_key_vault_resource_group_name                    = "sd-plz-management-rg"           #Provide key vault resource group name to store credentials
     linux_virtual_machine_storage_account_resource_group_name                    = null            #Provide value if linux_virtual_machine_is_boot_diagnostics_required is set to true
     linux_virtual_machine_disk_encryption_set_resource_group_name                = null            #Resource group name of the disk encryption set. Provide value if linux_virtual_machine_is_disk_encryption_set_required is set to true
     linux_virtual_machine_existing_admin_username_secret_name                    = null            #Provide Key vault secret name to store admin username. Provide value if linux_virtual_machine_use_existing_vm_username is set to true.
@@ -803,7 +803,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_admin_username = "palovm2"          #(Required) The username of the local administrator used for the Virtual Machine. Changing this forces a new resource to be created.
     linux_virtual_machine_location       = "Central India"    #(Required) The Azure location where the Linux Virtual Machine should exist. Changing this forces a new resource to be created.
     linux_virtual_machine_license_type   = null               #(Optional) Specifies the BYOL Type for this Virtual Machine. Possible values are RHEL_BYOS and SLES_BYOS.
-    linux_virtual_machine_name           = "sd-plz-palovm-02" #(Required) The name of the Linux Virtual Machine. Changing this forces a new resource to be created.
+    linux_virtual_machine_name           = "SDLMVMFWP02" #(Required) The name of the Linux Virtual Machine. Changing this forces a new resource to be created.
     linux_virtual_machine_os_disk = {                         #(Required) A os_disk block as defined below.
       os_disk_caching              = null                     #(Required) The Type of Caching which should be used for the Internal OS Disk. Possible values are None, ReadOnly and ReadWrite.
       os_disk_storage_account_type = "Standard_LRS"           #(Required) The Type of Storage Account which should back this the Internal OS Disk. Possible values are Standard_LRS, StandardSSD_LRS, Premium_LRS, StandardSSD_ZRS and Premium_ZRS. Changing this forces a new resource to be created.
@@ -812,12 +812,12 @@ linux_virtual_machine_variables = {
         diff_disk_settings_placement = null                   #(Optional) Specifies where to store the Ephemeral Disk. Possible values are CacheDisk and ResourceDisk. Defaults to CacheDisk. Changing this forces a new resource to be created.
       }
       os_disk_disk_size_gb              = 70                       #(Optional) The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
-      os_disk_name                      = "sd-plz-palovm2-disk-02" #(Optional) The name which should be used for the Internal OS Disk. Changing this forces a new resource to be created.
+      os_disk_name                      = "SDLMVMFWP02-disk-02" #(Optional) The name which should be used for the Internal OS Disk. Changing this forces a new resource to be created.
       os_disk_security_encryption_type  = null                     #(Optional) Encryption Type when the Virtual Machine is a Confidential VM. Possible values are VMGuestStateOnly and DiskWithVMGuestState. Changing this forces a new resource to be created.
       os_disk_write_accelerator_enabled = false                    #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
     }
     linux_virtual_machine_resource_group_name = "sd-plz-connectivity-rg-01" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
-    linux_virtual_machine_size                = "Standard"                  #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
+    linux_virtual_machine_size                = "Standard D4s_v5"                  #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
     linux_virtual_machine_additional_capabilities = {                       #(Optional) A additional_capabilities block as defined below.
       additional_capabilities_ultra_ssd_enabled = false                     #(Optional) Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine? Defaults to false.
     }
@@ -829,7 +829,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_edge_zone                             = null      #(Optional) Specifies the Edge Zone within the Azure Region where this Linux Virtual Machine should exist. Changing this forces a new Linux Virtual Machine to be created.
     linux_virtual_machine_encryption_at_host_enabled            = false     #(Optional) Should all of the disks (including the temp disk) attached to this Virtual Machine be encrypted by enabling Encryption at Host?
     linux_virtual_machine_eviction_policy                       = null      #(Optional) Specifies what should happen when the Virtual Machine is evicted for price reasons when using a Spot instance. Possible values are Deallocate and Delete. Changing this forces a new resource to be created.
-    linux_virtual_machine_extensions_time_budget                = "PT1H30M" #(Optional) Specifies the duration allocated for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. Defaults to 90 minutes (PT1H30M).
+    linux_virtual_machine_extensions_time_budget                = null #(Optional) Specifies the duration allocated for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. Defaults to 90 minutes (PT1H30M).
     linux_virtual_machine_gallery_application                   = null      #(Optional) A gallery_application block as defined below.
     /* Sample Code {
       #gallery_application_configuration_blob_uri = string                               #(Optional) Specifies the URI to an Azure Blob that will replace the default configuration for the package if provided.
@@ -875,15 +875,15 @@ linux_virtual_machine_variables = {
       Contact        = "Manish.kumar10@adani.com"
     }
 
-    linux_virtual_machine_use_existing_vm_username                   = false #(Required)should be set true if existing user name is used
+    linux_virtual_machine_use_existing_vm_username                   = true #(Required)should be set true if existing user name is used
     linux_virtual_machine_generate_new_admin_password                = true  #(Required)admin_password should be generated if disable_password_authentication is false
     linux_virtual_machine_generate_new_ssh_key                       = true  #(Required)Should be true/false if linux_virtual_machine_disable_password_authentication is true
-    linux_virtual_machine_admin_login_key_vault_name                 = null  #"existingkeyvaultscenario"
+    linux_virtual_machine_admin_login_key_vault_name                 = "sdplzmgmtdckv01"  #"existingkeyvaultscenario"
     linux_virtual_machine_tls_private_key_algorithm                  = null  #Provide Algorithm used for TLS private key if linux_virtual_machine_generate_new_ssh_key is true
     linux_virtual_machine_tls_private_key_rsa_bits                   = null  #Provide number if bits for TLS private key if linux_virtual_machine_generate_new_ssh_key is true
     linux_virtual_machine_admin_ssh_key_vault_secret_expiration_date = null
     linux_virtual_machine_admin_ssh_key_vault_secret_content_type    = null
-    linux_virtual_machine_admin_ssh_key_vault_secret_name            = null  #Key vault secret name to store the ssh key if linux_virtual_machine_generate_new_ssh_key is true
+    linux_virtual_machine_admin_ssh_key_vault_secret_name            = "SDLMVMFWP02-sshkey"  #Key vault secret name to store the ssh key if linux_virtual_machine_generate_new_ssh_key is true
     linux_virtual_machine_is_disk_encryption_set_required            = false #(Required)Boolean value if disk encryption set is required or not
     linux_virtual_machine_is_storage_blob_required                   = false #(Required)Boolean value if blob storage is required
     linux_virtual_machine_storage_blob_name                          = null  #Provide blob storage name value if linux_virtual_machine_is_storage_blob_required is set to true.
@@ -930,7 +930,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_dedicated_host_resource_group_name                     = null  # Provide host resource group name if linux_virtual_machine_is_dedicated_host_id_required is set true
     linux_virtual_machine_proximity_placement_group_name                         = null  # Provide proximity palcement group name if linux_virtual_machine_is_proximity_placement_group_id_required is set true
     linux_virtual_machine_proximity_placement_group_resource_group_name          = null  # Provide proximity palcement group resource group name if linux_virtual_machine_is_proximity_placement_group_id_required is set true
-    linux_virtual_machine_generated_admin_password_secret_name                   = null  #Provide Key vault secret name to store random password if linux_virtual_machine_generate_new_admin_password is true
+    linux_virtual_machine_generated_admin_password_secret_name                   = "SDLMVMFWP02-password"  #Provide Key vault secret name to store random password if linux_virtual_machine_generate_new_admin_password is true
     linux_virtual_machine_generated_admin_password_secret_expiration_date        = null
     linux_virtual_machine_generated_admin_password_secret_content_type           = null
     linux_virtual_machine_existing_admin_password_secret_name                    = null            #Provide Key vault secret name where the existing password exists if linux_virtual_machine_generate_new_admin_password is false
@@ -941,9 +941,190 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_shared_image_resource_group_name                       = null            #Provide image resource group name if linux_virtual_machine_source_image_type is "SharedImage"
     linux_virtual_machine_existing_image_name                                    = null            #Provide image name if linux_virtual_machine_source_image_type is "VMImage"
     linux_virtual_machine_existing_image_resource_group_name                     = null            #Provide existing image resource group name if image type is "VMImage"
-    linux_virtual_machine_admin_key_vault_resource_group_name                    = null            #Provide key vault resource group name to store credentials
+    linux_virtual_machine_admin_key_vault_resource_group_name                    = "sd-plz-management-rg"            #Provide key vault resource group name to store credentials
     linux_virtual_machine_storage_account_resource_group_name                    = null            #Provide value if linux_virtual_machine_is_boot_diagnostics_required is set to true
     linux_virtual_machine_disk_encryption_set_resource_group_name                = null            #Resource group name of the disk encryption set. Provide value if linux_virtual_machine_is_disk_encryption_set_required is set to true
     linux_virtual_machine_existing_admin_username_secret_name                    = null            #Provide Key vault secret name to store admin username. Provide value if linux_virtual_machine_use_existing_vm_username is set to true.
   }
 }
+
+
+#SOURCE VIRTUAL NETWORK PEERING
+source_virtual_network_peering_variables = {
+  "source_virtual_network_peering_1" = {
+    virtual_network_peering_name                             = "sd-plz-Connectivity-Hub-VNET-sd-plz-management-vnet" # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_destination_resource_group_name  = "sd-plz-management-rg"          # (Required) The name of the destination virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_destination_virtual_network_name = "sd-plz-management-vnet"        # (Required) The name of the destination virtual network name.
+    virtual_network_peering_resource_group_name              = "sd-plz-connectivity-rg-01"          # (Required) The name of the source virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_virtual_network_name             = "sd-plz-Connectivity-Hub-VNET"        # (Required) The name of the source virtual network name.
+    virtual_network_peering_allow_virtual_network_access     = true                       # (Optional) Controls if the VMs in the remote virtual network can access VMs in the local virtual network. Defaults to true.
+    virtual_network_peering_allow_forwarded_traffic          = true                       # (Optional) Controls if forwarded traffic from VMs in the remote virtual network is allowed. Defaults to false.
+    virtual_network_peering_use_remote_gateways              = true                      #  (Optional) Controls if remote gateways can be used on the local virtual network. If the flag is set to true, and allow_gateway_transit on the remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway. Defaults to false.
+    virtual_network_peering_allow_gateway_transit            = false                      # (Optional) Controls gatewayLinks can be used in the remote virtual network’s link to the local virtual network.
+    virtual_network_peering_triggers                         = null                       # (Optional) A mapping of key values pairs that can be used to sync network routes from the remote virtual network to the local virtual network. See the trigger example for an example on how to set it up.
+  }
+}
+
+#DESTINATION VIRTUAL NETWORK PEERING
+destination_virtual_network_peering_variables = {
+  "destination_virtual_network_peering_1" = {
+    virtual_network_peering_name                             = "sd-plz-management-vnet-sd-plz-Connectivity-Hub-VNET" # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_destination_resource_group_name  = "sd-plz-connectivity-rg-01"          # (Required) The name of the destination virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_destination_virtual_network_name = "sd-plz-Connectivity-Hub-VNET"        # (Required) The name of the destination virtual network name.
+    virtual_network_peering_resource_group_name              = "sd-plz-management-rg"          # (Required) The name of the source virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_virtual_network_name             = "sd-plz-management-vnet"        # (Required) The name of the source virtual network name.
+    virtual_network_peering_allow_virtual_network_access     = true                       # (Optional) Controls if the VMs in the remote virtual network can access VMs in the local virtual network. Defaults to true.
+    virtual_network_peering_allow_forwarded_traffic          = true                       # (Optional) Controls if forwarded traffic from VMs in the remote virtual network is allowed. Defaults to false.
+    virtual_network_peering_use_remote_gateways              = false                      #  (Optional) Controls if remote gateways can be used on the local virtual network. If the flag is set to true, and allow_gateway_transit on the remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway. Defaults to false.
+    virtual_network_peering_allow_gateway_transit            = true                     # (Optional) Controls gatewayLinks can be used in the remote virtual network’s link to the local virtual network.
+    virtual_network_peering_triggers                         = null                       # (Optional) A mapping of key values pairs that can be used to sync network routes from the remote virtual network to the local virtual network. See the trigger example for an example on how to set it up.
+  }
+}
+
+#PUBLIC IP
+public_ip_variables = {
+  "public_ip_1" = {
+    public_ip_name                                     = "sd-plz-connectivity-pip-01"  # (Required) Specifies the name of the Public IP. 
+    public_ip_resource_group_name                      = "sd-plz-connectivity-rg-01"        # (Required) The name of the Resource Group where this Public IP should exist. 
+    public_ip_location                                 = "Central India"                # (Required) Specifies the supported Azure location where the Public IP should exist. 
+    public_ip_ip_version                               = "IPv4"                   # (Optional) The IP Version to use, IPv6 or IPv4.
+    public_ip_allocation_method                        = "Static"                 # (Required) Defines the allocation method for this IP address. Possible values are Static or Dynamic.
+    public_ip_sku                                      = "Standard"               # (Optional) The SKU of the Public IP. Accepted values are Basic and Standard. Defaults to Basic.
+    public_ip_sku_tier                                 = "Regional"               # (Optional) The SKU Tier that should be used for the Public IP. Possible values are Regional and Global. Defaults to Regional.
+    public_ip_domain_name_label                        = null # (Optional) Label for the Domain Name. Will be used to make up the FQDN. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
+    public_ip_prefix_id                                = null                     #  (Optional) If specified then public IP address allocated will be provided from the public IP prefix resource.
+    public_ip_idle_timeout_in_minutes                  = "30"                     # (Optional) Specifies the timeout for the TCP idle connection. The value can be set between 4 and 30 minutes.
+    public_ip_zones                                    = null             # (Optional) A collection containing the availability zone to allocate the Public IP in.
+    public_ip_edge_zone                                = null                     # (Optional) Specifies the Edge Zone within the Azure Region where this Public IP should exist. 
+    public_ip_reverse_fqdn                             = null                     # (Optional) A fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
+    public_ip_ip_tags                                  = null                     # (Optional) A mapping of IP tags to assign to the public IP.
+    public_ip_is_ddos_protection_plan_enabled          = false                    # (Required) True if ddos_protection_plan enabled, else false
+    public_ip_ddos_protection_plan_name                = null # (Optional) The Name of DDoS protection plan associated with the public IP.
+    public_ip_ddos_protection_plan_resource_group_name = null       # (Optional) The Resource group name of DDoS protection plan associated with the public IP.
+    public_ip_ddos_protection_mode                     = null            # (Optional) The DDoS protection mode of the public IP. Possible values are Disabled, Enabled, and VirtualNetworkInherited. Defaults to VirtualNetworkInherited.
+    public_ip_tags = {                                                            # (Optional) Public IP tags
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+  }
+}
+
+#LB
+lb_variables = {
+  "lb_1" = {
+    lb_edge_zone = null #(Optional) Specifies the Edge Zone within the Azure Region where this Load Balancer should exist. Changing this forces a new Load Balancer to be created.
+    lb_frontend_ip_configuration = {
+      "config1" = {
+        frontend_ip_configuration_gateway_lb_frontend_ip_configuration_id = { #(Optional) The Frontend IP Configuration ID of a Gateway SKU Load Balancer.
+          gateway_lb_name                = null                               # gateway load balancer name
+          gateway_lb_resource_group_name = null                               # gateway load balancer resource group name
+        }
+        frontend_ip_configuration_name                          = "sd-connectivity-feip-01" #(Required) Specifies the name of the frontend IP configuration.
+        frontend_ip_configuration_private_ip_address            = null            # (Optional) Private IP Address to assign to the Load Balancer. The last one and first four IPs in any range are reserved and cannot be manually assigned.
+        frontend_ip_configuration_private_ip_address_allocation = "Static"              #(Optional) The allocation method for the Private IP Address used by this Load Balancer. Possible values as Dynamic and Static.
+        frontend_ip_configuration_private_ip_address_version    = "IPv4"                #The version of IP that the Private IP Address is. Possible values are IPv4 or IPv6.
+        frontend_ip_configuration_public_ip_address_id = {                              #(Optional) The ID of a Public IP Address which should be associated with the Load Balancer.
+          public_ip_name                = null                                          # public ip name
+          public_ip_resource_group_name = null                                          # public ip resource group name
+        }
+        frontend_ip_configuration_public_ip_prefix_id = { #(Optional) The ID of a Public IP Prefix which should be associated with the Load Balancer. Public IP Prefix can only be used with outbound rules.
+          public_ip_prefix_name                = null     # public ip prefix name
+          public_ip_prefix_resource_group_name = null     # public ip prefix resource group name
+        }
+        frontend_ip_configuration_subnet = {
+          subnet_name                    = "sd-plz-Connectivity-Hub-VNET-FW-Intranet-LB-SNET-01" # Subnet name
+          subnet_virtual_network_name    = "sd-plz-Connectivity-Hub-VNET"   # virtual network name where subnet resides.
+          virtual_network_resource_group = "sd-plz-connectivity-rg-01"     # Resource group name where the virtual network resides.
+        }
+        frontend_ip_configuration_zones = null #(Optional) Specifies a list of Availability Zones in which the IP Address for this Load Balancer should be located. Changing this forces a new Load Balancer to be created.
+      }
+    }
+    lb_location            = "Central India"          # (Required) Specifies the supported Azure Region where the Load Balancer should be created.
+    lb_name                = "sd-connectivity-fw-trust-Lb"  #(Required) Specifies the name of the Load Balancer.
+    lb_resource_group_name = "sd-plz-connectivity-rg-01" # (Required) The name of the Resource Group in which to create the Load Balancer.
+    lb_sku                 = "Standard"           #(Optional) The SKU of the Azure Load Balancer. Accepted values are Basic, Standard and Gateway. Defaults to Basic.
+    lb_sku_tier            = "Regional"        #(Optional) sku_tier - (Optional) The SKU tier of this Load Balancer. Possible values are Global and Regional. Defaults to Regional. Changing this forces a new resource to be created.
+    lb_tags = {
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+  }
+ 
+}
+
+#VPN GATEWAY VARIABLES
+vpn_gateway_variables = {
+  "vpn_gateway_1" = {
+    vpn_gateway_name                                  = "ploceusvpngw000001" #(Required) The Name which should be used for this VPN Gateway. Changing this forces a new resource to be created.
+    vpn_gateway_location                              = "westus2"            #(Required) The Azure location where this VPN Gateway should be created. Changing this forces a new resource to be created.
+    vpn_gateway_resource_group_name                   = "ploceusrg000001"    #(Required) The Name of the Resource Group in which this VPN Gateway should be created. Changing this forces a new resource to be created.
+    vpn_gateway_virtual_hub_name                      = "ploceushub000001"   # The Name of the virtual hub
+    vpn_gateway_bgp_route_translation_for_nat_enabled = true                 #(Optional) Is BGP route translation for NAT on this VPN Gateway enabled? Defaults to false
+    vpn_gateway_bgp_settings_enabled                  = true                 #(Optional) A bgp_settings block as defined below.
+    vpn_gateway_bgp_settings = {
+      vpn_gateway_bgp_settings_asn                                       = 65515 #(Required) The ASN of the BGP Speaker. Changing this forces a new resource to be created.
+      vpn_gateway_bgp_settings_peer_weight                               = 1     #(Required) The weight added to Routes learned from this BGP Speaker. Changing this forces a new resource to be created.
+      vpn_gateway_bgp_settings_instance_0_bgp_peering_address_custom_ips = []    #(Optional) An instance_bgp_peering_address block as defined below.
+      vpn_gateway_bgp_settings_instance_1_bgp_peering_address_custom_ips = []    #(Optional) An instance_bgp_peering_address block as defined below.
+    }
+    vpn_gateway_scale_unit         = 1                   #(Optional) The Scale Unit for this VPN Gateway. Defaults to 1.                        
+    vpn_gateway_routing_preference = "Microsoft Network" #(Optional) Azure routing preference lets you to choose how your traffic routes between Azure and the internet. You can choose to route traffic either via the Microsoft network (default value, Microsoft Network), or via the ISP network (public internet, set to Internet). More context of the configuration can be found in the Microsoft Docs to create a VPN Gateway. Changing this forces a new resource to be created.
+    vpn_gateway_tags = {                                 #(Optional) A mapping of tags to assign to the VPN Gateway.
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+  }
+}
+
+
+#NAT GATEWAY
+nat_gateway_variables = {
+  "nat_gateway_1" = {
+    nat_gateway_idle_timeout_in_minutes = "4"               #(Optional) The idle timeout which should be used in minutes. Defaults to 4.
+    nat_gateway_name                    = "" #(Required) Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
+    nat_gateway_location                = "Central India"         #(Optional) Specifies the supported Azure location where the NAT Gateway should exist. Changing this forces a new resource to be created.
+    nat_gateway_resource_group_name     = "ploceusrg000001" #(Required) Specifies the name of the Resource Group in which the NAT Gateway should exist. Changing this forces a new resource to be created.
+    nat_gateway_sku_name                = "Standard"        #(Optional) The SKU which should be used. At this time the only supported value is Standard. Defaults to Standard.
+    nat_gateway_zones                   = ["1"]             #(Optional) Specifies a list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new NAT Gateway to be created.
+    nat_gateway_tags = {                                    #(Optional) A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+  }
+}
+
+#NAT GATEWAY PUBLIC IP ASSOCIATION
+nat_gateway_public_ip_association_variables = {
+  "nat_gateway_public_ip_association_1" = {
+    public_ip_name                  = "ploceuspublicip000001" #(Required) Specifies the name of the Public IP.
+    public_ip_resource_group_name   = "ploceusrg000001"       #(Required) The name of the Resource Group where this Public IP should exist.
+    nat_gateway_name                = "ploceusnatgw000001"    #(Required) Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
+    nat_gateway_resource_group_name = "ploceusrg000001"       #(Required) Specifies the name of the Resource Group in which the NAT Gateway should exist.
+  }
+}
+
+

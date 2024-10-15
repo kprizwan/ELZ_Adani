@@ -509,3 +509,155 @@ variable "linux_virtual_machine_variables" {
   description = "Map of object of Linux virtual machine variables"
   default     = {}
 }
+
+#VIRTUAL NETWORK PEEING VARIABLES
+variable "source_virtual_network_peering_variables" {
+  type = map(object({
+    virtual_network_peering_name                             = string      # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_destination_resource_group_name  = string      # (Required) The name of the destination virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_destination_virtual_network_name = string      # (Required) The name of the destination virtual network name.
+    virtual_network_peering_resource_group_name              = string      # (Required) The name of the source virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_virtual_network_name             = string      # (Required) The name of the source virtual network name.
+    virtual_network_peering_allow_virtual_network_access     = bool        # (Optional) Controls if the VMs in the remote virtual network can access VMs in the local virtual network. Defaults to true.
+    virtual_network_peering_allow_forwarded_traffic          = bool        # (Optional) Controls if forwarded traffic from VMs in the remote virtual network is allowed. Defaults to false.
+    virtual_network_peering_use_remote_gateways              = bool        #  (Optional) Controls if remote gateways can be used on the local virtual network. If the flag is set to true, and allow_gateway_transit on the remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway. Defaults to false.
+    virtual_network_peering_allow_gateway_transit            = bool        # (Optional) Controls gatewayLinks can be used in the remote virtual network’s link to the local virtual network.
+    virtual_network_peering_triggers                         = map(string) # (Optional) A mapping of key values pairs that can be used to sync network routes from the remote virtual network to the local virtual network. See the trigger example for an example on how to set it up.
+  }))
+  description = "Map of object of virtual network peering_variables"
+  default     = {}
+}
+
+#VIRTUAL NETWORK PEEING VARIABLES
+variable "destination_virtual_network_peering_variables" {
+  type = map(object({
+    virtual_network_peering_name                             = string      # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_destination_resource_group_name  = string      # (Required) The name of the destination virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_destination_virtual_network_name = string      # (Required) The name of the destination virtual network name.
+    virtual_network_peering_resource_group_name              = string      # (Required) The name of the source virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_virtual_network_name             = string      # (Required) The name of the source virtual network name.
+    virtual_network_peering_allow_virtual_network_access     = bool        # (Optional) Controls if the VMs in the remote virtual network can access VMs in the local virtual network. Defaults to true.
+    virtual_network_peering_allow_forwarded_traffic          = bool        # (Optional) Controls if forwarded traffic from VMs in the remote virtual network is allowed. Defaults to false.
+    virtual_network_peering_use_remote_gateways              = bool        #  (Optional) Controls if remote gateways can be used on the local virtual network. If the flag is set to true, and allow_gateway_transit on the remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway. Defaults to false.
+    virtual_network_peering_allow_gateway_transit            = bool        # (Optional) Controls gatewayLinks can be used in the remote virtual network’s link to the local virtual network.
+    virtual_network_peering_triggers                         = map(string) # (Optional) A mapping of key values pairs that can be used to sync network routes from the remote virtual network to the local virtual network. See the trigger example for an example on how to set it up.
+  }))
+  description = "Map of object of virtual network peering_variables"
+  default     = {}
+}
+
+#PUBLIC IP VARIABLES
+variable "public_ip_variables" {
+  type = map(object({
+    public_ip_name                                     = string       # (Required) Specifies the name of the Public IP. 
+    public_ip_resource_group_name                      = string       # (Required) The name of the Resource Group where this Public IP should exist. 
+    public_ip_location                                 = string       # (Required) Specifies the supported Azure location where the Public IP should exist. 
+    public_ip_ip_version                               = string       # (Optional) The IP Version to use, IPv6 or IPv4.
+    public_ip_allocation_method                        = string       # (Required) Defines the allocation method for this IP address. Possible values are Static or Dynamic.
+    public_ip_sku                                      = string       # (Optional) The SKU of the Public IP. Accepted values are Basic and Standard. Defaults to Basic.
+    public_ip_sku_tier                                 = string       # (Optional) The SKU Tier that should be used for the Public IP. Possible values are Regional and Global. Defaults to Regional.
+    public_ip_zones                                    = list(string) # (Optional) A collection containing the availability zone to allocate the Public IP in.
+    public_ip_edge_zone                                = string       # (Optional) Specifies the Edge Zone within the Azure Region where this Public IP should exist. 
+    public_ip_domain_name_label                        = string       # (Optional) Label for the Domain Name. Will be used to make up the FQDN. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
+    public_ip_idle_timeout_in_minutes                  = string       # (Optional) Specifies the timeout for the TCP idle connection. The value can be set between 4 and 30 minutes.
+    public_ip_reverse_fqdn                             = string       # (Optional) A fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
+    public_ip_prefix_id                                = string       # (Optional) If specified then public IP address allocated will be provided from the public IP prefix resource.
+    public_ip_ip_tags                                  = map(string)  # (Optional) A mapping of IP tags to assign to the public IP.
+    public_ip_is_ddos_protection_plan_enabled          = bool         # (Required) True if ddos_protection_plan enabled, else false
+    public_ip_ddos_protection_plan_name                = string       # (Optional) The Name of DDoS protection plan associated with the public IP.
+    public_ip_ddos_protection_plan_resource_group_name = string       # (Optional) The Resource group name of DDoS protection plan associated with the public IP.
+    public_ip_ddos_protection_mode                     = string       # (Optional) The DDoS protection mode of the public IP. Possible values are Disabled, Enabled, and VirtualNetworkInherited. Defaults to VirtualNetworkInherited.
+    public_ip_tags                                     = map(string)  # (Optional) Public IP tags
+  }))
+  description = "Map of object of Pubic IP variables"
+  default     = {}
+}
+
+#LB VARIABLES
+variable "lb_variables" {
+  type = map(object({
+    lb_name                = string #(Required) Specifies the name of the Load Balancer.
+    lb_resource_group_name = string # (Required) The name of the Resource Group in which to create the Load Balancer.
+    lb_location            = string ## (Required) Specifies the supported Azure Region where the Load Balancer should be created.
+    lb_edge_zone           = string #(Optional) Specifies the Edge Zone within the Azure Region where this Load Balancer should exist. Changing this forces a new Load Balancer to be created.
+    lb_frontend_ip_configuration = map(object({
+      frontend_ip_configuration_name  = string #(Required) Specifies the name of the frontend IP configuration.
+      frontend_ip_configuration_zones = list(string)
+      frontend_ip_configuration_subnet = object({
+        subnet_name                    = string # Subnet name
+        subnet_virtual_network_name    = string # virtual network name where subnet resides.
+        virtual_network_resource_group = string # Resource group name where the virtual network resides.
+      })
+      frontend_ip_configuration_gateway_lb_frontend_ip_configuration_id = object({ #(Optional) The Frontend IP Configuration ID of a Gateway SKU Load Balancer.
+        gateway_lb_name                = string                                    # gateway load balancer name
+        gateway_lb_resource_group_name = string                                    # gateway load balancer resource group name
+      })
+      frontend_ip_configuration_private_ip_address            = string # (Optional) Private IP Address to assign to the Load Balancer. The last one and first four IPs in any range are reserved and cannot be manually assigned.
+      frontend_ip_configuration_private_ip_address_allocation = string #(Optional) The allocation method for the Private IP Address used by this Load Balancer. Possible values as Dynamic and Static.
+      frontend_ip_configuration_private_ip_address_version    = string #The version of IP that the Private IP Address is. Possible values are IPv4 or IPv6.
+      frontend_ip_configuration_public_ip_address_id = object({
+        public_ip_name                = string # public ip  name
+        public_ip_resource_group_name = string # public ip resource group name
+      })
+      frontend_ip_configuration_public_ip_prefix_id = object({
+        public_ip_prefix_name                = string # public ip prefix name
+        public_ip_prefix_resource_group_name = string # public ip prefix resource group name            
+      })
+    }))
+    lb_sku      = string      #(Optional) The SKU of the Azure Load Balancer. Accepted values are Basic, Standard and Gateway. Defaults to Basic.
+    lb_sku_tier = string      #(Optional) sku_tier - (Optional) The SKU tier of this Load Balancer. Possible values are Global and Regional. Defaults to Regional. Changing this forces a new resource to be created.
+    lb_tags     = map(string) # (Optional) A mapping of tags to assign to the resource.
+  }))
+  description = "Map of object of LB variables"
+  default     = {}
+}
+
+#VPN GATEWAY VARIABLES
+variable "vpn_gateway_variables" {
+  type = map(object({
+    vpn_gateway_name                                  = string #(Required) The Name which should be used for this VPN Gateway. Changing this forces a new resource to be created.
+    vpn_gateway_location                              = string #(Required) The Azure location where this VPN Gateway should be created. Changing this forces a new resource to be created.
+    vpn_gateway_resource_group_name                   = string #(Required) The Name of the Resource Group in which this VPN Gateway should be created. Changing this forces a new resource to be created.
+    vpn_gateway_virtual_hub_name                      = string # The Name of the virtual hub
+    vpn_gateway_bgp_route_translation_for_nat_enabled = bool   #(Optional) Is BGP route translation for NAT on this VPN Gateway enabled? Defaults to false
+    vpn_gateway_bgp_settings_enabled                  = bool   #(Optional) A bgp_settings block as defined below.
+    vpn_gateway_bgp_settings = object({
+      vpn_gateway_bgp_settings_asn                                       = number       #(Required) The ASN of the BGP Speaker. Changing this forces a new resource to be created.
+      vpn_gateway_bgp_settings_peer_weight                               = number       #(Required) The weight added to Routes learned from this BGP Speaker. Changing this forces a new resource to be created.
+      vpn_gateway_bgp_settings_instance_0_bgp_peering_address_custom_ips = list(string) #(Optional) An instance_bgp_peering_address block as defined below.
+      vpn_gateway_bgp_settings_instance_1_bgp_peering_address_custom_ips = list(string) #(Optional) An instance_bgp_peering_address block as defined below.
+    })
+    vpn_gateway_routing_preference = string      #(Optional) Azure routing preference lets you to choose how your traffic routes between Azure and the internet. You can choose to route traffic either via the Microsoft network (default value, Microsoft Network), or via the ISP network (public internet, set to Internet). More context of the configuration can be found in the Microsoft Docs to create a VPN Gateway. Changing this forces a new resource to be created.
+    vpn_gateway_scale_unit         = number      #(Optional) The Scale Unit for this VPN Gateway. Defaults to 1.
+    vpn_gateway_tags               = map(string) #(Optional) A mapping of tags to assign to the VPN Gateway.
+  }))
+  description = "Map of VPN Gateway object"
+  default     = {}
+}
+
+#NAT GATEWAY VARIABLES
+variable "nat_gateway_variables" {
+  type = map(object({
+    nat_gateway_name                    = string       #(Required) Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
+    nat_gateway_location                = string       #(Optional) Specifies the supported Azure location where the NAT Gateway should exist. Changing this forces a new resource to be created.
+    nat_gateway_resource_group_name     = string       #(Required) Specifies the name of the Resource Group in which the NAT Gateway should exist. Changing this forces a new resource to be created.
+    nat_gateway_sku_name                = string       #(Optional) The SKU which should be used. At this time the only supported value is Standard. Defaults to Standard. 
+    nat_gateway_idle_timeout_in_minutes = string       #(Optional) The idle timeout which should be used in minutes. Defaults to 4.
+    nat_gateway_zones                   = list(string) #(Optional) Specifies a list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new NAT Gateway to be created.
+    nat_gateway_tags                    = map(string)  #(Optional) A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
+  }))
+  default     = {}
+  description = "Map of object of nat gateway variables"
+}
+
+#NAT GATEWAY PUBLIC IP ASSOCIATION VARIABLES
+variable "nat_gateway_public_ip_association_variables" {
+  description = "Map of object of nat gateway public ip associations"
+  type = map(object({
+    public_ip_name                  = string #(Required) Specifies the name of the Public IP.
+    public_ip_resource_group_name   = string #(Required) The name of the Resource Group where this Public IP should exist.
+    nat_gateway_name                = string #(Required) Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
+    nat_gateway_resource_group_name = string #(Required) Specifies the name of the Resource Group in which the NAT Gateway should exist.
+  }))
+  default = {}
+}

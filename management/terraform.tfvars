@@ -281,6 +281,7 @@ kubernetes_cluster_variables = {
     kubernetes_cluster_default_node_pool_pod_virtual_network_resource_group_name       = "sd-plz-management-rg"             #(Optional) The name of the resource_group where the pods in the default Node Pool should exist. Changing this forces a new resource to be created.
     kubernetes_cluster_default_node_pool_type                                          = "VirtualMachineScaleSets"            #(Optional) The type of Node Pool which should be created. Possible values are AvailabilitySet and VirtualMachineScaleSets. Defaults to VirtualMachineScaleSets.
     kubernetes_cluster_default_node_pool_tags = {
+      
       BU             = "ELZ",
       Role           = "Landing Zone",
       Environment    = "PLZ-DC",
