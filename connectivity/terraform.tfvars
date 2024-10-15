@@ -1048,20 +1048,20 @@ public_ip_variables = {
 #LB
 lb_variables = {
   "lb_1" = {
-    lb_edge_zone = null #(Optional) Specifies the Edge Zone within the Azure Region where this Load Balancer should exist. Changing this forces a new Load Balancer to be created.
-    lb_frontend_ip_configuration = {
+    lb_edge_zone                 = null #(Optional) Specifies the Edge Zone within the Azure Region where this Load Balancer should exist. Changing this forces a new Load Balancer to be created.
+    lb_frontend_ip_configuration =  {
       "config1" = {
         frontend_ip_configuration_gateway_lb_frontend_ip_configuration_id = { #(Optional) The Frontend IP Configuration ID of a Gateway SKU Load Balancer.
           gateway_lb_name                = null                               # gateway load balancer name
           gateway_lb_resource_group_name = null                               # gateway load balancer resource group name
         }
-        frontend_ip_configuration_name                          = null #(Required) Specifies the name of the frontend IP configuration.
-        frontend_ip_configuration_private_ip_address            = null # (Optional) Private IP Address to assign to the Load Balancer. The last one and first four IPs in any range are reserved and cannot be manually assigned.
-        frontend_ip_configuration_private_ip_address_allocation = null #(Optional) The allocation method for the Private IP Address used by this Load Balancer. Possible values as Dynamic and Static.
-        frontend_ip_configuration_private_ip_address_version    = null #The version of IP that the Private IP Address is. Possible values are IPv4 or IPv6.
-        frontend_ip_configuration_public_ip_address_id = {             #(Optional) The ID of a Public IP Address which should be associated with the Load Balancer.
-          public_ip_name                = null                         # public ip name
-          public_ip_resource_group_name = null                         # public ip resource group name
+        frontend_ip_configuration_name                          = "frontend-ip-config" #(Required) Specifies the name of the frontend IP configuration.
+        frontend_ip_configuration_private_ip_address            = null                      # (Optional) Private IP Address to assign to the Load Balancer. The last one and first four IPs in any range are reserved and cannot be manually assigned.
+        frontend_ip_configuration_private_ip_address_allocation = null                  #(Optional) The allocation method for the Private IP Address used by this Load Balancer. Possible values as Dynamic and Static.
+        frontend_ip_configuration_private_ip_address_version    = null                    #The version of IP that the Private IP Address is. Possible values are IPv4 or IPv6.
+        frontend_ip_configuration_public_ip_address_id = {                                  #(Optional) The ID of a Public IP Address which should be associated with the Load Balancer.
+          public_ip_name                = null                                              # public ip name
+          public_ip_resource_group_name = null                                              # public ip resource group name
         }
         frontend_ip_configuration_public_ip_prefix_id = { #(Optional) The ID of a Public IP Prefix which should be associated with the Load Balancer. Public IP Prefix can only be used with outbound rules.
           public_ip_prefix_name                = null     # public ip prefix name
@@ -1069,17 +1069,17 @@ lb_variables = {
         }
         frontend_ip_configuration_subnet = {
           subnet_name                    = null # Subnet name
-          subnet_virtual_network_name    = null # virtual network name where subnet resides.
-          virtual_network_resource_group = null # Resource group name where the virtual network resides.
+          subnet_virtual_network_name    = null                        # virtual network name where subnet resides.
+          virtual_network_resource_group = null                           # Resource group name where the virtual network resides.
         }
         frontend_ip_configuration_zones = null #(Optional) Specifies a list of Availability Zones in which the IP Address for this Load Balancer should be located. Changing this forces a new Load Balancer to be created.
       }
     }
-    lb_location            = "Central India"               # (Required) Specifies the supported Azure Region where the Load Balancer should be created.
-    lb_name                = "sd-connectivity-fw-trust-Lb" #(Required) Specifies the name of the Load Balancer.
-    lb_resource_group_name = "sd-plz-connectivity-rg-01"   # (Required) The name of the Resource Group in which to create the Load Balancer.
-    lb_sku                 = "Standard"                    #(Optional) The SKU of the Azure Load Balancer. Accepted values are Basic, Standard and Gateway. Defaults to Basic.
-    lb_sku_tier            = "Regional"                    #(Optional) sku_tier - (Optional) The SKU tier of this Load Balancer. Possible values are Global and Regional. Defaults to Regional. Changing this forces a new resource to be created.
+    lb_location                  = "Central India"               # (Required) Specifies the supported Azure Region where the Load Balancer should be created.
+    lb_name                      = "sd-connectivity-fw-trust-lb" #(Required) Specifies the name of the Load Balancer.
+    lb_resource_group_name       = "sd-plz-connectivity-rg-01"   # (Required) The name of the Resource Group in which to create the Load Balancer.
+    lb_sku                       = "Standard"                    #(Optional) The SKU of the Azure Load Balancer. Accepted values are Basic, Standard and Gateway. Defaults to Basic.
+    lb_sku_tier                  = "Regional"                    #(Optional) sku_tier - (Optional) The SKU tier of this Load Balancer. Possible values are Global and Regional. Defaults to Regional. Changing this forces a new resource to be created.
     lb_tags = {
       BU             = "ELZ",
       Role           = "Landing Zone",
