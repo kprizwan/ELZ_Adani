@@ -238,24 +238,24 @@ kubernetes_cluster_variables = {
     kubernetes_cluster_name                                                            = "sd-plz-management-aks-01"  #(Required) The name of the Managed Kubernetes Cluster to create. Changing this forces a new resource to be created.
     kubernetes_cluster_location                                                        = "Central India"             #(Required) The location where the Managed Kubernetes Cluster should be created. Changing this forces a new resource to be created.
     kubernetes_cluster_resource_group_name                                             = "sd-plz-management-node-rg" # (Required) Specifies the Resource Group where the Managed Kubernetes Cluster should exist. Changing this forces a new resource to be created.
-    kubernetes_cluster_key_vault_name                                                  = "sdplzmgmtdckv01"           #(Optional) Incase if any secret value is passed for linux_profile, windows_profile, azure_active_directory_role_based_access_control(azure_active_directory_role_based_access_control_server_app_secret) or service_principal(client_secret). Pass null if not required
-    kubernetes_cluster_key_vault_resource_group_name                                   = "sd-plz-management-node-rg" #(Optional) To be provided for the kubernetes_cluster_key_vault_name  resource group
+    kubernetes_cluster_key_vault_name                                                  = null           #(Optional) Incase if any secret value is passed for linux_profile, windows_profile, azure_active_directory_role_based_access_control(azure_active_directory_role_based_access_control_server_app_secret) or service_principal(client_secret). Pass null if not required
+    kubernetes_cluster_key_vault_resource_group_name                                   = null #(Optional) To be provided for the kubernetes_cluster_key_vault_name  resource group
     kubernetes_cluster_key_vault_certificate_name                                      = null                        #(Optional) Specifies the name of the Key Vault Certificate which contain the list of up to 10 base64 encoded CAs that will be added to the trust store on nodes with the custom_ca_trust_enabled feature enabled.
-    kubernetes_cluster_default_node_pool_name                                          = "akspool"
+    kubernetes_cluster_default_node_pool_name                                          = "sdelknodepool"
     kubernetes_cluster_default_node_pool_capacity_reservation_group_name               = null               #(Optional) provide the linux kubernetes_cluster capacity reservation group name
     kubernetes_cluster_default_node_pool_capacity_reservation_resource_group_name      = null               #(Optional) provide the capacity reservation group resource group name
-    kubernetes_cluster_default_node_pool_vm_size                                       = "Standard_D8as_v4" #(Required) The size of the Virtual Machine, such as Standard_DS2_v2. Changing this forces a new resource to be created.
+    kubernetes_cluster_default_node_pool_vm_size                                       = "Standard_D3s_v4" #(Required) The size of the Virtual Machine, such as Standard_DS2_v2. Changing this forces a new resource to be created.
     kubernetes_cluster_default_node_pool_custom_ca_trust_enabled                       = false              #(Optional) Specifies whether to trust a Custom CA.
     kubernetes_cluster_default_node_pool_key_vault_certificate_name                    = null               #(Optional) Specifies the name of the Key Vault Certificate. If kubernetes_cluster_default_node_pool_custom_ca_trust_enabled = true, then this is Required.
     kubernetes_cluster_default_node_pool_enable_auto_scaling                           = false              #(Optional) Should the Kubernetes Auto Scaler be enabled for this Node Pool? Defaults to false. This requires that the type is set to VirtualMachineScaleSets
-    kubernetes_cluster_default_node_pool_workload_runtime                              = "OCIContainer"     #(Optional) Specifies the workload runtime used by the node pool. Possible values are OCIContainer and KataMshvVmIsolation.
+    kubernetes_cluster_default_node_pool_workload_runtime                              = null     #(Optional) Specifies the workload runtime used by the node pool. Possible values are OCIContainer and KataMshvVmIsolation.
     kubernetes_cluster_default_node_pool_enable_host_encryption                        = false              #(Optional) Should the nodes in the Default Node Pool have host encryption enabled? Defaults to false
     kubernetes_cluster_default_node_pool_enable_node_public_ip                         = false              #(Optional) Should nodes in this Node Pool have a Public IP Address? Defaults to false. Changing this forces a new resource to be created.
     kubernetes_cluster_default_node_pool_kubelet_config                                = null
     kubernetes_cluster_default_node_pool_linux_os_config                               = null
     kubernetes_cluster_default_node_pool_fips_enabled                                  = false #(Optional) Should the nodes in this Node Pool have Federal Information Processing Standard enabled? Changing this forces a new resource to be created.
     kubernetes_cluster_default_node_pool_kubelet_disk_type                             = null  #(Optional) The type of disk used by kubelet. Possible values are OS and Temporary.
-    kubernetes_cluster_default_node_pool_max_pods                                      = 30    # (Optional) The maximum number of pods that can run on each agent. Changing this forces a new resource to be created.
+    kubernetes_cluster_default_node_pool_max_pods                                      = 15    # (Optional) The maximum number of pods that can run on each agent. Changing this forces a new resource to be created.
     kubernetes_cluster_message_of_the_day                                              = null  # (Optional) A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It cannot be specified for Windows nodes and must be a static string (i.e. will be printed raw and not executed as a script). Changing this forces a new resource to be created.
     kubernetes_cluster_default_node_pool_node_public_ip_prefix_name                    = null  #(Optional) Resource ID for the Public IP Addresses Prefix for the nodes in this Node Pool. enable_node_public_ip should be true. Changing this forces a new resource to be created.
     kubernetes_cluster_default_node_pool_node_public_ip_prefix_resource_group_name     = null
@@ -298,9 +298,9 @@ kubernetes_cluster_variables = {
     kubernetes_cluster_default_node_pool_subnet_name                         = "sd-plz-management-vnet-elk-snet-01" #(Optional) Name of Subnet for assigning default node pool to a subnet . A Route Table must be configured on this Subnet.
     kubernetes_cluster_default_node_pool_max_count                           = null                                 #(Optional) The maximum number of nodes which should exist in this Node Pool. If specified this must be between 1 and 1000.
     kubernetes_cluster_default_node_pool_min_count                           = null                                 #(Optional) The minimum number of nodes which should exist in this Node Pool. If specified this must be between 1 and 1000
-    kubernetes_cluster_default_node_pool_node_count                          = 2                                    #(Optional) The initial number of nodes which should exist in this Node Pool. If specified this must be between 1 and 1000 and between min_count and max_count.
+    kubernetes_cluster_default_node_pool_node_count                          = 3                                   #(Optional) The initial number of nodes which should exist in this Node Pool. If specified this must be between 1 and 1000 and between min_count and max_count.
     kubernetes_cluster_default_node_pool_availability_zones                  = null                                 #(Optional) Specifies a list of Availability Zones in which this Kubernetes Cluster should be located. Changing this forces a new Kubernetes Cluster to be created.
-    kubernetes_cluster_dns_prefix                                            = "sdplzaksdns"                        #(Optional) DNS prefix specified when creating the managed cluster. Changing this forces a new resource to be created. One of dns_prefix or dns_prefix_private_cluster must be specified. The dns_prefix must contain between 3 and 45 characters, and can contain only letters, numbers, and hyphens. It must start with a letter and must end with a letter or a number.
+    kubernetes_cluster_dns_prefix                                            = null                        #(Optional) DNS prefix specified when creating the managed cluster. Changing this forces a new resource to be created. One of dns_prefix or dns_prefix_private_cluster must be specified. The dns_prefix must contain between 3 and 45 characters, and can contain only letters, numbers, and hyphens. It must start with a letter and must end with a letter or a number.
     kubernetes_cluster_dns_prefix_private_cluster                            = null                                 #"ploceus"      #(Optional) Specifies the DNS prefix to use with private clusters. Changing this forces a new resource to be created. One of dns_prefix or dns_prefix_private_cluster must be specified. The dns_prefix must contain between 3 and 45 characters, and can contain only letters, numbers, and hyphens. It must start with a letter and must end with a letter or a number.
     kubernetes_cluster_aci_connector_linux                                   = null
     kubernetes_cluster_automatic_channel_upgrade                             = null #(Optional) The upgrade channel for this Kubernetes Cluster. Possible values are patch, rapid, node-image and stable. Omitting this field sets this value to none. Cluster Auto-Upgrade will update the Kubernetes Cluster (and its Node Pools) to the latest GA version of Kubernetes automatically and will not update to Preview versions.
@@ -319,10 +319,10 @@ kubernetes_cluster_variables = {
     kubernetes_cluster_http_proxy_config                                     = null
     kubernetes_cluster_identity = {    #One of either identity or service_principal must be specified. Assign null if not required. Defines the kubernetes cluster identity to be used
       identity_type = "SystemAssigned" #(Required) Specifies the type of Managed Service Identity that should be configured on this Kubernetes Cluster. Possible values are SystemAssigned, UserAssigned, SystemAssigned, UserAssigned (to enable both).
-      identity_ids = [{
+      identity_ids = null/*[{
         identity_name = "5bcd79c7-7094-44fc-b87a-f9c2f24f517c"
       identity_resource_group_name = "sd-plz-management-node-rg" }]
-    }
+    }*/
     kubernetes_cluster_ingress_application_gateway = null
     #  {                                  #(Optional) Assign null if not required. Defines AGIC ingress controller application gateway
     #   ingress_application_gateway_exists                     = false                    #Required Assign true if the application gateway already exists. Assign false if new Application gateway needs to be created
@@ -406,7 +406,7 @@ kubernetes_cluster_variables = {
     #   web_app_routing_dns_zone_name = "dns000001"                      #(Required) Specifies the ID of the DNS Zone in which DNS entries are created for applications deployed to the cluster when Web App Routing is enabled.
     #   web_app_routing_dns_zone_resource_group = "rg000001"             #(Required) Specifies the ID of the DNS Zone in which DNS entries are created for applications deployed to the cluster when Web App Routing is enabled.
     # }
-    kubernetes_cluster_windows_profile = {                                          #(Optional) Pass as null if not required. Changing any parameter forces a new resource to be created.
+    kubernetes_cluster_windows_profile = null /*{                                          #(Optional) Pass as null if not required. Changing any parameter forces a new resource to be created.
       windows_profile_admin_username_key_vault_secret_name = "keyvaultsecret000001" #(Required) Pass the secret name where the adminuser name is stored. Pass null if not stored in key vault
       windows_profile_admin_username                       = "admin123"             #(Optional) The Admin Username for the Windows VMs if not present in key vault
       windows_profile_admin_password_secret_exist          = false                  #(Required) Set true if the password is present in key vault else new password will be generated
@@ -417,11 +417,11 @@ kubernetes_cluster_variables = {
       #     gmsa_dns_server       =   #(Required) Specifies the DNS server for Windows gMSA. Set this to an empty string if you have configured the DNS server in the VNet which was used to create the managed cluster.
       #     gmsa_root_domain      =   #(Required) Specifies the root domain name for Windows gMSA. Set this to an empty string if you have configured the DNS server in the VNet which was used to create the managed cluster.
       #   }
-    }
+    }*/
   }
 
 }
 
 
-
+}
 

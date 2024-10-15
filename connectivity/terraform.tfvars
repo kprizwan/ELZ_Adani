@@ -526,7 +526,7 @@ application_gateway_variables = {
     } */
     application_gateway_backend_http_settings = [ #A backend_http_settings block supports the following:
       {
-        backend_http_settings_name                                = "appgateway-be-htst" #(Required) The name of the Backend HTTP Settings Collection.   
+        backend_http_settings_name                                = "appgateway-be-http" #(Required) The name of the Backend HTTP Settings Collection.   
         backend_http_settings_path                                = "/path1/"            #(Optional) The Path which should be used as a prefix for all HTTP requests.
         backend_http_settings_port                                = 80                   #(Required) The port which should be used for this Backend HTTP Settings Collection.
         backend_http_settings_protocol                            = "Http"               #(Required) The Protocol which should be used. Possible values are Http and Https.
@@ -664,7 +664,7 @@ linux_virtual_machine_variables = {
         diff_disk_settings_option    = "Local"                  # (Required) Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is Local. Changing this forces a new resource to be created.
         diff_disk_settings_placement = null                     #(Optional) Specifies where to store the Ephemeral Disk. Possible values are CacheDisk and ResourceDisk. Defaults to CacheDisk. Changing this forces a new resource to be created.
       }
-      os_disk_disk_size_gb              = 70                    #(Optional) The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
+      os_disk_disk_size_gb              = 120                    #(Optional) The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
       os_disk_name                      = "sd-plz-palovm1-disk-01" #(Optional) The name which should be used for the Internal OS Disk. Changing this forces a new resource to be created.
       os_disk_security_encryption_type  = null                  #(Optional) Encryption Type when the Virtual Machine is a Confidential VM. Possible values are VMGuestStateOnly and DiskWithVMGuestState. Changing this forces a new resource to be created.
       os_disk_write_accelerator_enabled = false                 #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
@@ -682,7 +682,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_edge_zone                             = null                  #(Optional) Specifies the Edge Zone within the Azure Region where this Linux Virtual Machine should exist. Changing this forces a new Linux Virtual Machine to be created.
     linux_virtual_machine_encryption_at_host_enabled            = false                 #(Optional) Should all of the disks (including the temp disk) attached to this Virtual Machine be encrypted by enabling Encryption at Host?
     linux_virtual_machine_eviction_policy                       = null                  #(Optional) Specifies what should happen when the Virtual Machine is evicted for price reasons when using a Spot instance. Possible values are Deallocate and Delete. Changing this forces a new resource to be created.
-    linux_virtual_machine_extensions_time_budget                = "PT1H30M"             #(Optional) Specifies the duration allocated for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. Defaults to 90 minutes (PT1H30M).
+    linux_virtual_machine_extensions_time_budget                = null            #(Optional) Specifies the duration allocated for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. Defaults to 90 minutes (PT1H30M).
     linux_virtual_machine_gallery_application                   = null                  #(Optional) A gallery_application block as defined below.
     /* Sample Code {
       #gallery_application_configuration_blob_uri = string                               #(Optional) Specifies the URI to an Azure Blob that will replace the default configuration for the package if provided.
@@ -698,7 +698,7 @@ linux_virtual_machine_variables = {
     }
     linux_virtual_machine_patch_assessment_mode = null           #(Optional) Specifies the mode of VM Guest Patching for the Virtual Machine. Possible values are AutomaticByPlatform or ImageDefault. Defaults to ImageDefault.
     linux_virtual_machine_patch_mode            = "ImageDefault" # (Optional) Specifies the mode of in-guest patching to this Linux Virtual Machine. Possible values are AutomaticByPlatform and ImageDefault. Defaults to ImageDefault. For more information on patch modes please see the product documentation.
-    linux_virtual_machine_max_bid_price         = "-1"           #(Optional) The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the eviction_policy. Defaults to -1, which means that the Virtual Machine should not be evicted for price reasons.
+    linux_virtual_machine_max_bid_price         = null          #(Optional) The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the eviction_policy. Defaults to -1, which means that the Virtual Machine should not be evicted for price reasons.
     linux_virtual_machine_plan                  = null           #(Optional) A plan block as defined below. Changing this forces a new resource to be created.
     linux_virtual_machine_platform_fault_domain = null           #(Optional) Specifies the Platform Fault Domain in which this Linux Virtual Machine should be created. Defaults to -1, which means this will be automatically assigned to a fault domain that best maintains balance across the available fault domains. Changing this forces a new Linux Virtual Machine to be created.
     linux_virtual_machine_priority              = "Regular"      #(Optional) Specifies the priority of this Virtual Machine. Possible values are Regular and Spot. Defaults to Regular. Changing this forces a new resource to be created.
@@ -719,7 +719,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_zone         = null  #(Optional) Specifies the Availability Zones in which this Linux Virtual Machine should be located. Changing this forces a new Linux Virtual Machine to be created.
     linux_virtual_machine_tags = {
       BU             = "ELZ",
-      Role           = "Landing Zone",
+      Role           = "Palo Alto VM",
       Environment    = "PLZ-DC",
       Owner          = "Manish Kumar",
       Criticality    = "High",
