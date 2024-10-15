@@ -360,7 +360,7 @@ kubernetes_cluster_variables = {
       network_profile_nat_gateway_profile   = null
     }
     kubernetes_cluster_node_os_channel_upgrade              = "None" #(Optional) The upgrade channel for this Kubernetes Cluster Nodes' OS Image. Possible values are Unmanaged, SecurityPatch, NodeImage and None.
-    kubernetes_cluster_node_resource_group_name             = "sd-plz-management-rg"   #(Optional) The name of the Resource Group where the Kubernetes Nodes should exist. Changing this forces a new resource to be created. Azure requires that a new, non-existent Resource Group is used, as otherwise the provisioning of the Kubernetes Service will fail.
+    kubernetes_cluster_node_resource_group_name             = "sd-plz-management-node-rg"   #(Optional) The name of the Resource Group where the Kubernetes Nodes should exist. Changing this forces a new resource to be created. Azure requires that a new, non-existent Resource Group is used, as otherwise the provisioning of the Kubernetes Service will fail.
     kubernetes_cluster_oidc_issuer_enabled                  = false  #(Required) Enable or Disable the OIDC issuer URL
     kubernetes_cluster_oms_agent                            = null
     kubernetes_cluster_service_mesh_profile                 = null
