@@ -337,7 +337,7 @@ kubernetes_cluster_variables = {
     kubernetes_cluster_key_management_service     = null
     kubernetes_cluster_key_vault_secrets_provider = null
     kubernetes_cluster_kubelet_identity           = null
-    kubernetes_cluster_kubernetes_version         = 1.29.0 #(Optional) Version of Kubernetes specified when creating the AKS managed cluster. If not specified, the latest recommended version will be used at provisioning time (but won't auto-upgrade). AKS does not require an exact patch version to be specified, minor version aliases such as 1.22 are also supported. - The minor version's latest GA patch is automatically chosen in that case.
+    kubernetes_cluster_kubernetes_version         = "1.29.0" #(Optional) Version of Kubernetes specified when creating the AKS managed cluster. If not specified, the latest recommended version will be used at provisioning time (but won't auto-upgrade). AKS does not require an exact patch version to be specified, minor version aliases such as 1.22 are also supported. - The minor version's latest GA patch is automatically chosen in that case.
     kubernetes_cluster_linux_profile              = null
 
     // {                                  #(Optional) Pass as null if not required. Changing any parameter forces a new resource to be created.
