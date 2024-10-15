@@ -767,7 +767,7 @@ linux_virtual_machine_variables = {
     }
     linux_virtual_machine_is_secret_required                                     = false                 #(Required)Boolean value if secret is required or not
     linux_virtual_machine_disk_encryption_set_name                               = null                  #Name of the disk encryption set. Provide value if linux_virtual_machine_is_disk_encryption_set_required is set to true
-    linux_virtual_machine_is_boot_diagnostics_required                           = true                  #(Required)Boolean value if boot diagnostics required
+    linux_virtual_machine_is_boot_diagnostics_required                           = false                  #(Required)Boolean value if boot diagnostics required
     linux_virtual_machine_bypass_platform_safety_checks_on_user_schedule_enabled = false                 #(Optional) Specifies whether to skip platform scheduled patching when a user schedule is associated with the VM. Defaults to false.Can only be set to true when patch_mode is set to AutomaticByPlatform.
     linux_virtual_machine_is_availability_set_id_required                        = false                 #(Required)Boolean value if availability set id required
     linux_virtual_machine_is_proximity_placement_group_id_required               = false                 #(Required)Boolean value if proximity placement group id required
@@ -914,7 +914,7 @@ linux_virtual_machine_variables = {
     }
     linux_virtual_machine_is_secret_required                                     = false                 #(Required)Boolean value if secret is required or not
     linux_virtual_machine_disk_encryption_set_name                               = null                  #Name of the disk encryption set. Provide value if linux_virtual_machine_is_disk_encryption_set_required is set to true
-    linux_virtual_machine_is_boot_diagnostics_required                           = true                  #(Required)Boolean value if boot diagnostics required
+    linux_virtual_machine_is_boot_diagnostics_required                           = false                  #(Required)Boolean value if boot diagnostics required
     linux_virtual_machine_bypass_platform_safety_checks_on_user_schedule_enabled = false                 #(Optional) Specifies whether to skip platform scheduled patching when a user schedule is associated with the VM. Defaults to false.Can only be set to true when patch_mode is set to AutomaticByPlatform.
     linux_virtual_machine_is_availability_set_id_required                        = false                 #(Required)Boolean value if availability set id required
     linux_virtual_machine_is_proximity_placement_group_id_required               = false                 #(Required)Boolean value if proximity placement group id required
