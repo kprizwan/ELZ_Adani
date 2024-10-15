@@ -317,23 +317,13 @@ kubernetes_cluster_variables = {
     kubernetes_cluster_image_cleaner_enabled                                 = false #(Optional) Specifies whether Image Cleaner is enabled.
     kubernetes_cluster_image_cleaner_interval_hours                          = null  #(Optional) Specifies the interval in hours when images should be cleaned up. Defaults to 48.
     kubernetes_cluster_http_proxy_config                                     = null
-    kubernetes_cluster_identity = {    #One of either identity or service_principal must be specified. Assign null if not required. Defines the kubernetes cluster identity to be used
+    kubernetes_cluster_identity = null /* {    #One of either identity or service_principal must be specified. Assign null if not required. Defines the kubernetes cluster identity to be used
       identity_type = "SystemAssigned" #(Required) Specifies the type of Managed Service Identity that should be configured on this Kubernetes Cluster. Possible values are SystemAssigned, UserAssigned, SystemAssigned, UserAssigned (to enable both).
-      identity_ids = null/*[{
+      identity_ids = null[{
         identity_name = "5bcd79c7-7094-44fc-b87a-f9c2f24f517c"
       identity_resource_group_name = "sd-plz-management-node-rg" }]
     }*/
     kubernetes_cluster_ingress_application_gateway = null
-    #  {                                  #(Optional) Assign null if not required. Defines AGIC ingress controller application gateway
-    #   ingress_application_gateway_exists                     = false                    #Required Assign true if the application gateway already exists. Assign false if new Application gateway needs to be created
-    #   ingress_application_gateway_name                       = "ploceusapgwingressctrl" #Required  The name of the Application Gateway to be used or created in the Nodepool Resource Group, which in turn will be integrated with the ingress controller of this Kubernetes Cluster.
-    #   ingress_application_gateway_resource_group_name        = "ploceusrg000001"
-    #   ingress_application_gateway_subnet_exists              = false #Required. Assign true if the application gateway already exists. Assign false if new Application gateway needs to be created
-    #   ingress_application_gateway_subnet_cidr                = null  #(Optional) The subnet CIDR to be used to create an Application Gateway, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. Pass this value or either ingress_application_gateway_subnet_name
-    #   ingress_application_gateway_subnet_name                = null  #(Optional) The name of the subnet on which to create an Application Gateway, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. Pass this value or either ingress_application_gateway_subnet_cidr
-    #   ingress_application_gateway_subnet_resource_group_name = null
-    #   ingress_application_gateway_virtual_network_name       = null
-    # }
     kubernetes_cluster_key_management_service     = null
     kubernetes_cluster_key_vault_secrets_provider = null
     kubernetes_cluster_kubelet_identity           = null
@@ -362,7 +352,7 @@ kubernetes_cluster_variables = {
       network_profile_outbound_type         = null    #(Optional) The outbound (egress) routing method which should be used for this Kubernetes Cluster. Possible values are loadBalancer, userDefinedRouting, managedNATGateway and userAssignedNATGateway. Defaults to loadBalancer.
       network_profile_pod_cidr              = null    #(Optional) The CIDR to use for pod IP addresses. This field can only be set when network_plugin is set to kubenet. Changing this forces a new resource to be created.
       network_profile_pod_cidrs             = null    # (Optional) A list of CIDRs to use for pod IP addresses. For single-stack networking a single IPv4 CIDR is expected. For dual-stack networking an IPv4 and IPv6 CIDR are expected. Changing this forces a new resource to be created.
-      network_profile_service_cidr          = null    #(Optional) The Network Range used by the Kubernetes service. Changing this forces a new resource to be created. This range should not be used by any network element on or connected to this VNet. Service address CIDR must be smaller than /12. docker_bridge_cidr, dns_service_ip and service_cidr should all be empty or all should be set.
+      network_profile_service_cidr          = "10.248.5.0/24"    #(Optional) The Network Range used by the Kubernetes service. Changing this forces a new resource to be created. This range should not be used by any network element on or connected to this VNet. Service address CIDR must be smaller than /12. docker_bridge_cidr, dns_service_ip and service_cidr should all be empty or all should be set.
       network_profile_service_cidrs         = null    # (Optional) A list of CIDRs to use for Kubernetes services. For single-stack networking a single IPv4 CIDR is expected. For dual-stack networking an IPv4 and IPv6 CIDR are expected. Changing this forces a new resource to be created.
       network_profile_ip_versions           = ["IPv4"]    #(Optional) Specifies a list of IP versions the Kubernetes Cluster will use to assign IP addresses to its nodes and pods. Possible values are IPv4 and/or IPv6. IPv4 must always be specified. Changing this forces a new resource to be created. To configure dual-stack networking ip_versions should be set to ["IPv4", "IPv6"]
       network_profile_load_balancer_sku     = null    #(Optional) Specifies the SKU of the Load Balancer used for this Kubernetes Cluster. Possible values are basic and standard. Defaults to standard. (Optional) Specifies the SKU of the Load Balancer used for this Kubernetes Cluster. Possible values are basic and standard. Defaults to standard. Changing this forces a new resource to be created.
