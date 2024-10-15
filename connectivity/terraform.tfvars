@@ -386,7 +386,7 @@ network_interface_variables = {
         ip_configuration_private_ip_address_version = "IPv4" #The IP Version to use. Possible values are IPv4 or IPv6.Defaults to IPv4.
         ip_configuration_subnet = ({
           subnet_virtual_network_name                = "sd-plz-Connectivity-Hub-VNET"                   #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
-          subnet_name                                = "ssd-plz-Connectivity-Hub-VNET-FW-Trust-SNET-02" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
+          subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-Trust-SNET-02" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
           subnet_virtual_network_resource_group_name = "sd-plz-connectivity-rg-01"                      #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
         })
         ip_configuration_public_ip     = null
