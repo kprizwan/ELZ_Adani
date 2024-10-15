@@ -50,6 +50,7 @@ module "application_gateway" {
 }
 
 #LINUX VM
+/*
 module "linux_virtual_machine" {
   source = "../Azure/linux_virtual_machine/v1.3.0"
   providers = {
@@ -60,4 +61,5 @@ module "linux_virtual_machine" {
   linux_virtual_machine_variables = var.linux_virtual_machine_variables
   depends_on                      = [module.subnet]
 }
+*/
 
