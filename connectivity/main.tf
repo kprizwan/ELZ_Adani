@@ -120,7 +120,7 @@ module "nat_gateway" {
 
 #NAT GATEWAY PUBLIC IP ASSOCIATION
 module "nat_gateway_public_ip_association" {
-  source = "../Azure/nat_gateway_public_ip_association/v.1.3.0"
+  source = "../Azure/nat_gateway_public_ip_association/v1.3.0"
   providers = {
     azurerm = azurerm.connectivity
   }
