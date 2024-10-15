@@ -73,5 +73,6 @@ module "kubernetes_cluster" {
 
   }
   kubernetes_cluster_variables = var.kubernetes_cluster_variables
+  depends_on = [module.key_vault,module.container_registry]
 }
 
