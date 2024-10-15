@@ -61,7 +61,7 @@ module "network_interface" {
   depends_on                  = [module.resource_group, module.virtual_network, module.subnet]
 }
 
-/*
+
 #PUBLIC IP
 module "public_ip" {
   source              = "../Azure/public_ip/v1.3.0"
@@ -71,8 +71,8 @@ module "public_ip" {
   public_ip_variables = var.public_ip_variables
   depends_on          = [module.resource_group]
 }
-*/
-/*
+
+
 #APPLICATION GATEWAY
 module "application_gateway" {
   source = "../Azure/application_gateway/v1.3.0"
@@ -82,11 +82,11 @@ module "application_gateway" {
   application_gateway_variables = var.application_gateway_variables
   depends_on                    = [module.subnet,module.public_ip]
 }
-*/
+
 
 #LINUX VM
 
-module "linux_virtual_machine" {
+/*module "linux_virtual_machine" {
   source = "../Azure/linux_virtual_machine/v1.3.0"
   providers = {
     azurerm.linux_vm_sub  = azurerm.connectivity
@@ -95,7 +95,7 @@ module "linux_virtual_machine" {
   }
   linux_virtual_machine_variables = var.linux_virtual_machine_variables
   depends_on                      = [module.subnet, module.network_interface]
-}
+}*/
 
 /*
 #LB

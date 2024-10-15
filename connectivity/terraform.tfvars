@@ -463,7 +463,7 @@ application_gateway_variables = {
     application_gateway_is_waf_policy_required            = false                                      #(Optional) A waf_configuration block                 
     application_gateway_waf_policy_name                   = null                                       #Name of the waf Policy                  
     application_gateway_waf_policy_resource_group_name    = null                                       #Resource Group of the waf policy                
-    application_gateway_public_ip_name                    = "sd-plz-appgw-publicip-01"                 #(Optional) The public IP Address which the Application Gateway should use. The allocation method for the Public IP Address depends on the sku of this Application Gateway. Please refer to the Azure documentation for public IP addresses for details.
+    application_gateway_public_ip_name                    = "sd-plz-connectivity-pip-agw-01"                 #(Optional) The public IP Address which the Application Gateway should use. The allocation method for the Public IP Address depends on the sku of this Application Gateway. Please refer to the Azure documentation for public IP addresses for details.
     application_gateway_fips_enabled                      = false                                      #(Optional) Is FIPS enabled on the Application Gateway?               
     application_gateway_identity                          = null                                       #(Optional)
     application_gateway_zones                             = null                                       #(Optional) Specifies a list of Availability Zones in which this Application Gateway should be located. Changing this forces a new Application Gateway to be created.
@@ -484,7 +484,7 @@ application_gateway_variables = {
     application_gateway_gateway_ip_configuration = [ #A frontend_ip_configuration block supports the following
       {
         gateway_ip_configuration_name        = "appgateway-gicconfig"                     #(Required) The name of the Frontend IP Configuration.
-        gateway_ip_configuration_subnet_name = "sd-plz-Connectivity-Hub-VNET-AGW-SNET-01" #"ploceussubnet000001a"  #(Required) The Name of the Subnet which the Application Gateway should be connected to.
+        gateway_ip_configuration_subnet_name = "sd-plz-Connectivity-Hub-VNET-AGW-SNET-01" #" #(Required) The Name of the Subnet which the Application Gateway should be connected to.
     }]
 
     application_gateway_waf_configuration = null /*{                   #A waf_configuration block supports the following
@@ -570,7 +570,7 @@ application_gateway_variables = {
         request_routing_rules_rule_type                   = "Basic"               #(Required) The Type of Routing that should be used for this Rule. Possible values are Basic and PathBasedRouting.
         request_routing_rules_listener_name               = "appgateway-httplstn" #(Required) The Name of the HTTP Listener which should be used for this Routing Rule.
         request_routing_rules_backend_address_pool_name   = "appgateway-beap"     #(Optional) The Name of the Backend Address Pool which should be used for this Routing Rule. Cannot be set if redirect_configuration_name is set.
-        request_routing_rules_backend_http_settings_name  = "appgateway-be-htst"  #(Optional) The Name of the Backend HTTP Settings Collection which should be used for this Routing Rule. Cannot be set if redirect_configuration_name is set.
+        request_routing_rules_backend_http_settings_name  = "appgateway-be-http"  #(Optional) The Name of the Backend HTTP Settings Collection which should be used for this Routing Rule. Cannot be set if redirect_configuration_name is set.
         request_routing_rules_rewrite_rule_set_name       = null                  #(Optional) The Name of the Rewrite Rule Set which should be used for this Routing Rule. Only valid for v2 SKUs.
         request_routing_rules_redirect_configuration_name = null                  #(Optional) The Name of the Redirect Configuration which should be used for this Routing Rule. Cannot be set if either backend_address_pool_name or backend_http_settings_name is set.
         request_routing_rules_priority                    = "9"                   #(Optional) Rule evaluation order can be dictated by specifying an integer value from 1 to 20000 with 1 being the highest priority and 20000 being the lowest priority.
@@ -984,7 +984,37 @@ destination_virtual_network_peering_variables = {
 #PUBLIC IP
 public_ip_variables = {
   "public_ip_1" = {
-    public_ip_name                                     = "sd-plz-connectivity-pip-01" # (Required) Specifies the name of the Public IP. 
+    public_ip_name                                     = "sd-plz-connectivity-pip-agw-01" # (Required) Specifies the name of the Public IP. 
+    public_ip_resource_group_name                      = "sd-plz-connectivity-rg-01"  # (Required) The name of the Resource Group where this Public IP should exist. 
+    public_ip_location                                 = "Central India"              # (Required) Specifies the supported Azure location where the Public IP should exist. 
+    public_ip_ip_version                               = "IPv4"                       # (Optional) The IP Version to use, IPv6 or IPv4.
+    public_ip_allocation_method                        = "Static"                     # (Required) Defines the allocation method for this IP address. Possible values are Static or Dynamic.
+    public_ip_sku                                      = "Standard"                   # (Optional) The SKU of the Public IP. Accepted values are Basic and Standard. Defaults to Basic.
+    public_ip_sku_tier                                 = "Regional"                   # (Optional) The SKU Tier that should be used for the Public IP. Possible values are Regional and Global. Defaults to Regional.
+    public_ip_domain_name_label                        = null                         # (Optional) Label for the Domain Name. Will be used to make up the FQDN. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
+    public_ip_prefix_id                                = null                         #  (Optional) If specified then public IP address allocated will be provided from the public IP prefix resource.
+    public_ip_idle_timeout_in_minutes                  = "30"                         # (Optional) Specifies the timeout for the TCP idle connection. The value can be set between 4 and 30 minutes.
+    public_ip_zones                                    = null                         # (Optional) A collection containing the availability zone to allocate the Public IP in.
+    public_ip_edge_zone                                = null                         # (Optional) Specifies the Edge Zone within the Azure Region where this Public IP should exist. 
+    public_ip_reverse_fqdn                             = null                         # (Optional) A fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
+    public_ip_ip_tags                                  = null                         # (Optional) A mapping of IP tags to assign to the public IP.
+    public_ip_is_ddos_protection_plan_enabled          = false                        # (Required) True if ddos_protection_plan enabled, else false
+    public_ip_ddos_protection_plan_name                = null                         # (Optional) The Name of DDoS protection plan associated with the public IP.
+    public_ip_ddos_protection_plan_resource_group_name = null                         # (Optional) The Resource group name of DDoS protection plan associated with the public IP.
+    public_ip_ddos_protection_mode                     = null                         # (Optional) The DDoS protection mode of the public IP. Possible values are Disabled, Enabled, and VirtualNetworkInherited. Defaults to VirtualNetworkInherited.
+    public_ip_tags = {                                                                # (Optional) Public IP tags
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+  },
+  "public_ip_2" = {
+    public_ip_name                                     = "sd-plz-connectivity-pip-ngw-01" # (Required) Specifies the name of the Public IP. 
     public_ip_resource_group_name                      = "sd-plz-connectivity-rg-01"  # (Required) The name of the Resource Group where this Public IP should exist. 
     public_ip_location                                 = "Central India"              # (Required) Specifies the supported Azure location where the Public IP should exist. 
     public_ip_ip_version                               = "IPv4"                       # (Optional) The IP Version to use, IPv6 or IPv4.
