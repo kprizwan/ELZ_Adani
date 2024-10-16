@@ -86,7 +86,7 @@ module "application_gateway" {
 
 #LINUX VM
 
-/*module "linux_virtual_machine" {
+module "linux_virtual_machine" {
   source = "../Azure/linux_virtual_machine/v1.3.0"
   providers = {
     azurerm.linux_vm_sub  = azurerm.connectivity
@@ -95,7 +95,7 @@ module "application_gateway" {
   }
   linux_virtual_machine_variables = var.linux_virtual_machine_variables
   depends_on                      = [module.subnet, module.network_interface]
-}*/
+}
 
 
 #LB
