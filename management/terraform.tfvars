@@ -211,7 +211,7 @@ eventhub_variables = {
     eventhub_capture_description                              = null /*{                                                                                                               #(Optional) A capture_description block supports the following
       capture_description_destination = {                                                                                                          #(Required) A destination block as defined below.
         capture_description_destination_archive_name_format = "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" #(Required) The Blob naming convention for archiving. e.g. {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order
-        capture_description_destination_blob_container_name = "ploceusstrcon000001"                                                                #(Required) The name of the Container within the Blob Storage Account where messages should be archived.
+        capture_description_destination_blob_container_name = "00001"                                                                #(Required) The name of the Container within the Blob Storage Account where messages should be archived.
         capture_description_destination_name                = "EventHubArchive.AzureBlockBlob"                                                     #(Required) The Name of the Destination where the capture should take place. At this time the only supported value is EventHubArchive.AzureBlockBlob.
       }
       capture_description_enabled             = true     #(Required) Specifies if the Capture Description is Enabled.
