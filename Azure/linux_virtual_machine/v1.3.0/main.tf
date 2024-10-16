@@ -327,7 +327,7 @@ resource "azurerm_linux_virtual_machine" "linux_virtual_machine" {
   }
 
   dynamic "plan" { #Required, if VM needs to deployed from a Marketplace image
-    for_each = each.value.linux_virtual_machine_plan != null ? [each.value.linux_virtual_machine_plan] : []
+    for_each = each.value.linux_virtual_machine_plan != null ? each.value.linux_virtual_machine_plan : []
     content {
       name      = plan.value.plan_name
       product   = plan.value.plan_product
