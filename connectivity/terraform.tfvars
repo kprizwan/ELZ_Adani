@@ -797,7 +797,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_admin_key_vault_resource_group_name                    = "sd-plz-management-rg" #Provide key vault resource group name to store credentials
     linux_virtual_machine_storage_account_resource_group_name                    = null                   #Provide value if linux_virtual_machine_is_boot_diagnostics_required is set to true
     linux_virtual_machine_disk_encryption_set_resource_group_name                = null                   #Resource group name of the disk encryption set. Provide value if linux_virtual_machine_is_disk_encryption_set_required is set to true
-    linux_virtual_machine_existing_admin_username_secret_name                    = null                   #Provide Key vault secret name to store admin username. Provide value if linux_virtual_machine_use_existing_vm_username is set to true.
+    linux_virtual_machine_existing_admin_username_secret_name                    = "SDLVMFWP01-adminusername"                   #Provide Key vault secret name to store admin username. Provide value if linux_virtual_machine_use_existing_vm_username is set to true.
   },
   "linux_virtual_machine_2" = {
     linux_virtual_machine_admin_username = "palovm2"       #(Required) The username of the local administrator used for the Virtual Machine. Changing this forces a new resource to be created.
@@ -944,7 +944,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_admin_key_vault_resource_group_name                    = "sd-plz-management-rg" #Provide key vault resource group name to store credentials
     linux_virtual_machine_storage_account_resource_group_name                    = null                   #Provide value if linux_virtual_machine_is_boot_diagnostics_required is set to true
     linux_virtual_machine_disk_encryption_set_resource_group_name                = null                   #Resource group name of the disk encryption set. Provide value if linux_virtual_machine_is_disk_encryption_set_required is set to true
-    linux_virtual_machine_existing_admin_username_secret_name                    = null                   #Provide Key vault secret name to store admin username. Provide value if linux_virtual_machine_use_existing_vm_username is set to true.
+    linux_virtual_machine_existing_admin_username_secret_name                    = "SDLVMFWP02-adminusername"                   #Provide Key vault secret name to store admin username. Provide value if linux_virtual_machine_use_existing_vm_username is set to true.
   }
 }
 
