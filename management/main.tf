@@ -57,15 +57,14 @@ module "kubernetes_cluster" {
   depends_on                   = [module.key_vault, module.container_registry]
 }
 
-/*#NETWORK SECURITY GROUP
+#NETWORK SECURITY GROUP
 module "network_security_group" {
-  source                           = "../Azure/network_security_group/v1.3.0"
+  source = "../Azure/network_security_group/v1.3.0"
   providers = {
     azurerm = azurerm.management
   }
   network_security_group_variables = var.network_security_group_variables
-  depends_on                       = [module.application_security_group]
-}*/
+}
 
 /*#Network Security Group Association
 module "network_security_group_association" {
