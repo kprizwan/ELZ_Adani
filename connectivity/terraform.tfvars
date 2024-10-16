@@ -815,7 +815,7 @@ linux_virtual_machine_variables = {
         diff_disk_settings_option    = "Local"             # (Required) Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is Local. Changing this forces a new resource to be created.
         diff_disk_settings_placement = null                #(Optional) Specifies where to store the Ephemeral Disk. Possible values are CacheDisk and ResourceDisk. Defaults to CacheDisk. Changing this forces a new resource to be created.
       }
-      os_disk_disk_size_gb              = 70                   #(Optional) The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
+      os_disk_disk_size_gb              = 120                 #(Optional) The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
       os_disk_name                      = "SDLVMFWP02-disk-01" #(Optional) The name which should be used for the Internal OS Disk. Changing this forces a new resource to be created.
       os_disk_security_encryption_type  = null                 #(Optional) Encryption Type when the Virtual Machine is a Confidential VM. Possible values are VMGuestStateOnly and DiskWithVMGuestState. Changing this forces a new resource to be created.
       os_disk_write_accelerator_enabled = false                #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
