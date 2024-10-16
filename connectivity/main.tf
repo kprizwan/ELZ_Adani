@@ -135,6 +135,15 @@ module "network_security_group" {
   depends_on                       = [module.application_security_group]
 }
 
+#Network Security Group Association
+module "network_security_group_association" {
+  source                                       = "../"
+  network_security_group_association_variables = var.network_security_group_association_variables
+  depends_on                                   = [module.network_security_group, module.subnet, module.network_interface]
+}
+
+
+
 #VPN GATEWAY
 /*module "vpn_gateway" {
   source                = "../Azure/vpn_gateway/v1.3.0"
