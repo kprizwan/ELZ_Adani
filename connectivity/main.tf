@@ -130,17 +130,20 @@ module "nat_gateway_public_ip_association" {
 
 #NETWORK SECURITY GROUP
 module "network_security_group" {
-  source                           = "../"
+  source = "../Azure/network_security_group/v1.3.0"
+  providers = {
+    azurerm = azurerm.connectivity
+  }
   network_security_group_variables = var.network_security_group_variables
   depends_on                       = [module.application_security_group]
 }
 
-#Network Security Group Association
+/*#Network Security Group Association
 module "network_security_group_association" {
   source                                       = "../"
   network_security_group_association_variables = var.network_security_group_association_variables
   depends_on                                   = [module.network_security_group, module.subnet, module.network_interface]
-}
+}*/
 
 
 

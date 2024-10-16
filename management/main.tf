@@ -39,26 +39,7 @@ module "container_registry" {
   container_registry_variables = var.container_registry_variables
   depends_on                   = [module.private_endpoint]
 }
-/*
-#EVENTHUB NAMESPACE
-module "eventhub_namespace" {
-  source = "../Azure/eventhub_namespace/v1.3.0"
-  providers = {
-    azurerm = azurerm.management
-  }
-  eventhub_namespace_variables = var.eventhub_namespace_variables
-}
 
-#EVENTHUB
-module "eventhub" {
-  source = "../Azure/eventhub/v1.3.0"
-  providers = {
-    azurerm = azurerm.management
-  }
-  eventhub_variables = var.eventhub_variables
-  depends_on         = [module.eventhub_namespace]
-}
-*/
 #AKS CLUSTER
 module "kubernetes_cluster" {
   source = "../Azure/kubernetes_cluster/v1.3.0"
@@ -75,4 +56,21 @@ module "kubernetes_cluster" {
   kubernetes_cluster_variables = var.kubernetes_cluster_variables
   depends_on                   = [module.key_vault, module.container_registry]
 }
+
+/*#NETWORK SECURITY GROUP
+module "network_security_group" {
+  source                           = "../Azure/network_security_group/v1.3.0"
+  providers = {
+    azurerm = azurerm.management
+  }
+  network_security_group_variables = var.network_security_group_variables
+  depends_on                       = [module.application_security_group]
+}*/
+
+/*#Network Security Group Association
+module "network_security_group_association" {
+  source                                       = "../"
+  network_security_group_association_variables = var.network_security_group_association_variables
+  depends_on                                   = [module.network_security_group, module.subnet, module.network_interface]
+}*/
 

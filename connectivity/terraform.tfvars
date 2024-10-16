@@ -670,7 +670,7 @@ linux_virtual_machine_variables = {
       os_disk_write_accelerator_enabled = false                #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
     }
     linux_virtual_machine_resource_group_name = "sd-plz-connectivity-rg-01" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
-    linux_virtual_machine_size                = "Standard_D3_v2"           #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
+    linux_virtual_machine_size                = "Standard_D3_v2"            #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
     linux_virtual_machine_additional_capabilities = {                       #(Optional) A additional_capabilities block as defined below.
       additional_capabilities_ultra_ssd_enabled = false                     #(Optional) Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine? Defaults to false.
     }
@@ -699,20 +699,20 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_patch_assessment_mode = null           #(Optional) Specifies the mode of VM Guest Patching for the Virtual Machine. Possible values are AutomaticByPlatform or ImageDefault. Defaults to ImageDefault.
     linux_virtual_machine_patch_mode            = "ImageDefault" # (Optional) Specifies the mode of in-guest patching to this Linux Virtual Machine. Possible values are AutomaticByPlatform and ImageDefault. Defaults to ImageDefault. For more information on patch modes please see the product documentation.
     linux_virtual_machine_max_bid_price         = "-1"           #(Optional) The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the eviction_policy. Defaults to -1, which means that the Virtual Machine should not be evicted for price reasons.
-    linux_virtual_machine_plan                  = [{
-      plan_name      = "byol"                           #(Required) Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-      plan_product   = "panorama"                           #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-      plan_publisher = "paloaltonetworks"         #(Optional) A plan block as defined below. Changing this forces a new resource to be created.
+    linux_virtual_machine_plan = [{
+      plan_name      = "byol"             #(Required) Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
+      plan_product   = "panorama"         #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
+      plan_publisher = "paloaltonetworks" #(Optional) A plan block as defined below. Changing this forces a new resource to be created.
     }]
-    linux_virtual_machine_platform_fault_domain = null           #(Optional) Specifies the Platform Fault Domain in which this Linux Virtual Machine should be created. Defaults to -1, which means this will be automatically assigned to a fault domain that best maintains balance across the available fault domains. Changing this forces a new Linux Virtual Machine to be created.
-    linux_virtual_machine_priority              = "Regular"      #(Optional) Specifies the priority of this Virtual Machine. Possible values are Regular and Spot. Defaults to Regular. Changing this forces a new resource to be created.
-    linux_virtual_machine_provision_vm_agent    = false          #(Optional) Should the Azure VM Agent be provisioned on this Virtual Machine? Defaults to true. Changing this forces a new resource to be created.
-    linux_virtual_machine_secure_boot_enabled   = false          #(Optional) Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
-    linux_virtual_machine_source_image_reference = {             #Optional) A source_image_reference block as defined below. Changing this forces a new resource to be created.
-      source_image_reference_publisher = "paloaltonetworks"      #(Optional) Specifies the publisher of the image used to create the virtual machines.
+    linux_virtual_machine_platform_fault_domain = null      #(Optional) Specifies the Platform Fault Domain in which this Linux Virtual Machine should be created. Defaults to -1, which means this will be automatically assigned to a fault domain that best maintains balance across the available fault domains. Changing this forces a new Linux Virtual Machine to be created.
+    linux_virtual_machine_priority              = "Regular" #(Optional) Specifies the priority of this Virtual Machine. Possible values are Regular and Spot. Defaults to Regular. Changing this forces a new resource to be created.
+    linux_virtual_machine_provision_vm_agent    = false     #(Optional) Should the Azure VM Agent be provisioned on this Virtual Machine? Defaults to true. Changing this forces a new resource to be created.
+    linux_virtual_machine_secure_boot_enabled   = false     #(Optional) Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
+    linux_virtual_machine_source_image_reference = {        #Optional) A source_image_reference block as defined below. Changing this forces a new resource to be created.
+      source_image_reference_publisher = "paloaltonetworks" #(Optional) Specifies the publisher of the image used to create the virtual machines.
       source_image_reference_offer     = "panorama"         #(Optional) Specifies the offer of the image used to create the virtual machines.
-      source_image_reference_sku       = "byol"                  #(Optional) Specifies the SKU of the image used to create the virtual machines.
-      source_image_reference_version   = "latest"                #(Optional) Specifies the version of the image used to create the virtual machines.
+      source_image_reference_sku       = "byol"             #(Optional) Specifies the SKU of the image used to create the virtual machines.
+      source_image_reference_version   = "latest"           #(Optional) Specifies the version of the image used to create the virtual machines.
     }
     linux_virtual_machine_termination_notification = null /* [{ #(Optional) A termination_notification block as defined below.
       termination_notification_enabled = true           #(Required) Should the termination notification be enabled on this Virtual Machine? Defaults to false.
@@ -732,7 +732,7 @@ linux_virtual_machine_variables = {
       Contact        = "Manish.kumar10@adani.com"
     }
 
-    linux_virtual_machine_use_existing_vm_username                   = false              #(Required)should be set true if existing user name is used
+    linux_virtual_machine_use_existing_vm_username                   = false             #(Required)should be set true if existing user name is used
     linux_virtual_machine_generate_new_admin_password                = true              #(Required)admin_password should be generated if disable_password_authentication is false
     linux_virtual_machine_generate_new_ssh_key                       = true              #(Required)Should be true/false if linux_virtual_machine_disable_password_authentication is true
     linux_virtual_machine_admin_login_key_vault_name                 = "sdplzmgmtdckv01" #"existingkeyvaultscenario"
@@ -815,13 +815,13 @@ linux_virtual_machine_variables = {
         diff_disk_settings_option    = "Local"             # (Required) Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is Local. Changing this forces a new resource to be created.
         diff_disk_settings_placement = null                #(Optional) Specifies where to store the Ephemeral Disk. Possible values are CacheDisk and ResourceDisk. Defaults to CacheDisk. Changing this forces a new resource to be created.
       }
-      os_disk_disk_size_gb              = 120                 #(Optional) The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
+      os_disk_disk_size_gb              = 120                  #(Optional) The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
       os_disk_name                      = "SDLVMFWP02-disk-01" #(Optional) The name which should be used for the Internal OS Disk. Changing this forces a new resource to be created.
       os_disk_security_encryption_type  = null                 #(Optional) Encryption Type when the Virtual Machine is a Confidential VM. Possible values are VMGuestStateOnly and DiskWithVMGuestState. Changing this forces a new resource to be created.
       os_disk_write_accelerator_enabled = false                #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
     }
     linux_virtual_machine_resource_group_name = "sd-plz-connectivity-rg-01" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
-    linux_virtual_machine_size                = "Standard_D3_v2"           #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
+    linux_virtual_machine_size                = "Standard_D3_v2"            #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
     linux_virtual_machine_additional_capabilities = {                       #(Optional) A additional_capabilities block as defined below.
       additional_capabilities_ultra_ssd_enabled = false                     #(Optional) Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine? Defaults to false.
     }
@@ -850,20 +850,20 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_patch_assessment_mode = null           #(Optional) Specifies the mode of VM Guest Patching for the Virtual Machine. Possible values are AutomaticByPlatform or ImageDefault. Defaults to ImageDefault.
     linux_virtual_machine_patch_mode            = "ImageDefault" # (Optional) Specifies the mode of in-guest patching to this Linux Virtual Machine. Possible values are AutomaticByPlatform and ImageDefault. Defaults to ImageDefault. For more information on patch modes please see the product documentation.
     linux_virtual_machine_max_bid_price         = "-1"           #(Optional) The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the eviction_policy. Defaults to -1, which means that the Virtual Machine should not be evicted for price reasons.
-    linux_virtual_machine_plan                  = [{
-      plan_name      = "byol"                           #(Required) Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-      plan_product   = "panorama"                           #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-      plan_publisher = "paloaltonetworks"         #(Optional) A plan block as defined below. Changing this forces a new resource to be created.
+    linux_virtual_machine_plan = [{
+      plan_name      = "byol"             #(Required) Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
+      plan_product   = "panorama"         #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
+      plan_publisher = "paloaltonetworks" #(Optional) A plan block as defined below. Changing this forces a new resource to be created.
     }]
-    linux_virtual_machine_platform_fault_domain = null           #(Optional) Specifies the Platform Fault Domain in which this Linux Virtual Machine should be created. Defaults to -1, which means this will be automatically assigned to a fault domain that best maintains balance across the available fault domains. Changing this forces a new Linux Virtual Machine to be created.
-    linux_virtual_machine_priority              = "Regular"      #(Optional) Specifies the priority of this Virtual Machine. Possible values are Regular and Spot. Defaults to Regular. Changing this forces a new resource to be created.
-    linux_virtual_machine_provision_vm_agent    = false          #(Optional) Should the Azure VM Agent be provisioned on this Virtual Machine? Defaults to true. Changing this forces a new resource to be created.
-    linux_virtual_machine_secure_boot_enabled   = false          #(Optional) Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
-    linux_virtual_machine_source_image_reference = {             #Optional) A source_image_reference block as defined below. Changing this forces a new resource to be created.
-      source_image_reference_publisher = "paloaltonetworks"      #(Optional) Specifies the publisher of the image used to create the virtual machines.
+    linux_virtual_machine_platform_fault_domain = null      #(Optional) Specifies the Platform Fault Domain in which this Linux Virtual Machine should be created. Defaults to -1, which means this will be automatically assigned to a fault domain that best maintains balance across the available fault domains. Changing this forces a new Linux Virtual Machine to be created.
+    linux_virtual_machine_priority              = "Regular" #(Optional) Specifies the priority of this Virtual Machine. Possible values are Regular and Spot. Defaults to Regular. Changing this forces a new resource to be created.
+    linux_virtual_machine_provision_vm_agent    = false     #(Optional) Should the Azure VM Agent be provisioned on this Virtual Machine? Defaults to true. Changing this forces a new resource to be created.
+    linux_virtual_machine_secure_boot_enabled   = false     #(Optional) Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
+    linux_virtual_machine_source_image_reference = {        #Optional) A source_image_reference block as defined below. Changing this forces a new resource to be created.
+      source_image_reference_publisher = "paloaltonetworks" #(Optional) Specifies the publisher of the image used to create the virtual machines.
       source_image_reference_offer     = "panorama"         #(Optional) Specifies the offer of the image used to create the virtual machines.
-      source_image_reference_sku       = "byol"                  #(Optional) Specifies the SKU of the image used to create the virtual machines.
-      source_image_reference_version   = "latest"                #(Optional) Specifies the version of the image used to create the virtual machines.
+      source_image_reference_sku       = "byol"             #(Optional) Specifies the SKU of the image used to create the virtual machines.
+      source_image_reference_version   = "latest"           #(Optional) Specifies the version of the image used to create the virtual machines.
     }
     linux_virtual_machine_termination_notification = null /* [{ #(Optional) A termination_notification block as defined below.
       termination_notification_enabled = true           #(Required) Should the termination notification be enabled on this Virtual Machine? Defaults to false.
@@ -883,7 +883,7 @@ linux_virtual_machine_variables = {
       Contact        = "Manish.kumar10@adani.com"
     }
 
-    linux_virtual_machine_use_existing_vm_username                   = false              #(Required)should be set true if existing user name is used
+    linux_virtual_machine_use_existing_vm_username                   = false             #(Required)should be set true if existing user name is used
     linux_virtual_machine_generate_new_admin_password                = true              #(Required)admin_password should be generated if disable_password_authentication is false
     linux_virtual_machine_generate_new_ssh_key                       = true              #(Required)Should be true/false if linux_virtual_machine_disable_password_authentication is true
     linux_virtual_machine_admin_login_key_vault_name                 = "sdplzmgmtdckv01" #"existingkeyvaultscenario"
@@ -952,7 +952,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_admin_key_vault_resource_group_name                    = "sd-plz-management-rg" #Provide key vault resource group name to store credentials
     linux_virtual_machine_storage_account_resource_group_name                    = null                   #Provide value if linux_virtual_machine_is_boot_diagnostics_required is set to true
     linux_virtual_machine_disk_encryption_set_resource_group_name                = null                   #Resource group name of the disk encryption set. Provide value if linux_virtual_machine_is_disk_encryption_set_required is set to true
-    linux_virtual_machine_existing_admin_username_secret_name                    = null                  #Provide Key vault secret name to store admin username. Provide value if linux_virtual_machine_use_existing_vm_username is set to true.
+    linux_virtual_machine_existing_admin_username_secret_name                    = null                   #Provide Key vault secret name to store admin username. Provide value if linux_virtual_machine_use_existing_vm_username is set to true.
   }
 }
 
@@ -1032,7 +1032,7 @@ public_ip_variables = {
     public_ip_domain_name_label                        = null                               # (Optional) Label for the Domain Name. Will be used to make up the FQDN. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
     public_ip_prefix_id                                = null                               #  (Optional) If specified then public IP address allocated will be provided from the public IP prefix resource.
     public_ip_idle_timeout_in_minutes                  = "30"                               # (Optional) Specifies the timeout for the TCP idle connection. The value can be set between 4 and 30 minutes.
-    public_ip_zones                                    = []                               # (Optional) A collection containing the availability zone to allocate the Public IP in.
+    public_ip_zones                                    = []                                 # (Optional) A collection containing the availability zone to allocate the Public IP in.
     public_ip_edge_zone                                = null                               # (Optional) Specifies the Edge Zone within the Azure Region where this Public IP should exist. 
     public_ip_reverse_fqdn                             = null                               # (Optional) A fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
     public_ip_ip_tags                                  = null                               # (Optional) A mapping of IP tags to assign to the public IP.
@@ -1056,20 +1056,20 @@ public_ip_variables = {
 #LB
 lb_variables = {
   "lb_1" = {
-    lb_edge_zone                 = null #(Optional) Specifies the Edge Zone within the Azure Region where this Load Balancer should exist. Changing this forces a new Load Balancer to be created.
-    lb_frontend_ip_configuration =  {
+    lb_edge_zone = null #(Optional) Specifies the Edge Zone within the Azure Region where this Load Balancer should exist. Changing this forces a new Load Balancer to be created.
+    lb_frontend_ip_configuration = {
       "config1" = {
         frontend_ip_configuration_gateway_lb_frontend_ip_configuration_id = { #(Optional) The Frontend IP Configuration ID of a Gateway SKU Load Balancer.
           gateway_lb_name                = null                               # gateway load balancer name
           gateway_lb_resource_group_name = null                               # gateway load balancer resource group name
         }
         frontend_ip_configuration_name                          = "frontend-ip-config" #(Required) Specifies the name of the frontend IP configuration.
-        frontend_ip_configuration_private_ip_address            = null                      # (Optional) Private IP Address to assign to the Load Balancer. The last one and first four IPs in any range are reserved and cannot be manually assigned.
-        frontend_ip_configuration_private_ip_address_allocation = null                  #(Optional) The allocation method for the Private IP Address used by this Load Balancer. Possible values as Dynamic and Static.
-        frontend_ip_configuration_private_ip_address_version    = null                    #The version of IP that the Private IP Address is. Possible values are IPv4 or IPv6.
-        frontend_ip_configuration_public_ip_address_id = {                                  #(Optional) The ID of a Public IP Address which should be associated with the Load Balancer.
-          public_ip_name                = null                                              # public ip name
-          public_ip_resource_group_name = null                                              # public ip resource group name
+        frontend_ip_configuration_private_ip_address            = null                 # (Optional) Private IP Address to assign to the Load Balancer. The last one and first four IPs in any range are reserved and cannot be manually assigned.
+        frontend_ip_configuration_private_ip_address_allocation = null                 #(Optional) The allocation method for the Private IP Address used by this Load Balancer. Possible values as Dynamic and Static.
+        frontend_ip_configuration_private_ip_address_version    = null                 #The version of IP that the Private IP Address is. Possible values are IPv4 or IPv6.
+        frontend_ip_configuration_public_ip_address_id = {                             #(Optional) The ID of a Public IP Address which should be associated with the Load Balancer.
+          public_ip_name                = null                                         # public ip name
+          public_ip_resource_group_name = null                                         # public ip resource group name
         }
         frontend_ip_configuration_public_ip_prefix_id = { #(Optional) The ID of a Public IP Prefix which should be associated with the Load Balancer. Public IP Prefix can only be used with outbound rules.
           public_ip_prefix_name                = null     # public ip prefix name
@@ -1083,11 +1083,11 @@ lb_variables = {
         frontend_ip_configuration_zones = null #(Optional) Specifies a list of Availability Zones in which the IP Address for this Load Balancer should be located. Changing this forces a new Load Balancer to be created.
       }
     }
-    lb_location                  = "Central India"               # (Required) Specifies the supported Azure Region where the Load Balancer should be created.
-    lb_name                      = "sd-connectivity-fw-trust-lb" #(Required) Specifies the name of the Load Balancer.
-    lb_resource_group_name       = "sd-plz-connectivity-rg-01"   # (Required) The name of the Resource Group in which to create the Load Balancer.
-    lb_sku                       = "Standard"                    #(Optional) The SKU of the Azure Load Balancer. Accepted values are Basic, Standard and Gateway. Defaults to Basic.
-    lb_sku_tier                  = "Regional"                    #(Optional) sku_tier - (Optional) The SKU tier of this Load Balancer. Possible values are Global and Regional. Defaults to Regional. Changing this forces a new resource to be created.
+    lb_location            = "Central India"               # (Required) Specifies the supported Azure Region where the Load Balancer should be created.
+    lb_name                = "sd-connectivity-fw-trust-lb" #(Required) Specifies the name of the Load Balancer.
+    lb_resource_group_name = "sd-plz-connectivity-rg-01"   # (Required) The name of the Resource Group in which to create the Load Balancer.
+    lb_sku                 = "Standard"                    #(Optional) The SKU of the Azure Load Balancer. Accepted values are Basic, Standard and Gateway. Defaults to Basic.
+    lb_sku_tier            = "Regional"                    #(Optional) sku_tier - (Optional) The SKU tier of this Load Balancer. Possible values are Global and Regional. Defaults to Regional. Changing this forces a new resource to be created.
     lb_tags = {
       BU             = "ELZ",
       Role           = "Landing Zone",
@@ -1141,7 +1141,7 @@ nat_gateway_variables = {
     nat_gateway_location                = "Central India"             #(Optional) Specifies the supported Azure location where the NAT Gateway should exist. Changing this forces a new resource to be created.
     nat_gateway_resource_group_name     = "sd-plz-connectivity-rg-01" #(Required) Specifies the name of the Resource Group in which the NAT Gateway should exist. Changing this forces a new resource to be created.
     nat_gateway_sku_name                = "Standard"                  #(Optional) The SKU which should be used. At this time the only supported value is Standard. Defaults to Standard.
-    nat_gateway_zones                   = []                       #(Optional) Specifies a list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new NAT Gateway to be created.
+    nat_gateway_zones                   = []                          #(Optional) Specifies a list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new NAT Gateway to be created.
     nat_gateway_tags = {                                              #(Optional) A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
       BU             = "ELZ",
       Role           = "Landing Zone",
@@ -1168,61 +1168,73 @@ nat_gateway_public_ip_association_variables = {
 #NETWORK SECURITY GROUP
 network_security_group_variables = {
   "network_security_group_1" = {
-    network_security_group_name                = "pnsg000001" # (Required) Specifies the name of the network security group
-    network_security_group_resource_group_name = "prg000001"  # (Required) The name of the resource group in which to create the network security group
-    network_security_group_location            = "westus2"          # (Required) Specifies the supported Azure location where the resource exists
-    network_security_group_security_rule = {                        # (Optional) Map of objects representing security rules
+    network_security_group_name                = "sd-plz-connectivtity-nsg-01" # (Required) Specifies the name of the network security group
+    network_security_group_resource_group_name = "sd-plz-connectivity-rg-01"   # (Required) The name of the resource group in which to create the network security group
+    network_security_group_location            = "Central India"               # (Required) Specifies the supported Azure location where the resource exists
+    network_security_group_security_rule = {                                   # (Optional) Map of objects representing security rules
       "nsg_rule_01" = {
-        security_rule_name                                           = "pnsgrule000001" # (Required) The name of the security rule
-        security_rule_application_security_group_resource_group_name = null                   # (Optional) The resource group name of the application security group
-        security_rule_priority                                       = 100                    # (Required) Specifies the priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-        security_rule_direction                                      = "Inbound"              # (Required) The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are Inbound and Outbound.
-        security_rule_access                                         = "Allow"                # (Required) Specifies whether network traffic is allowed or denied. Possible values are Allow and Deny.
-        security_rule_protocol                                       = "Tcp"                  # (Required) Network protocol this rule applies to. Possible values include Tcp, Udp, Icmp, Esp, Ah or * (which matches all).
-        security_rule_source_port_range                              = "*"                    # (Optional) Source Port or Range. Integer or range between 0 and 65535 or * to match any. This is required if source_port_ranges is not specified
-        security_rule_source_port_ranges                             = null                   # (Optional) List of source ports or port ranges. This is required if source_port_range is not specified
-        security_rule_destination_port_range                         = "*"                    # (Optional) Destination Port or Range. Integer or range between 0 and 65535 or * to match any. This is required if destination_port_ranges is not specified.
-        security_rule_destination_port_ranges                        = null                   # (Optional) List of destination ports or port ranges. This is required if destination_port_range is not specified
-        security_rule_source_address_prefix                          = "*"                    # (Optional) CIDR or source IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used. This is required if source_address_prefixes is not specified.
-        security_rule_source_address_prefixes                        = null                   # (Optional) List of source address prefixes. Tags may not be used. This is required if source_address_prefix is not specified.
-        security_rule_destination_address_prefix                     = "*"                    # (Optional) CIDR or destination IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used. This is required if destination_address_prefixes is not specified.
-        security_rule_destination_address_prefixes                   = null                   # (Optional) List of destination address prefixes. Tags may not be used. This is required if destination_address_prefix is not specified.
-        security_rule_description                                    = "InboundAllow100"      # (Optional) A description for this rule. Restricted to 140 characters
-        security_rule_source_application_security_group_names        = null                   # (Optional) A List of source Application Security Group names
-        security_rule_destination_application_security_group_names   = null                   # (Optional) A List of destination Application Security Group names
+        security_rule_name                                           = "nsgrule01"       # (Required) The name of the security rule
+        security_rule_application_security_group_resource_group_name = null              # (Optional) The resource group name of the application security group
+        security_rule_priority                                       = 100               # (Required) Specifies the priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+        security_rule_direction                                      = "Inbound"         # (Required) The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are Inbound and Outbound.
+        security_rule_access                                         = "Allow"           # (Required) Specifies whether network traffic is allowed or denied. Possible values are Allow and Deny.
+        security_rule_protocol                                       = "Tcp"             # (Required) Network protocol this rule applies to. Possible values include Tcp, Udp, Icmp, Esp, Ah or * (which matches all).
+        security_rule_source_port_range                              = "*"               # (Optional) Source Port or Range. Integer or range between 0 and 65535 or * to match any. This is required if source_port_ranges is not specified
+        security_rule_source_port_ranges                             = null              # (Optional) List of source ports or port ranges. This is required if source_port_range is not specified
+        security_rule_destination_port_range                         = "*"               # (Optional) Destination Port or Range. Integer or range between 0 and 65535 or * to match any. This is required if destination_port_ranges is not specified.
+        security_rule_destination_port_ranges                        = null              # (Optional) List of destination ports or port ranges. This is required if destination_port_range is not specified
+        security_rule_source_address_prefix                          = "*"               # (Optional) CIDR or source IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used. This is required if source_address_prefixes is not specified.
+        security_rule_source_address_prefixes                        = null              # (Optional) List of source address prefixes. Tags may not be used. This is required if source_address_prefix is not specified.
+        security_rule_destination_address_prefix                     = "*"               # (Optional) CIDR or destination IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used. This is required if destination_address_prefixes is not specified.
+        security_rule_destination_address_prefixes                   = null              # (Optional) List of destination address prefixes. Tags may not be used. This is required if destination_address_prefix is not specified.
+        security_rule_description                                    = "InboundAllow100" # (Optional) A description for this rule. Restricted to 140 characters
+        security_rule_source_application_security_group_names        = null              # (Optional) A List of source Application Security Group names
+        security_rule_destination_application_security_group_names   = null              # (Optional) A List of destination Application Security Group names
     } }
     network_security_group_tags = { #(Optional) A mapping of tags which should be assigned to the Network Security Group.
-      Created_By = "p",
-      Department = "CIS"
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
     }
   },
   "network_security_group_2" = {
-    network_security_group_name                = "pnsg000002" # (Required) Specifies the name of the network security group
-    network_security_group_resource_group_name = "prg000001"  # (Required) The name of the resource group in which to create the network security group
-    network_security_group_location            = "westus2"          # (Required) Specifies the supported Azure location where the resource exists
-    network_security_group_security_rule = {                        # (Optional) Map of objects representing security rules
+    network_security_group_name                = "sd-plz-connectivtity-nsg-02" # (Required) Specifies the name of the network security group
+    network_security_group_resource_group_name = "sd-plz-connectivity-rg-01"   # (Required) The name of the resource group in which to create the network security group
+    network_security_group_location            = "Central India"               # (Required) Specifies the supported Azure location where the resource exists
+    network_security_group_security_rule = {                                   # (Optional) Map of objects representing security rules
       "nsg_rule_01" = {
-        security_rule_name                                           = "pnsgrule000001" # (Required) The name of the security rule
-        security_rule_application_security_group_resource_group_name = null                   # (Optional) The resource group name of the application security group
-        security_rule_priority                                       = 100                    # (Required) Specifies the priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-        security_rule_direction                                      = "Inbound"              # (Required) The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are Inbound and Outbound.
-        security_rule_access                                         = "Allow"                # (Required) Specifies whether network traffic is allowed or denied. Possible values are Allow and Deny.
-        security_rule_protocol                                       = "Tcp"                  # (Required) Network protocol this rule applies to. Possible values include Tcp, Udp, Icmp, Esp, Ah or * (which matches all).
-        security_rule_source_port_range                              = "*"                    # (Optional) Source Port or Range. Integer or range between 0 and 65535 or * to match any. This is required if source_port_ranges is not specified
-        security_rule_source_port_ranges                             = null                   # (Optional) List of source ports or port ranges. This is required if source_port_range is not specified
-        security_rule_destination_port_range                         = "*"                    # (Optional) Destination Port or Range. Integer or range between 0 and 65535 or * to match any. This is required if destination_port_ranges is not specified.
-        security_rule_destination_port_ranges                        = null                   # (Optional) List of destination ports or port ranges. This is required if destination_port_range is not specified
-        security_rule_source_address_prefix                          = "*"                    # (Optional) CIDR or source IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used. This is required if source_address_prefixes is not specified.
-        security_rule_source_address_prefixes                        = null                   # (Optional) List of source address prefixes. Tags may not be used. This is required if source_address_prefix is not specified.
-        security_rule_destination_address_prefix                     = "*"                    # (Optional) CIDR or destination IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used. This is required if destination_address_prefixes is not specified.
-        security_rule_destination_address_prefixes                   = null                   # (Optional) List of destination address prefixes. Tags may not be used. This is required if destination_address_prefix is not specified.
-        security_rule_description                                    = "InboundAllow100"      # (Optional) A description for this rule. Restricted to 140 characters
-        security_rule_source_application_security_group_names        = null                   # (Optional) A List of source Application Security Group names
-        security_rule_destination_application_security_group_names   = null                   # (Optional) A List of destination Application Security Group names
+        security_rule_name                                           = "nsgrule01"       # (Required) The name of the security rule
+        security_rule_application_security_group_resource_group_name = null              # (Optional) The resource group name of the application security group
+        security_rule_priority                                       = 100               # (Required) Specifies the priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+        security_rule_direction                                      = "Inbound"         # (Required) The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are Inbound and Outbound.
+        security_rule_access                                         = "Allow"           # (Required) Specifies whether network traffic is allowed or denied. Possible values are Allow and Deny.
+        security_rule_protocol                                       = "Tcp"             # (Required) Network protocol this rule applies to. Possible values include Tcp, Udp, Icmp, Esp, Ah or * (which matches all).
+        security_rule_source_port_range                              = "*"               # (Optional) Source Port or Range. Integer or range between 0 and 65535 or * to match any. This is required if source_port_ranges is not specified
+        security_rule_source_port_ranges                             = null              # (Optional) List of source ports or port ranges. This is required if source_port_range is not specified
+        security_rule_destination_port_range                         = "*"               # (Optional) Destination Port or Range. Integer or range between 0 and 65535 or * to match any. This is required if destination_port_ranges is not specified.
+        security_rule_destination_port_ranges                        = null              # (Optional) List of destination ports or port ranges. This is required if destination_port_range is not specified
+        security_rule_source_address_prefix                          = "*"               # (Optional) CIDR or source IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used. This is required if source_address_prefixes is not specified.
+        security_rule_source_address_prefixes                        = null              # (Optional) List of source address prefixes. Tags may not be used. This is required if source_address_prefix is not specified.
+        security_rule_destination_address_prefix                     = "*"               # (Optional) CIDR or destination IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used. This is required if destination_address_prefixes is not specified.
+        security_rule_destination_address_prefixes                   = null              # (Optional) List of destination address prefixes. Tags may not be used. This is required if destination_address_prefix is not specified.
+        security_rule_description                                    = "InboundAllow100" # (Optional) A description for this rule. Restricted to 140 characters
+        security_rule_source_application_security_group_names        = null              # (Optional) A List of source Application Security Group names
+        security_rule_destination_application_security_group_names   = null              # (Optional) A List of destination Application Security Group names
     } }
     network_security_group_tags = { #(Optional) A mapping of tags which should be assigned to the Network Security Group.
-      Created_By = "p",
-      Department = "CIS"
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
     }
   }
 }
@@ -1243,9 +1255,9 @@ network_security_group_association_variables = {
     network_interface_security_group_association = null # (Optional) The block for security group association with network interface
     subnet_security_group_association = [
       {
-        network_security_group_association_network_security_group_name                = "g000001"  # (Required)  The name of network_security_group_name to assiciate with subnet
-        network_security_group_association_network_security_group_resource_group_name = "rg000001"   # (Required) The resource group name of security group.
-        network_security_group_association_subnet_name                                = "sn000001"   # (Required) The name subnet which needs to be associated with network security group
+        network_security_group_association_network_security_group_name                = "g000001"     # (Required)  The name of network_security_group_name to assiciate with subnet
+        network_security_group_association_network_security_group_resource_group_name = "rg000001"    # (Required) The resource group name of security group.
+        network_security_group_association_subnet_name                                = "sn000001"    # (Required) The name subnet which needs to be associated with network security group
         network_security_group_association_virtual_network_name                       = "pvnet000001" # (Required) The name of the virtual network where subnets are created
         network_security_group_association_virtual_network_resource_group_name        = "prg000002"   # (Required) The resource group name of the virtual network
       }
