@@ -699,11 +699,11 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_patch_assessment_mode = null           #(Optional) Specifies the mode of VM Guest Patching for the Virtual Machine. Possible values are AutomaticByPlatform or ImageDefault. Defaults to ImageDefault.
     linux_virtual_machine_patch_mode            = "ImageDefault" # (Optional) Specifies the mode of in-guest patching to this Linux Virtual Machine. Possible values are AutomaticByPlatform and ImageDefault. Defaults to ImageDefault. For more information on patch modes please see the product documentation.
     linux_virtual_machine_max_bid_price         = null           #(Optional) The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the eviction_policy. Defaults to -1, which means that the Virtual Machine should not be evicted for price reasons.
-    linux_virtual_machine_plan                  = {
+    linux_virtual_machine_plan                  = [{
       plan_name      = "byol"                           #(Required) Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
       plan_product   = "vmseries-flex"                           #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
       plan_publisher = "paloaltonetworks"         #(Optional) A plan block as defined below. Changing this forces a new resource to be created.
-    }
+    }]
     linux_virtual_machine_platform_fault_domain = null           #(Optional) Specifies the Platform Fault Domain in which this Linux Virtual Machine should be created. Defaults to -1, which means this will be automatically assigned to a fault domain that best maintains balance across the available fault domains. Changing this forces a new Linux Virtual Machine to be created.
     linux_virtual_machine_priority              = "Regular"      #(Optional) Specifies the priority of this Virtual Machine. Possible values are Regular and Spot. Defaults to Regular. Changing this forces a new resource to be created.
     linux_virtual_machine_provision_vm_agent    = false          #(Optional) Should the Azure VM Agent be provisioned on this Virtual Machine? Defaults to true. Changing this forces a new resource to be created.
@@ -850,11 +850,11 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_patch_assessment_mode = null           #(Optional) Specifies the mode of VM Guest Patching for the Virtual Machine. Possible values are AutomaticByPlatform or ImageDefault. Defaults to ImageDefault.
     linux_virtual_machine_patch_mode            = "ImageDefault" # (Optional) Specifies the mode of in-guest patching to this Linux Virtual Machine. Possible values are AutomaticByPlatform and ImageDefault. Defaults to ImageDefault. For more information on patch modes please see the product documentation.
     linux_virtual_machine_max_bid_price         = "-1"           #(Optional) The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the eviction_policy. Defaults to -1, which means that the Virtual Machine should not be evicted for price reasons.
-    linux_virtual_machine_plan                  = {
+    linux_virtual_machine_plan                  = [{
       plan_name      = "byol"                           #(Required) Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
       plan_product   = "vmseries-flex"                           #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
       plan_publisher = "paloaltonetworks"         #(Optional) A plan block as defined below. Changing this forces a new resource to be created.
-    }
+    }]
     linux_virtual_machine_platform_fault_domain = null           #(Optional) Specifies the Platform Fault Domain in which this Linux Virtual Machine should be created. Defaults to -1, which means this will be automatically assigned to a fault domain that best maintains balance across the available fault domains. Changing this forces a new Linux Virtual Machine to be created.
     linux_virtual_machine_priority              = "Regular"      #(Optional) Specifies the priority of this Virtual Machine. Possible values are Regular and Spot. Defaults to Regular. Changing this forces a new resource to be created.
     linux_virtual_machine_provision_vm_agent    = false          #(Optional) Should the Azure VM Agent be provisioned on this Virtual Machine? Defaults to true. Changing this forces a new resource to be created.
