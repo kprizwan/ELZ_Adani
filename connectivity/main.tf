@@ -128,6 +128,13 @@ module "nat_gateway_public_ip_association" {
   depends_on                                  = [module.public_ip, module.nat_gateway]
 }
 
+#NETWORK SECURITY GROUP
+module "network_security_group" {
+  source                           = "../"
+  network_security_group_variables = var.network_security_group_variables
+  depends_on                       = [module.application_security_group]
+}
+
 #VPN GATEWAY
 /*module "vpn_gateway" {
   source                = "../Azure/vpn_gateway/v1.3.0"
