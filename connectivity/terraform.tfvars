@@ -670,7 +670,7 @@ linux_virtual_machine_variables = {
       os_disk_write_accelerator_enabled = false                #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
     }
     linux_virtual_machine_resource_group_name = "sd-plz-connectivity-rg-01" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
-    linux_virtual_machine_size                = "Standard_D4s_v5"           #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
+    linux_virtual_machine_size                = "Standard_D3_v2"           #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
     linux_virtual_machine_additional_capabilities = {                       #(Optional) A additional_capabilities block as defined below.
       additional_capabilities_ultra_ssd_enabled = false                     #(Optional) Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine? Defaults to false.
     }
@@ -817,7 +817,7 @@ linux_virtual_machine_variables = {
       os_disk_write_accelerator_enabled = false                #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
     }
     linux_virtual_machine_resource_group_name = "sd-plz-connectivity-rg-01" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
-    linux_virtual_machine_size                = "Standard_D4s_v5"           #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
+    linux_virtual_machine_size                = "Standard_D3_v2"           #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
     linux_virtual_machine_additional_capabilities = {                       #(Optional) A additional_capabilities block as defined below.
       additional_capabilities_ultra_ssd_enabled = false                     #(Optional) Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine? Defaults to false.
     }
