@@ -135,7 +135,7 @@ module "network_security_group" {
     azurerm = azurerm.connectivity
   }
   network_security_group_variables = var.network_security_group_variables
-  depends_on                       = [module.application_security_group]
+  depends_on                       = [module.resource_group]
 }
 
 /*#Network Security Group Association
