@@ -701,7 +701,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_max_bid_price         = "-1"           #(Optional) The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the eviction_policy. Defaults to -1, which means that the Virtual Machine should not be evicted for price reasons.
     linux_virtual_machine_plan = [{
       plan_name      = "byol"             #(Required) Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-      plan_product   = "panorama"         #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
+      plan_product   = "vmseries-flex"         #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
       plan_publisher = "paloaltonetworks" #(Optional) A plan block as defined below. Changing this forces a new resource to be created.
     }]
     linux_virtual_machine_platform_fault_domain = null      #(Optional) Specifies the Platform Fault Domain in which this Linux Virtual Machine should be created. Defaults to -1, which means this will be automatically assigned to a fault domain that best maintains balance across the available fault domains. Changing this forces a new Linux Virtual Machine to be created.
@@ -710,7 +710,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_secure_boot_enabled   = false     #(Optional) Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
     linux_virtual_machine_source_image_reference = {        #Optional) A source_image_reference block as defined below. Changing this forces a new resource to be created.
       source_image_reference_publisher = "paloaltonetworks" #(Optional) Specifies the publisher of the image used to create the virtual machines.
-      source_image_reference_offer     = "panorama"         #(Optional) Specifies the offer of the image used to create the virtual machines.
+      source_image_reference_offer     = "vmseries-flex"         #(Optional) Specifies the offer of the image used to create the virtual machines.
       source_image_reference_sku       = "byol"             #(Optional) Specifies the SKU of the image used to create the virtual machines.
       source_image_reference_version   = "latest"           #(Optional) Specifies the version of the image used to create the virtual machines.
     }
@@ -852,7 +852,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_max_bid_price         = "-1"           #(Optional) The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the eviction_policy. Defaults to -1, which means that the Virtual Machine should not be evicted for price reasons.
     linux_virtual_machine_plan = [{
       plan_name      = "byol"             #(Required) Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-      plan_product   = "panorama"         #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
+      plan_product   = "vmseries-flex"         #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
       plan_publisher = "paloaltonetworks" #(Optional) A plan block as defined below. Changing this forces a new resource to be created.
     }]
     linux_virtual_machine_platform_fault_domain = null      #(Optional) Specifies the Platform Fault Domain in which this Linux Virtual Machine should be created. Defaults to -1, which means this will be automatically assigned to a fault domain that best maintains balance across the available fault domains. Changing this forces a new Linux Virtual Machine to be created.
@@ -861,7 +861,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_secure_boot_enabled   = false     #(Optional) Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
     linux_virtual_machine_source_image_reference = {        #Optional) A source_image_reference block as defined below. Changing this forces a new resource to be created.
       source_image_reference_publisher = "paloaltonetworks" #(Optional) Specifies the publisher of the image used to create the virtual machines.
-      source_image_reference_offer     = "panorama"         #(Optional) Specifies the offer of the image used to create the virtual machines.
+      source_image_reference_offer     = "vmseries-flex"         #(Optional) Specifies the offer of the image used to create the virtual machines.
       source_image_reference_sku       = "byol"             #(Optional) Specifies the SKU of the image used to create the virtual machines.
       source_image_reference_version   = "latest"           #(Optional) Specifies the version of the image used to create the virtual machines.
     }
