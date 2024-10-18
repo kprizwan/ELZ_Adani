@@ -73,3 +73,15 @@ module "network_security_group_association" {
   depends_on                                   = [module.network_security_group, module.subnet, module.network_interface]
 }*/
 
+#LINUX VM
+
+module "linux_virtual_machine" {
+  source = "../Azure/linux_virtual_machine/v1.3.0"
+  providers = {
+    azurerm.linux_vm_sub  = azurerm.management
+    azurerm.key_vault_sub = azurerm.management
+    azurerm.gallery_sub   = azurerm.management
+  }
+  linux_virtual_machine_variables = var.linux_virtual_machine_variables
+  depends_on                      = [module.key_vault]
+}
