@@ -23,9 +23,9 @@ resource_group_variables = {
 #VIRTUAL NETWORK 
 virtual_network_variables = {
   "virtual_network_1" = {
-    virtual_network_name                    = "sd-plz-Connectivity-Hub-VNET"                                                                                                                                                                                                         #(Required) The name of the virtual network.
+    virtual_network_name                    = "sd-plz-Connectivity-dr-Hub-VNET"                                                                                                                                                                                                         #(Required) The name of the virtual network.
     virtual_network_location                = "South India"                                                                                                                                                                                                                        #(Required) The location/region where the virtual network is created.
-    virtual_network_resource_group_name     = "sd-plz-connectivity-rg-01"                                                                                                                                                                                                            #(Required) The name of the resource group in which to create the virtual network.
+    virtual_network_resource_group_name     = "sd-plz-connectivity-dr-rg-01"                                                                                                                                                                                                            #(Required) The name of the resource group in which to create the virtual network.
     virtual_network_address_space           = ["10.248.6.0/24", "10.248.7.0/24", "10.248.8.0/24", "10.248.9.0/24", "10.248.10.0/24", "10.248.11.0/24", "10.248.12.0/24", "10.248.13.0/24", "10.248.14.0/24", "10.248.15.0/24", "10.248.16.0/24", "10.248.17.0/24", "10.248.18.0/24"] #(Required) The address space that is used the virtual network.
     virtual_network_dns_servers             = null                                                                                                                                                                                                                                   #(Optional) List of IP addresses of DNS servers.Since dns_servers can be configured both inline and via the separate azurerm_virtual_network_dns_servers resource, we have to explicitly set it to empty slice ([]) to remove it.
     virtual_network_flow_timeout_in_minutes = null                                                                                                                                                                                                                                   #(Optional) The flow timeout in minutes for the Virtual Network, which is used to enable connection tracking for intra-VM flows. Possible values are between 4 and 30 minutes.
@@ -56,10 +56,10 @@ virtual_network_variables = {
 #SUBNET
 subnet_variables = {
   "subnet_1" = {
-    subnet_name                                          = "sd-plz-Connectivity-Hub-VNET-NAT-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
-    subnet_resource_group_name                           = "sd-plz-connectivity-rg-01"                #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
+    subnet_name                                          = "sd-plz-Connectivity-dr-Hub-VNET-NAT-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
+    subnet_resource_group_name                           = "sd-plz-connectivity-dr-rg-01"                #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
     subnet_address_prefixes                              = ["10.248.6.0/26"]                          #(Required) The address prefixes to use for the subnet.
-    subnet_virtual_network_name                          = "sd-plz-Connectivity-Hub-VNET"             #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
+    subnet_virtual_network_name                          = "sd-plz-Connectivity-dr-Hub-VNET"             #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
     subnet_private_link_service_network_policies_enabled = null                                       # (Optional) Enable or Disable network policies for the private link service on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_private_endpoint_network_policies_enabled     = null                                       # (Optional) Enable or Disable network policies for the private endpoint on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_service_endpoint_policy_ids                   = null                                       #(Optional) The list of IDs of Service Endpoint Policies to associate with the subnet.
@@ -71,10 +71,10 @@ subnet_variables = {
     }]*/
   },
   "subnet_2" = {
-    subnet_name                                          = "sd-plz-Connectivity-Hub-VNET-FW-Mgmt-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
-    subnet_resource_group_name                           = "sd-plz-connectivity-rg-01"                    #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
+    subnet_name                                          = "sd-plz-Connectivity-dr-Hub-VNET-FW-Mgmt-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
+    subnet_resource_group_name                           = "sd-plz-connectivity-dr-rg-01"                    #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
     subnet_address_prefixes                              = ["10.248.7.128/27"]                            #(Required) The address prefixes to use for the subnet.
-    subnet_virtual_network_name                          = "sd-plz-Connectivity-Hub-VNET"                 #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
+    subnet_virtual_network_name                          = "sd-plz-Connectivity-dr-Hub-VNET"                 #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
     subnet_private_link_service_network_policies_enabled = null                                           # (Optional) Enable or Disable network policies for the private link service on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_private_endpoint_network_policies_enabled     = null                                           # (Optional) Enable or Disable network policies for the private endpoint on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_service_endpoint_policy_ids                   = null                                           #(Optional) The list of IDs of Service Endpoint Policies to associate with the subnet.
@@ -86,10 +86,10 @@ subnet_variables = {
     }]*/
   },
   "subnet_3" = {
-    subnet_name                                          = "sd-plz-Connectivity-Hub-VNET-FW-UnTrust-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
-    subnet_resource_group_name                           = "sd-plz-connectivity-rg-01"                       #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
+    subnet_name                                          = "sd-plz-Connectivity-dr-Hub-VNET-FW-UnTrust-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
+    subnet_resource_group_name                           = "sd-plz-connectivity-dr-rg-01"                       #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
     subnet_address_prefixes                              = ["10.248.7.0/26"]                                 #(Required) The address prefixes to use for the subnet.
-    subnet_virtual_network_name                          = "sd-plz-Connectivity-Hub-VNET"                    #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
+    subnet_virtual_network_name                          = "sd-plz-Connectivity-dr-Hub-VNET"                    #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
     subnet_private_link_service_network_policies_enabled = null                                              # (Optional) Enable or Disable network policies for the private link service on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_private_endpoint_network_policies_enabled     = null                                              # (Optional) Enable or Disable network policies for the private endpoint on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_service_endpoint_policy_ids                   = null                                              #(Optional) The list of IDs of Service Endpoint Policies to associate with the subnet.
@@ -101,10 +101,10 @@ subnet_variables = {
     }]*/
   },
   "subnet_4" = {
-    subnet_name                                          = "sd-plz-Connectivity-Hub-VNET-FW-UnTrust-SNET-02" # (Required) The name of the subnet. Changing this forces a new resource to be created.
-    subnet_resource_group_name                           = "sd-plz-connectivity-rg-01"                       #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
+    subnet_name                                          = "sd-plz-Connectivity-dr-Hub-VNET-FW-UnTrust-SNET-02" # (Required) The name of the subnet. Changing this forces a new resource to be created.
+    subnet_resource_group_name                           = "sd-plz-connectivity-dr-rg-01"                       #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
     subnet_address_prefixes                              = ["10.248.7.64/26"]                                #(Required) The address prefixes to use for the subnet.
-    subnet_virtual_network_name                          = "sd-plz-Connectivity-Hub-VNET"                    #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
+    subnet_virtual_network_name                          = "sd-plz-Connectivity-dr-Hub-VNET"                    #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
     subnet_private_link_service_network_policies_enabled = null                                              # (Optional) Enable or Disable network policies for the private link service on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_private_endpoint_network_policies_enabled     = null                                              # (Optional) Enable or Disable network policies for the private endpoint on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_service_endpoint_policy_ids                   = null                                              #(Optional) The list of IDs of Service Endpoint Policies to associate with the subnet.
@@ -116,10 +116,10 @@ subnet_variables = {
     }]*/
   },
   "subnet_5" = {
-    subnet_name                                          = "ssd-plz-Connectivity-Hub-VNET-FW-Trust-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
-    subnet_resource_group_name                           = "sd-plz-connectivity-rg-01"                      #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
+    subnet_name                                          = "ssd-plz-Connectivity-dr-Hub-VNET-FW-Trust-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
+    subnet_resource_group_name                           = "sd-plz-connectivity-dr-rg-01"                      #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
     subnet_address_prefixes                              = ["10.248.8.0/26"]                                #(Required) The address prefixes to use for the subnet.
-    subnet_virtual_network_name                          = "sd-plz-Connectivity-Hub-VNET"                   #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
+    subnet_virtual_network_name                          = "sd-plz-Connectivity-dr-Hub-VNET"                   #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
     subnet_private_link_service_network_policies_enabled = null                                             # (Optional) Enable or Disable network policies for the private link service on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_private_endpoint_network_policies_enabled     = null                                             # (Optional) Enable or Disable network policies for the private endpoint on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_service_endpoint_policy_ids                   = null                                             #(Optional) The list of IDs of Service Endpoint Policies to associate with the subnet.
@@ -131,10 +131,10 @@ subnet_variables = {
     }]*/
   },
   "subnet_6" = {
-    subnet_name                                          = "sd-plz-Connectivity-Hub-VNET-FW-Trust-SNET-02" # (Required) The name of the subnet. Changing this forces a new resource to be created.
-    subnet_resource_group_name                           = "sd-plz-connectivity-rg-01"                     #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
+    subnet_name                                          = "sd-plz-Connectivity-dr-Hub-VNET-FW-Trust-SNET-02" # (Required) The name of the subnet. Changing this forces a new resource to be created.
+    subnet_resource_group_name                           = "sd-plz-connectivity-dr-rg-01"                     #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
     subnet_address_prefixes                              = ["10.248.8.64/26"]                              #(Required) The address prefixes to use for the subnet.
-    subnet_virtual_network_name                          = "sd-plz-Connectivity-Hub-VNET"                  #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
+    subnet_virtual_network_name                          = "sd-plz-Connectivity-dr-Hub-VNET"                  #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
     subnet_private_link_service_network_policies_enabled = null                                            # (Optional) Enable or Disable network policies for the private link service on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_private_endpoint_network_policies_enabled     = null                                            # (Optional) Enable or Disable network policies for the private endpoint on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_service_endpoint_policy_ids                   = null                                            #(Optional) The list of IDs of Service Endpoint Policies to associate with the subnet.
@@ -146,10 +146,10 @@ subnet_variables = {
     }]*/
   },
   "subnet_7" = {
-    subnet_name                                          = "sd-plz-Connectivity-Hub-VNET-FW-Intranet-LB-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
-    subnet_resource_group_name                           = "sd-plz-connectivity-rg-01"                           #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
+    subnet_name                                          = "sd-plz-Connectivity-dr-Hub-VNET-FW-Intranet-LB-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
+    subnet_resource_group_name                           = "sd-plz-connectivity-dr-rg-01"                           #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
     subnet_address_prefixes                              = ["10.248.9.0/27"]                                     #(Required) The address prefixes to use for the subnet.
-    subnet_virtual_network_name                          = "sd-plz-Connectivity-Hub-VNET"                        #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
+    subnet_virtual_network_name                          = "sd-plz-Connectivity-dr-Hub-VNET"                        #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
     subnet_private_link_service_network_policies_enabled = null                                                  # (Optional) Enable or Disable network policies for the private link service on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_private_endpoint_network_policies_enabled     = null                                                  # (Optional) Enable or Disable network policies for the private endpoint on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_service_endpoint_policy_ids                   = null                                                  #(Optional) The list of IDs of Service Endpoint Policies to associate with the subnet.
@@ -161,10 +161,10 @@ subnet_variables = {
     }]*/
   },
   "subnet_8" = {
-    subnet_name                                          = "sd-plz-Connectivity-Hub-VNET-AGW-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
-    subnet_resource_group_name                           = "sd-plz-connectivity-rg-01"                #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
+    subnet_name                                          = "sd-plz-Connectivity-dr-Hub-VNET-AGW-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
+    subnet_resource_group_name                           = "sd-plz-connectivity-dr-rg-01"                #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
     subnet_address_prefixes                              = ["10.248.10.0/24"]                         #(Required) The address prefixes to use for the subnet.
-    subnet_virtual_network_name                          = "sd-plz-Connectivity-Hub-VNET"             #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
+    subnet_virtual_network_name                          = "sd-plz-Connectivity-dr-Hub-VNET"             #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
     subnet_private_link_service_network_policies_enabled = null                                       # (Optional) Enable or Disable network policies for the private link service on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_private_endpoint_network_policies_enabled     = null                                       # (Optional) Enable or Disable network policies for the private endpoint on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_service_endpoint_policy_ids                   = null                                       #(Optional) The list of IDs of Service Endpoint Policies to associate with the subnet.
@@ -177,9 +177,9 @@ subnet_variables = {
   },
   "subnet_9" = {
     subnet_name                                          = "GatewaySubnet"                # (Required) The name of the subnet. Changing this forces a new resource to be created.
-    subnet_resource_group_name                           = "sd-plz-connectivity-rg-01"    #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
+    subnet_resource_group_name                           = "sd-plz-connectivity-dr-rg-01"    #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
     subnet_address_prefixes                              = ["10.248.11.0/26"]             #(Required) The address prefixes to use for the subnet.
-    subnet_virtual_network_name                          = "sd-plz-Connectivity-Hub-VNET" #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
+    subnet_virtual_network_name                          = "sd-plz-Connectivity-dr-Hub-VNET" #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
     subnet_private_link_service_network_policies_enabled = null                           # (Optional) Enable or Disable network policies for the private link service on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_private_endpoint_network_policies_enabled     = null                           # (Optional) Enable or Disable network policies for the private endpoint on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_service_endpoint_policy_ids                   = null                           #(Optional) The list of IDs of Service Endpoint Policies to associate with the subnet.
@@ -191,10 +191,10 @@ subnet_variables = {
     }]*/
   },
   "subnet_10" = {
-    subnet_name                                          = "sd-plz-Connectivity-Hub-VNET-APIM-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
-    subnet_resource_group_name                           = "sd-plz-connectivity-rg-01"                 #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
+    subnet_name                                          = "sd-plz-Connectivity-dr-Hub-VNET-APIM-SNET-01" # (Required) The name of the subnet. Changing this forces a new resource to be created.
+    subnet_resource_group_name                           = "sd-plz-connectivity-dr-rg-01"                 #(Required) The name of the resource group in which to create the subnet. Changing this forces a new resource to be created.
     subnet_address_prefixes                              = ["10.248.12.0/24"]                          #(Required) The address prefixes to use for the subnet.
-    subnet_virtual_network_name                          = "sd-plz-Connectivity-Hub-VNET"              #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
+    subnet_virtual_network_name                          = "sd-plz-Connectivity-dr-Hub-VNET"              #(Required) The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
     subnet_private_link_service_network_policies_enabled = null                                        # (Optional) Enable or Disable network policies for the private link service on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_private_endpoint_network_policies_enabled     = null                                        # (Optional) Enable or Disable network policies for the private endpoint on the subnet. Setting this to true will Enable the policy and setting this to false will Disable the policy. Defaults to true.
     subnet_service_endpoint_policy_ids                   = null                                        #(Optional) The list of IDs of Service Endpoint Policies to associate with the subnet.
@@ -213,7 +213,7 @@ network_interface_variables = {
   "network_interface_1" = {
     network_interface_name                          = "sd-plz-sdlvmfwp01-untrust-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
     network_interface_location                      = "South India"                 #The location where the Network Interface should exist. Changing this forces a new resource to be created.
-    network_interface_resource_group_name           = "sd-plz-connectivity-rg-01"     #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
+    network_interface_resource_group_name           = "sd-plz-connectivity-dr-rg-01"     #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
     network_interface_auxiliary_mode                = null                            # (Optional) Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). Possible values are AcceleratedConnections and Floating.
     network_interface_auxiliary_sku                 = null                            # (Optional) Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are A1, A2, A4 and A8.
     network_interface_dns_servers                   = []                              #if provided, it will override the DNS server value defined in vnet module
@@ -231,7 +231,7 @@ network_interface_variables = {
         ip_configuration_subnet = ({
           subnet_virtual_network_name                = "sd-plz-Connectivity-Hub-VNET"                    #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
           subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-UnTrust-SNET-01" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
-          subnet_virtual_network_resource_group_name = "sd-plz-connectivity-rg-01"                       #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
+          subnet_virtual_network_resource_group_name = "sd-plz-connectivity-dr-rg-01"                       #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
         })
         ip_configuration_public_ip     = null
         ip_configuration_primary       = true #Is this the Primary IP Configuration? Must be true for the first ip_configuration when multiple are specified. Defaults to false.Must be true for the first ip_configuration when multiple are specified
@@ -252,7 +252,7 @@ network_interface_variables = {
   "network_interface_2" = {
     network_interface_name                          = "sd-plz-sdlvmfwp01-trust-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
     network_interface_location                      = "South India"               #The location where the Network Interface should exist. Changing this forces a new resource to be created.
-    network_interface_resource_group_name           = "sd-plz-connectivity-rg-01"   #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
+    network_interface_resource_group_name           = "sd-plz-connectivity-dr-rg-01"   #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
     network_interface_auxiliary_mode                = null                          # (Optional) Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). Possible values are AcceleratedConnections and Floating.
     network_interface_auxiliary_sku                 = null                          # (Optional) Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are A1, A2, A4 and A8.
     network_interface_dns_servers                   = []                            #if provided, it will override the DNS server value defined in vnet module
@@ -270,7 +270,7 @@ network_interface_variables = {
         ip_configuration_subnet = ({
           subnet_virtual_network_name                = "sd-plz-Connectivity-Hub-VNET"                   #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
           subnet_name                                = "ssd-plz-Connectivity-Hub-VNET-FW-Trust-SNET-01" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
-          subnet_virtual_network_resource_group_name = "sd-plz-connectivity-rg-01"                      #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
+          subnet_virtual_network_resource_group_name = "sd-plz-connectivity-dr-rg-01"                      #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
         })
         ip_configuration_public_ip     = null
         ip_configuration_primary       = true #Is this the Primary IP Configuration? Must be true for the first ip_configuration when multiple are specified. Defaults to false.Must be true for the first ip_configuration when multiple are specified
@@ -291,7 +291,7 @@ network_interface_variables = {
   "network_interface_3" = {
     network_interface_name                          = "sd-plz-sdlvmfwp01-mgmt-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
     network_interface_location                      = "South India"              #The location where the Network Interface should exist. Changing this forces a new resource to be created.
-    network_interface_resource_group_name           = "sd-plz-connectivity-rg-01"  #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
+    network_interface_resource_group_name           = "sd-plz-connectivity-dr-rg-01"  #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
     network_interface_auxiliary_mode                = null                         # (Optional) Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). Possible values are AcceleratedConnections and Floating.
     network_interface_auxiliary_sku                 = null                         # (Optional) Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are A1, A2, A4 and A8.
     network_interface_dns_servers                   = []                           #if provided, it will override the DNS server value defined in vnet module
@@ -309,7 +309,7 @@ network_interface_variables = {
         ip_configuration_subnet = ({
           subnet_virtual_network_name                = "sd-plz-Connectivity-Hub-VNET"                 #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
           subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-Mgmt-SNET-01" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
-          subnet_virtual_network_resource_group_name = "sd-plz-connectivity-rg-01"                    #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
+          subnet_virtual_network_resource_group_name = "sd-plz-connectivity-dr-rg-01"                    #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
         })
         ip_configuration_public_ip     = null
         ip_configuration_primary       = true #Is this the Primary IP Configuration? Must be true for the first ip_configuration when multiple are specified. Defaults to false.Must be true for the first ip_configuration when multiple are specified
@@ -330,7 +330,7 @@ network_interface_variables = {
   "network_interface_4" = {
     network_interface_name                          = "sd-plz-sdlvmfwp02-untrust-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
     network_interface_location                      = "South India"                 #The location where the Network Interface should exist. Changing this forces a new resource to be created.
-    network_interface_resource_group_name           = "sd-plz-connectivity-rg-01"     #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
+    network_interface_resource_group_name           = "sd-plz-connectivity-dr-rg-01"     #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
     network_interface_auxiliary_mode                = null                            # (Optional) Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). Possible values are AcceleratedConnections and Floating.
     network_interface_auxiliary_sku                 = null                            # (Optional) Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are A1, A2, A4 and A8.
     network_interface_dns_servers                   = []                              #if provided, it will override the DNS server value defined in vnet module
@@ -348,7 +348,7 @@ network_interface_variables = {
         ip_configuration_subnet = ({
           subnet_virtual_network_name                = "sd-plz-Connectivity-Hub-VNET"                    #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
           subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-UnTrust-SNET-02" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
-          subnet_virtual_network_resource_group_name = "sd-plz-connectivity-rg-01"                       #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
+          subnet_virtual_network_resource_group_name = "sd-plz-connectivity-dr-rg-01"                       #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
         })
         ip_configuration_public_ip     = null
         ip_configuration_primary       = true #Is this the Primary IP Configuration? Must be true for the first ip_configuration when multiple are specified. Defaults to false.Must be true for the first ip_configuration when multiple are specified
@@ -369,7 +369,7 @@ network_interface_variables = {
   "network_interface_5" = {
     network_interface_name                          = "sd-plz-sdlvmfwp02-trust-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
     network_interface_location                      = "South India"               #The location where the Network Interface should exist. Changing this forces a new resource to be created.
-    network_interface_resource_group_name           = "sd-plz-connectivity-rg-01"   #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
+    network_interface_resource_group_name           = "sd-plz-connectivity-dr-rg-01"   #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
     network_interface_auxiliary_mode                = null                          # (Optional) Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). Possible values are AcceleratedConnections and Floating.
     network_interface_auxiliary_sku                 = null                          # (Optional) Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are A1, A2, A4 and A8.
     network_interface_dns_servers                   = []                            #if provided, it will override the DNS server value defined in vnet module
@@ -387,7 +387,7 @@ network_interface_variables = {
         ip_configuration_subnet = ({
           subnet_virtual_network_name                = "sd-plz-Connectivity-Hub-VNET"                  #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
           subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-Trust-SNET-02" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
-          subnet_virtual_network_resource_group_name = "sd-plz-connectivity-rg-01"                     #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
+          subnet_virtual_network_resource_group_name = "sd-plz-connectivity-dr-rg-01"                     #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
         })
         ip_configuration_public_ip     = null
         ip_configuration_primary       = true #Is this the Primary IP Configuration? Must be true for the first ip_configuration when multiple are specified. Defaults to false.Must be true for the first ip_configuration when multiple are specified
@@ -408,7 +408,7 @@ network_interface_variables = {
   "network_interface_6" = {
     network_interface_name                          = "sd-plz-sdlvmfwp02-mgmt-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
     network_interface_location                      = "South India"              #The location where the Network Interface should exist. Changing this forces a new resource to be created.
-    network_interface_resource_group_name           = "sd-plz-connectivity-rg-01"  #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
+    network_interface_resource_group_name           = "sd-plz-connectivity-dr-rg-01"  #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
     network_interface_auxiliary_mode                = null                         # (Optional) Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). Possible values are AcceleratedConnections and Floating.
     network_interface_auxiliary_sku                 = null                         # (Optional) Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are A1, A2, A4 and A8.
     network_interface_dns_servers                   = []                           #if provided, it will override the DNS server value defined in vnet module
@@ -426,7 +426,7 @@ network_interface_variables = {
         ip_configuration_subnet = ({
           subnet_virtual_network_name                = "sd-plz-Connectivity-Hub-VNET"                 #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
           subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-Mgmt-SNET-01" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
-          subnet_virtual_network_resource_group_name = "sd-plz-connectivity-rg-01"                    #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
+          subnet_virtual_network_resource_group_name = "sd-plz-connectivity-dr-rg-01"                    #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
         })
         ip_configuration_public_ip     = null
         ip_configuration_primary       = true #Is this the Primary IP Configuration? Must be true for the first ip_configuration when multiple are specified. Defaults to false.Must be true for the first ip_configuration when multiple are specified
@@ -451,11 +451,11 @@ network_interface_variables = {
 application_gateway_variables = {
   "application_gateway_1" = {
     application_gateway_name                              = "sd-plz-appgw-01"                          #(Required) The name of the Application Gateway. Changing this forces a new resource to be created.                    
-    application_gateway_resource_group_name               = "sd-plz-connectivity-rg-01"                #(Required) The name of the resource group in which to the Application Gateway should exist. Changing this forces a new resource to be created.                 
+    application_gateway_resource_group_name               = "sd-plz-connectivity-dr-rg-01"                #(Required) The name of the resource group in which to the Application Gateway should exist. Changing this forces a new resource to be created.                 
     application_gateway_location                          = "South India"                            #(Required) The Azure region where the Application Gateway should exist. Changing this forces a new resource to be created.                 
     application_gateway_sku_capacity                      = 2                                          #(Required) The Capacity of the SKU to use for this Application Gateway. When using a V1 SKU this value must be between 1 and 32, and 1 to 125 for a V2 SKU. This property is optional if autoscale_configuration is set.                 
     application_gateway_vnet_name                         = "sd-plz-Connectivity-Hub-VNET"             #Name of the virtual network to be associated with Application Gateway               
-    application_gateway_vnet_resource_group_name          = "sd-plz-connectivity-rg-01"                #name of the virtual network resource group name
+    application_gateway_vnet_resource_group_name          = "sd-plz-connectivity-dr-rg-01"                #name of the virtual network resource group name
     application_gateway_subnet_name                       = "sd-plz-Connectivity-Hub-VNET-AGW-SNET-01" #Name of the subnet to be associated with Application Gateway                 
     application_gateway_frontend_port                     = 80                                         #(Required) The port used for this Frontend Port.                 
     application_gateway_is_private_frontend_ip_required   = false                                      #(Optional) The Private IP Address to use for the Application Gateway.              
@@ -669,7 +669,7 @@ linux_virtual_machine_variables = {
       os_disk_security_encryption_type  = null                 #(Optional) Encryption Type when the Virtual Machine is a Confidential VM. Possible values are VMGuestStateOnly and DiskWithVMGuestState. Changing this forces a new resource to be created.
       os_disk_write_accelerator_enabled = false                #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
     }
-    linux_virtual_machine_resource_group_name = "sd-plz-connectivity-rg-01" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
+    linux_virtual_machine_resource_group_name = "sd-plz-connectivity-dr-rg-01" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
     linux_virtual_machine_size                = "Standard_D3_v2"            #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
     linux_virtual_machine_additional_capabilities = {                       #(Optional) A additional_capabilities block as defined below.
       additional_capabilities_ultra_ssd_enabled = false                     #(Optional) Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine? Defaults to false.
@@ -758,15 +758,15 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_network_interface = {                                            #(Required) Map of object for network interface
       "nic1" = {
         network_interface_name                = "sd-plz-sdlvmfwp01-untrust-nic" #(Required)Name of the network interface
-        network_interface_resource_group_name = "sd-plz-connectivity-rg-01"     #(Required)Resource group name of network interface
+        network_interface_resource_group_name = "sd-plz-connectivity-dr-rg-01"     #(Required)Resource group name of network interface
       },
       "nic2" = {
         network_interface_name                = "sd-plz-sdlvmfwp01-trust-nic" #(Required)Name of the network interface
-        network_interface_resource_group_name = "sd-plz-connectivity-rg-01"   #(Required)Resource group name of network interface
+        network_interface_resource_group_name = "sd-plz-connectivity-dr-rg-01"   #(Required)Resource group name of network interface
       },
       "nic3" = {
         network_interface_name                = "sd-plz-sdlvmfwp01-mgmt-nic" #(Required)Name of the network interface
-        network_interface_resource_group_name = "sd-plz-connectivity-rg-01"  #(Required)Resource group name of network interface
+        network_interface_resource_group_name = "sd-plz-connectivity-dr-rg-01"  #(Required)Resource group name of network interface
       }
     }
     linux_virtual_machine_is_secret_required                                     = false                 #(Required)Boolean value if secret is required or not
@@ -820,7 +820,7 @@ linux_virtual_machine_variables = {
       os_disk_security_encryption_type  = null                 #(Optional) Encryption Type when the Virtual Machine is a Confidential VM. Possible values are VMGuestStateOnly and DiskWithVMGuestState. Changing this forces a new resource to be created.
       os_disk_write_accelerator_enabled = false                #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
     }
-    linux_virtual_machine_resource_group_name = "sd-plz-connectivity-rg-01" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
+    linux_virtual_machine_resource_group_name = "sd-plz-connectivity-dr-rg-01" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
     linux_virtual_machine_size                = "Standard_D3_v2"            #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
     linux_virtual_machine_additional_capabilities = {                       #(Optional) A additional_capabilities block as defined below.
       additional_capabilities_ultra_ssd_enabled = false                     #(Optional) Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine? Defaults to false.
@@ -909,15 +909,15 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_network_interface = {                                            #(Required) Map of object for network interface
       "nic1" = {
         network_interface_name                = "sd-plz-sdlvmfwp02-untrust-nic" #(Required)Name of the network interface
-        network_interface_resource_group_name = "sd-plz-connectivity-rg-01"     #(Required)Resource group name of network interface
+        network_interface_resource_group_name = "sd-plz-connectivity-dr-rg-01"     #(Required)Resource group name of network interface
       },
       "nic2" = {
         network_interface_name                = "sd-plz-sdlvmfwp02-trust-nic" #(Required)Name of the network interface
-        network_interface_resource_group_name = "sd-plz-connectivity-rg-01"   #(Required)Resource group name of network interface
+        network_interface_resource_group_name = "sd-plz-connectivity-dr-rg-01"   #(Required)Resource group name of network interface
       },
       "nic3" = {
         network_interface_name                = "sd-plz-sdlvmfwp02-mgmt-nic" #(Required)Name of the network interface
-        network_interface_resource_group_name = "sd-plz-connectivity-rg-01"  #(Required)Resource group name of network interface
+        network_interface_resource_group_name = "sd-plz-connectivity-dr-rg-01"  #(Required)Resource group name of network interface
       }
     }
     linux_virtual_machine_is_secret_required                                     = false                 #(Required)Boolean value if secret is required or not
@@ -963,7 +963,7 @@ source_virtual_network_peering_variables = {
     virtual_network_peering_name                             = "sd-plz-Connectivity-Hub-VNET-sd-plz-management-vnet" # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
     virtual_network_peering_destination_resource_group_name  = "sd-plz-management-rg"                                # (Required) The name of the destination virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
     virtual_network_peering_destination_virtual_network_name = "sd-plz-management-vnet"                              # (Required) The name of the destination virtual network name.
-    virtual_network_peering_resource_group_name              = "sd-plz-connectivity-rg-01"                           # (Required) The name of the source virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_resource_group_name              = "sd-plz-connectivity-dr-rg-01"                           # (Required) The name of the source virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
     virtual_network_peering_virtual_network_name             = "sd-plz-Connectivity-Hub-VNET"                        # (Required) The name of the source virtual network name.
     virtual_network_peering_allow_virtual_network_access     = true                                                  # (Optional) Controls if the VMs in the remote virtual network can access VMs in the local virtual network. Defaults to true.
     virtual_network_peering_allow_forwarded_traffic          = true                                                  # (Optional) Controls if forwarded traffic from VMs in the remote virtual network is allowed. Defaults to false.
@@ -977,7 +977,7 @@ source_virtual_network_peering_variables = {
 destination_virtual_network_peering_variables = {
   "destination_virtual_network_peering_1" = {
     virtual_network_peering_name                             = "sd-plz-management-vnet-sd-plz-Connectivity-Hub-VNET" # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
-    virtual_network_peering_destination_resource_group_name  = "sd-plz-connectivity-rg-01"                           # (Required) The name of the destination virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_destination_resource_group_name  = "sd-plz-connectivity-dr-rg-01"                           # (Required) The name of the destination virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
     virtual_network_peering_destination_virtual_network_name = "sd-plz-Connectivity-Hub-VNET"                        # (Required) The name of the destination virtual network name.
     virtual_network_peering_resource_group_name              = "sd-plz-management-rg"                                # (Required) The name of the source virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
     virtual_network_peering_virtual_network_name             = "sd-plz-management-vnet"                              # (Required) The name of the source virtual network name.
@@ -993,7 +993,7 @@ destination_virtual_network_peering_variables = {
 public_ip_variables = {
   "public_ip_1" = {
     public_ip_name                                     = "sd-plz-connectivity-pip-agw-01" # (Required) Specifies the name of the Public IP. 
-    public_ip_resource_group_name                      = "sd-plz-connectivity-rg-01"      # (Required) The name of the Resource Group where this Public IP should exist. 
+    public_ip_resource_group_name                      = "sd-plz-connectivity-dr-rg-01"      # (Required) The name of the Resource Group where this Public IP should exist. 
     public_ip_location                                 = "South India"                  # (Required) Specifies the supported Azure location where the Public IP should exist. 
     public_ip_ip_version                               = "IPv4"                           # (Optional) The IP Version to use, IPv6 or IPv4.
     public_ip_allocation_method                        = "Static"                         # (Required) Defines the allocation method for this IP address. Possible values are Static or Dynamic.
@@ -1023,7 +1023,7 @@ public_ip_variables = {
   },
   "public_ip_2" = {
     public_ip_name                                     = "sd-plz-connectivity-pip-natgw-01" # (Required) Specifies the name of the Public IP. 
-    public_ip_resource_group_name                      = "sd-plz-connectivity-rg-01"        # (Required) The name of the Resource Group where this Public IP should exist. 
+    public_ip_resource_group_name                      = "sd-plz-connectivity-dr-rg-01"        # (Required) The name of the Resource Group where this Public IP should exist. 
     public_ip_location                                 = "South India"                    # (Required) Specifies the supported Azure location where the Public IP should exist. 
     public_ip_ip_version                               = "IPv4"                             # (Optional) The IP Version to use, IPv6 or IPv4.
     public_ip_allocation_method                        = "Static"                           # (Required) Defines the allocation method for this IP address. Possible values are Static or Dynamic.
@@ -1078,14 +1078,14 @@ lb_variables = {
         frontend_ip_configuration_subnet = {
           subnet_name                    = "sd-plz-Connectivity-Hub-VNET-FW-Intranet-LB-SNET-01" # Subnet name
           subnet_virtual_network_name    = "sd-plz-Connectivity-Hub-VNET"                        # virtual network name where subnet resides.
-          virtual_network_resource_group = "sd-plz-connectivity-rg-01"                           # Resource group name where the virtual network resides.
+          virtual_network_resource_group = "sd-plz-connectivity-dr-rg-01"                           # Resource group name where the virtual network resides.
         }
         frontend_ip_configuration_zones = null #(Optional) Specifies a list of Availability Zones in which the IP Address for this Load Balancer should be located. Changing this forces a new Load Balancer to be created.
       }
     }
     lb_location            = "South India"               # (Required) Specifies the supported Azure Region where the Load Balancer should be created.
     lb_name                = "sd-connectivity-fw-trust-lb" #(Required) Specifies the name of the Load Balancer.
-    lb_resource_group_name = "sd-plz-connectivity-rg-01"   # (Required) The name of the Resource Group in which to create the Load Balancer.
+    lb_resource_group_name = "sd-plz-connectivity-dr-rg-01"   # (Required) The name of the Resource Group in which to create the Load Balancer.
     lb_sku                 = "Standard"                    #(Optional) The SKU of the Azure Load Balancer. Accepted values are Basic, Standard and Gateway. Defaults to Basic.
     lb_sku_tier            = "Regional"                    #(Optional) sku_tier - (Optional) The SKU tier of this Load Balancer. Possible values are Global and Regional. Defaults to Regional. Changing this forces a new resource to be created.
     lb_tags = {
@@ -1107,7 +1107,7 @@ vpn_gateway_variables = {
   "vpn_gateway_1" = {
     vpn_gateway_name                                  = "ngw000001"                 #(Required) The Name which should be used for this VPN Gateway. Changing this forces a new resource to be created.
     vpn_gateway_location                              = "South India"             #(Required) The Azure location where this VPN Gateway should be created. Changing this forces a new resource to be created.
-    vpn_gateway_resource_group_name                   = "sd-plz-connectivity-rg-01" #(Required) The Name of the Resource Group in which this VPN Gateway should be created. Changing this forces a new resource to be created.
+    vpn_gateway_resource_group_name                   = "sd-plz-connectivity-dr-rg-01" #(Required) The Name of the Resource Group in which this VPN Gateway should be created. Changing this forces a new resource to be created.
     vpn_gateway_virtual_hub_name                      = "hub000001"                 # The Name of the virtual hub
     vpn_gateway_bgp_route_translation_for_nat_enabled = true                        #(Optional) Is BGP route translation for NAT on this VPN Gateway enabled? Defaults to false
     vpn_gateway_bgp_settings_enabled                  = true                        #(Optional) A bgp_settings block as defined below.
@@ -1139,7 +1139,7 @@ nat_gateway_variables = {
     nat_gateway_idle_timeout_in_minutes = "4"                         #(Optional) The idle timeout which should be used in minutes. Defaults to 4.
     nat_gateway_name                    = "sd-connectivity-natgw-01"  #(Required) Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
     nat_gateway_location                = "South India"             #(Optional) Specifies the supported Azure location where the NAT Gateway should exist. Changing this forces a new resource to be created.
-    nat_gateway_resource_group_name     = "sd-plz-connectivity-rg-01" #(Required) Specifies the name of the Resource Group in which the NAT Gateway should exist. Changing this forces a new resource to be created.
+    nat_gateway_resource_group_name     = "sd-plz-connectivity-dr-rg-01" #(Required) Specifies the name of the Resource Group in which the NAT Gateway should exist. Changing this forces a new resource to be created.
     nat_gateway_sku_name                = "Standard"                  #(Optional) The SKU which should be used. At this time the only supported value is Standard. Defaults to Standard.
     nat_gateway_zones                   = null                       #(Optional) Specifies a list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new NAT Gateway to be created.
     nat_gateway_tags = {                                              #(Optional) A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
@@ -1159,9 +1159,9 @@ nat_gateway_variables = {
 nat_gateway_public_ip_association_variables = {
   "nat_gateway_public_ip_association_1" = {
     public_ip_name                  = "sd-plz-connectivity-pip-natgw-01" #(Required) Specifies the name of the Public IP.
-    public_ip_resource_group_name   = "sd-plz-connectivity-rg-01"        #(Required) The name of the Resource Group where this Public IP should exist.
+    public_ip_resource_group_name   = "sd-plz-connectivity-dr-rg-01"        #(Required) The name of the Resource Group where this Public IP should exist.
     nat_gateway_name                = "sd-connectivity-natgw-01"         #(Required) Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
-    nat_gateway_resource_group_name = "sd-plz-connectivity-rg-01"        #(Required) Specifies the name of the Resource Group in which the NAT Gateway should exist.
+    nat_gateway_resource_group_name = "sd-plz-connectivity-dr-rg-01"        #(Required) Specifies the name of the Resource Group in which the NAT Gateway should exist.
   }
 }
 
@@ -1169,7 +1169,7 @@ nat_gateway_public_ip_association_variables = {
 network_security_group_variables = {
   "network_security_group_1" = {
     network_security_group_name                = "sd-plz-connectivtity-nsg-01" # (Required) Specifies the name of the network security group
-    network_security_group_resource_group_name = "sd-plz-connectivity-rg-01"   # (Required) The name of the resource group in which to create the network security group
+    network_security_group_resource_group_name = "sd-plz-connectivity-dr-rg-01"   # (Required) The name of the resource group in which to create the network security group
     network_security_group_location            = "South India"               # (Required) Specifies the supported Azure location where the resource exists
     network_security_group_security_rule = {                                   # (Optional) Map of objects representing security rules
       "nsg_rule_01" = {
@@ -1204,7 +1204,7 @@ network_security_group_variables = {
   },
   "network_security_group_2" = {
     network_security_group_name                = "sd-plz-connectivtity-nsg-02" # (Required) Specifies the name of the network security group
-    network_security_group_resource_group_name = "sd-plz-connectivity-rg-01"   # (Required) The name of the resource group in which to create the network security group
+    network_security_group_resource_group_name = "sd-plz-connectivity-dr-rg-01"   # (Required) The name of the resource group in which to create the network security group
     network_security_group_location            = "South India"               # (Required) Specifies the supported Azure location where the resource exists
     network_security_group_security_rule = {                                   # (Optional) Map of objects representing security rules
       "nsg_rule_01" = {
