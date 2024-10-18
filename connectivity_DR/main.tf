@@ -8,7 +8,7 @@ module "resource_group" {
   }
   resource_group_variables = var.resource_group_variables
 }
-/*
+
 #VIRTUAL NETWORK
 module "virtual_network" {
   source = "../Azure/virtual_network/v1.3.0"
@@ -18,8 +18,8 @@ module "virtual_network" {
   virtual_network_variables = var.virtual_network_variables
   depends_on                = [module.resource_group]
 }
-*/
-/*
+
+
 #SUBNET
 module "subnet" {
   source = "../Azure/subnet/v1.3.0"
@@ -29,7 +29,7 @@ module "subnet" {
   subnet_variables = var.subnet_variables
   depends_on       = [module.virtual_network]
 }
-*/
+
 /*
 #SOURCE VIRTUAL NETWORK PEERING
 module "source_virtual_network_peering" {
