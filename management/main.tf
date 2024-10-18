@@ -73,6 +73,16 @@ module "network_security_group_association" {
   depends_on                                   = [module.network_security_group, module.subnet, module.network_interface]
 }*/
 
+# NETWORK INTERFACE
+module "network_interface" {
+  source = "../Azure/network_interface/v1.3.0"
+  providers = {
+    azurerm = azurerm.management
+  }
+  network_interface_variables = var.network_interface_variables
+  depends_on                  = [module.key_vault]
+}
+
 #LINUX VM
 
 module "linux_virtual_machine" {

@@ -551,7 +551,7 @@ linux_virtual_machine_variables = {
       os_disk_write_accelerator_enabled = false                #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
     }
     linux_virtual_machine_resource_group_name = "sd-plz-management-rg" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
-    linux_virtual_machine_size                = "Standard_D3_v2"            #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
+    linux_virtual_machine_size                = "Standard_DS4_v2"            #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
     linux_virtual_machine_additional_capabilities = {                       #(Optional) A additional_capabilities block as defined below.
       additional_capabilities_ultra_ssd_enabled = false                     #(Optional) Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine? Defaults to false.
     }
@@ -639,7 +639,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_network_interface = {                                            #(Required) Map of object for network interface
       "nic1" = {
         network_interface_name                = "sd-plz-sdlvmfwpan01-mgmt-nic" #(Required)Name of the network interface
-        network_interface_resource_group_name = "sd-plz-connectivity-rg-01"     #(Required)Resource group name of network interface
+        network_interface_resource_group_name = "sd-plz-management-rg"     #(Required)Resource group name of network interface
       }
     }
     linux_virtual_machine_is_secret_required                                     = false                 #(Required)Boolean value if secret is required or not
@@ -677,5 +677,47 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_existing_admin_username_secret_name                    = null                   #Provide Key vault secret name to store admin username. Provide value if linux_virtual_machine_use_existing_vm_username is set to true.
   }
 
+}
+#NETWORK INTERFACE
+network_interface_variables = {
+  "network_interface_1" = {
+    network_interface_name                          = "sd-plz-sdlvmfwpan01-mgmt-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
+    network_interface_location                      = "Central India"                 #The location where the Network Interface should exist. Changing this forces a new resource to be created.
+    network_interface_resource_group_name           = "sd-plz-management-rg"     #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
+    network_interface_auxiliary_mode                = null                            # (Optional) Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). Possible values are AcceleratedConnections and Floating.
+    network_interface_auxiliary_sku                 = null                            # (Optional) Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are A1, A2, A4 and A8.
+    network_interface_dns_servers                   = []                              #if provided, it will override the DNS server value defined in vnet module
+    network_interface_edge_zone                     = null                            #Specifies the Edge Zone within the Azure Region where this Network Interface should exist. Changing this forces a new Network Interface to be created
+    network_interface_enable_ip_forwarding          = false                           #Enable only if IP Forwarding is required
+    network_interface_enable_accelerated_networking = false                           #Enable only if accelerated networking is required
+    network_interface_internal_dns_label            = null                            #The (relative) DNS Name used for internal communications between Virtual Machines in the same Virtual Network.
+    network_interface_ip_configuration = {
+      "ip_configuration_1" = {
+        ip_configuration_name                          = "privateconfig1" #A name used for this IP Configuration. Changing this forces a new resource to be created
+        ip_configuration_private_ip_address_allocation = "Dynamic"        #Possible values are Dynamic and Static
+        #ip_configuration_private_ip_address            = "10.0.3.11"                #When private_ip_address_allocation is set to Static, The Static IP Address which should be used
+        ip_configuration_private_ip_address         = null
+        ip_configuration_private_ip_address_version = "IPv4" #The IP Version to use. Possible values are IPv4 or IPv6.Defaults to IPv4.
+        ip_configuration_subnet = ({
+          subnet_virtual_network_name                = "sd-plz-management-vnet"                    #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
+          subnet_name                                = "sd-plz-management-vnet-shared-snet-01" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
+          subnet_virtual_network_resource_group_name = "sd-plz-management-rg"                       #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
+        })
+        ip_configuration_public_ip     = null
+        ip_configuration_primary       = true #Is this the Primary IP Configuration? Must be true for the first ip_configuration when multiple are specified. Defaults to false.Must be true for the first ip_configuration when multiple are specified
+        ip_configuration_load_balancer = null
+      }
+    }
+    network_interface_tags = { #(Optional) A mapping of tags to assign to the resource.
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+  }
 }
 
