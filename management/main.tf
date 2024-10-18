@@ -80,7 +80,7 @@ module "network_interface" {
     azurerm = azurerm.management
   }
   network_interface_variables = var.network_interface_variables
-  depends_on                  = [module.key_vault]
+  depends_on                  = [module.network_security_group]
 }
 
 #LINUX VM
@@ -93,5 +93,5 @@ module "linux_virtual_machine" {
     azurerm.gallery_sub   = azurerm.management
   }
   linux_virtual_machine_variables = var.linux_virtual_machine_variables
-  depends_on                      = [module.key_vault]
+  depends_on                      = [module.network_interface]
 }
