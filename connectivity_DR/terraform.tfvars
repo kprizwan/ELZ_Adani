@@ -1091,7 +1091,7 @@ vpn_gateway_variables = {
 nat_gateway_variables = {
   "nat_gateway_1" = {
     nat_gateway_idle_timeout_in_minutes = "4"                         #(Optional) The idle timeout which should be used in minutes. Defaults to 4.
-    nat_gateway_name                    = "sd-connectivity-natgw-01"  #(Required) Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
+    nat_gateway_name                    = "sd-plz-dr-connectivity-natgw-01"  #(Required) Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
     nat_gateway_location                = "South India"             #(Optional) Specifies the supported Azure location where the NAT Gateway should exist. Changing this forces a new resource to be created.
     nat_gateway_resource_group_name     = "sd-plz-connectivity-dr-rg-01" #(Required) Specifies the name of the Resource Group in which the NAT Gateway should exist. Changing this forces a new resource to be created.
     nat_gateway_sku_name                = "Standard"                  #(Optional) The SKU which should be used. At this time the only supported value is Standard. Defaults to Standard.
@@ -1112,9 +1112,9 @@ nat_gateway_variables = {
 #NAT GATEWAY PUBLIC IP ASSOCIATION
 nat_gateway_public_ip_association_variables = {
   "nat_gateway_public_ip_association_1" = {
-    public_ip_name                  = "sd-plz-connectivity-pip-natgw-01" #(Required) Specifies the name of the Public IP.
+    public_ip_name                  = "sd-plz-dr-connectivity-pip-natgw-01" #(Required) Specifies the name of the Public IP.
     public_ip_resource_group_name   = "sd-plz-connectivity-dr-rg-01"        #(Required) The name of the Resource Group where this Public IP should exist.
-    nat_gateway_name                = "sd-connectivity-natgw-01"         #(Required) Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
+    nat_gateway_name                = "sd-plz-dr-connectivity-natgw-01"         #(Required) Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
     nat_gateway_resource_group_name = "sd-plz-connectivity-dr-rg-01"        #(Required) Specifies the name of the Resource Group in which the NAT Gateway should exist.
   }
 }
