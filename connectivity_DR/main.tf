@@ -65,7 +65,7 @@ module "network_interface" {
   depends_on                  = [module.resource_group, module.virtual_network, module.subnet]
 }
 
-/*
+
 
 #PUBLIC IP
 module "public_ip" {
@@ -76,7 +76,7 @@ module "public_ip" {
   public_ip_variables = var.public_ip_variables
   depends_on          = [module.resource_group]
 }
-*/
+
 /*
 #APPLICATION GATEWAY
 module "application_gateway" {

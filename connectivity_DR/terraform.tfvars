@@ -946,7 +946,7 @@ destination_virtual_network_peering_variables = {
 #PUBLIC IP
 public_ip_variables = {
   "public_ip_1" = {
-    public_ip_name                                     = "sd-plz-connectivity-pip-agw-01" # (Required) Specifies the name of the Public IP. 
+    public_ip_name                                     = "sd-plz-dr-connectivity-pip-agw-01" # (Required) Specifies the name of the Public IP. 
     public_ip_resource_group_name                      = "sd-plz-connectivity-dr-rg-01"      # (Required) The name of the Resource Group where this Public IP should exist. 
     public_ip_location                                 = "South India"                  # (Required) Specifies the supported Azure location where the Public IP should exist. 
     public_ip_ip_version                               = "IPv4"                           # (Optional) The IP Version to use, IPv6 or IPv4.
@@ -976,7 +976,7 @@ public_ip_variables = {
     }
   },
   "public_ip_2" = {
-    public_ip_name                                     = "sd-plz-connectivity-pip-natgw-01" # (Required) Specifies the name of the Public IP. 
+    public_ip_name                                     = "sd-plz-dr-connectivity-pip-natgw-01" # (Required) Specifies the name of the Public IP. 
     public_ip_resource_group_name                      = "sd-plz-connectivity-dr-rg-01"        # (Required) The name of the Resource Group where this Public IP should exist. 
     public_ip_location                                 = "South India"                    # (Required) Specifies the supported Azure location where the Public IP should exist. 
     public_ip_ip_version                               = "IPv4"                             # (Optional) The IP Version to use, IPv6 or IPv4.
