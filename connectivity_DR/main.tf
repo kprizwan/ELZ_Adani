@@ -30,7 +30,7 @@ module "subnet" {
   depends_on       = [module.virtual_network]
 }
 
-/*
+
 #SOURCE VIRTUAL NETWORK PEERING
 module "source_virtual_network_peering" {
   source = "../Azure/virtual_network_peering/v1.3.0"
@@ -41,8 +41,8 @@ module "source_virtual_network_peering" {
   virtual_network_peering_variables = var.source_virtual_network_peering_variables
   depends_on                        = [module.virtual_network]
 }
-*/
-/*
+
+
 #DESTINATION VIRTUAL NETWORK PEERING
 module "destination_virtual_network_peering" {
   source = "../Azure/virtual_network_peering/v1.3.0"
@@ -53,7 +53,7 @@ module "destination_virtual_network_peering" {
   virtual_network_peering_variables = var.destination_virtual_network_peering_variables
   depends_on                        = [module.virtual_network]
 }
-*/
+
 /*
 # NETWORK INTERFACE
 module "network_interface" {

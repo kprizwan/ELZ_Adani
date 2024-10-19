@@ -914,11 +914,11 @@ linux_virtual_machine_variables = {
 #SOURCE VIRTUAL NETWORK PEERING
 source_virtual_network_peering_variables = {
   "source_virtual_network_peering_1" = {
-    virtual_network_peering_name                             = "sd-plz-Connectivity-Hub-VNET-sd-plz-management-vnet" # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_name                             = "sd-plz-dr-Connectivity-Hub-VNET-sd-plz-management-vnet" # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
     virtual_network_peering_destination_resource_group_name  = "sd-plz-management-rg"                                # (Required) The name of the destination virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
     virtual_network_peering_destination_virtual_network_name = "sd-plz-management-vnet"                              # (Required) The name of the destination virtual network name.
     virtual_network_peering_resource_group_name              = "sd-plz-connectivity-dr-rg-01"                           # (Required) The name of the source virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
-    virtual_network_peering_virtual_network_name             = "sd-plz-Connectivity-Hub-VNET"                        # (Required) The name of the source virtual network name.
+    virtual_network_peering_virtual_network_name             = "sd-plz-dr-Connectivity-Hub-VNET"                        # (Required) The name of the source virtual network name.
     virtual_network_peering_allow_virtual_network_access     = true                                                  # (Optional) Controls if the VMs in the remote virtual network can access VMs in the local virtual network. Defaults to true.
     virtual_network_peering_allow_forwarded_traffic          = true                                                  # (Optional) Controls if forwarded traffic from VMs in the remote virtual network is allowed. Defaults to false.
     virtual_network_peering_use_remote_gateways              = false                                                 #  (Optional) Controls if remote gateways can be used on the local virtual network. If the flag is set to true, and allow_gateway_transit on the remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway. Defaults to false.
@@ -930,9 +930,9 @@ source_virtual_network_peering_variables = {
 #DESTINATION VIRTUAL NETWORK PEERING
 destination_virtual_network_peering_variables = {
   "destination_virtual_network_peering_1" = {
-    virtual_network_peering_name                             = "sd-plz-management-vnet-sd-plz-Connectivity-Hub-VNET" # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_name                             = "sd-plz-management-vnet-sd-plz-dr-Connectivity-Hub-VNET" # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
     virtual_network_peering_destination_resource_group_name  = "sd-plz-connectivity-dr-rg-01"                           # (Required) The name of the destination virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
-    virtual_network_peering_destination_virtual_network_name = "sd-plz-Connectivity-Hub-VNET"                        # (Required) The name of the destination virtual network name.
+    virtual_network_peering_destination_virtual_network_name = "sd-plz-dr-Connectivity-Hub-VNET"                        # (Required) The name of the destination virtual network name.
     virtual_network_peering_resource_group_name              = "sd-plz-management-rg"                                # (Required) The name of the source virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
     virtual_network_peering_virtual_network_name             = "sd-plz-management-vnet"                              # (Required) The name of the source virtual network name.
     virtual_network_peering_allow_virtual_network_access     = true                                                  # (Optional) Controls if the VMs in the remote virtual network can access VMs in the local virtual network. Defaults to true.
