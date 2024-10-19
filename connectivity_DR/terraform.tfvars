@@ -1122,7 +1122,7 @@ nat_gateway_public_ip_association_variables = {
 #NETWORK SECURITY GROUP
 network_security_group_variables = {
   "network_security_group_1" = {
-    network_security_group_name                = "sd-plz-connectivtity-nsg-01" # (Required) Specifies the name of the network security group
+    network_security_group_name                = "sd-plz-dr-connectivtity-nsg-01" # (Required) Specifies the name of the network security group
     network_security_group_resource_group_name = "sd-plz-connectivity-dr-rg-01"   # (Required) The name of the resource group in which to create the network security group
     network_security_group_location            = "South India"               # (Required) Specifies the supported Azure location where the resource exists
     network_security_group_security_rule = {                                   # (Optional) Map of objects representing security rules
@@ -1157,7 +1157,7 @@ network_security_group_variables = {
     }
   },
   "network_security_group_2" = {
-    network_security_group_name                = "sd-plz-connectivtity-nsg-02" # (Required) Specifies the name of the network security group
+    network_security_group_name                = "sd-plz-dr-connectivtity-nsg-02" # (Required) Specifies the name of the network security group
     network_security_group_resource_group_name = "sd-plz-connectivity-dr-rg-01"   # (Required) The name of the resource group in which to create the network security group
     network_security_group_location            = "South India"               # (Required) Specifies the supported Azure location where the resource exists
     network_security_group_security_rule = {                                   # (Optional) Map of objects representing security rules

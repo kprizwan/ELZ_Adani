@@ -136,7 +136,7 @@ module "nat_gateway_public_ip_association" {
   depends_on                                  = [module.public_ip, module.nat_gateway]
 }
 
-/*
+
 #NETWORK SECURITY GROUP
 module "network_security_group" {
   source = "../Azure/network_security_group/v1.3.0"
@@ -146,7 +146,7 @@ module "network_security_group" {
   network_security_group_variables = var.network_security_group_variables
   depends_on                       = [module.resource_group]
 }
-*/
+
 /*#Network Security Group Association
 module "network_security_group_association" {
   source                                       = "../"
