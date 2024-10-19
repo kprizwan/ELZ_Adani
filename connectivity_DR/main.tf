@@ -88,7 +88,7 @@ module "application_gateway" {
   depends_on                    = [module.subnet, module.public_ip]
 }
 
-/*
+
 #LINUX VM
 
 module "linux_virtual_machine" {
@@ -102,7 +102,6 @@ module "linux_virtual_machine" {
   depends_on                      = [module.subnet, module.network_interface]
 }
 
-*/
 
 #LB
 module "lb" {
