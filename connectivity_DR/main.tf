@@ -103,7 +103,7 @@ module "linux_virtual_machine" {
 }
 
 */
-/*
+
 #LB
 module "lb" {
   source = "../Azure/lb/v1.3.0"
@@ -113,7 +113,7 @@ module "lb" {
   lb_variables = var.lb_variables
   depends_on   = [module.resource_group, module.virtual_network, module.subnet, module.public_ip]
 }
-*/
+
 /*
 #NAT GATEWAY
 module "nat_gateway" {

@@ -1030,15 +1030,15 @@ lb_variables = {
           public_ip_prefix_resource_group_name = null     # public ip prefix resource group name
         }
         frontend_ip_configuration_subnet = {
-          subnet_name                    = "sd-plz-Connectivity-Hub-VNET-FW-Intranet-LB-SNET-01" # Subnet name
-          subnet_virtual_network_name    = "sd-plz-Connectivity-Hub-VNET"                        # virtual network name where subnet resides.
+          subnet_name                    = "sd-plz-dr-Connectivity-Hub-VNET-FW-Trust-LB-SNET-01" # Subnet name
+          subnet_virtual_network_name    = "sd-plz-dr-Connectivity-Hub-VNET"                        # virtual network name where subnet resides.
           virtual_network_resource_group = "sd-plz-connectivity-dr-rg-01"                           # Resource group name where the virtual network resides.
         }
         frontend_ip_configuration_zones = null #(Optional) Specifies a list of Availability Zones in which the IP Address for this Load Balancer should be located. Changing this forces a new Load Balancer to be created.
       }
     }
     lb_location            = "South India"               # (Required) Specifies the supported Azure Region where the Load Balancer should be created.
-    lb_name                = "sd-connectivity-fw-trust-lb" #(Required) Specifies the name of the Load Balancer.
+    lb_name                = "sd-plz-dr-connectivity-fw-trust-lb" #(Required) Specifies the name of the Load Balancer.
     lb_resource_group_name = "sd-plz-connectivity-dr-rg-01"   # (Required) The name of the Resource Group in which to create the Load Balancer.
     lb_sku                 = "Standard"                    #(Optional) The SKU of the Azure Load Balancer. Accepted values are Basic, Standard and Gateway. Defaults to Basic.
     lb_sku_tier            = "Regional"                    #(Optional) sku_tier - (Optional) The SKU tier of this Load Balancer. Possible values are Global and Regional. Defaults to Regional. Changing this forces a new resource to be created.
