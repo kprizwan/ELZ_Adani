@@ -443,6 +443,45 @@ network_interface_variables = {
       IAC            = "Terraform",
       Contact        = "Manish.kumar10@adani.com"
     }
+    },
+    "network_interface_7" = {
+    network_interface_name                          = "sd-plz-sdlvmfwpan01-mgmt-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
+    network_interface_location                      = "Central India"              #The location where the Network Interface should exist. Changing this forces a new resource to be created.
+    network_interface_resource_group_name           = "sd-plz-connectivity-rg-01"  #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
+    network_interface_auxiliary_mode                = null                         # (Optional) Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). Possible values are AcceleratedConnections and Floating.
+    network_interface_auxiliary_sku                 = null                         # (Optional) Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are A1, A2, A4 and A8.
+    network_interface_dns_servers                   = []                           #if provided, it will override the DNS server value defined in vnet module
+    network_interface_edge_zone                     = null                         #Specifies the Edge Zone within the Azure Region where this Network Interface should exist. Changing this forces a new Network Interface to be created
+    network_interface_enable_ip_forwarding          = false                        #Enable only if IP Forwarding is required
+    network_interface_enable_accelerated_networking = false                        #Enable only if accelerated networking is required
+    network_interface_internal_dns_label            = null                         #The (relative) DNS Name used for internal communications between Virtual Machines in the same Virtual Network.
+    network_interface_ip_configuration = {
+      "ip_configuration_1" = {
+        ip_configuration_name                          = "privateconfig02" #A name used for this IP Configuration. Changing this forces a new resource to be created
+        ip_configuration_private_ip_address_allocation = "Dynamic"        #Possible values are Dynamic and Static
+        #ip_configuration_private_ip_address            = "10.0.3.11"                #When private_ip_address_allocation is set to Static, The Static IP Address which should be used
+        ip_configuration_private_ip_address         = null
+        ip_configuration_private_ip_address_version = "IPv4" #The IP Version to use. Possible values are IPv4 or IPv6.Defaults to IPv4.
+        ip_configuration_subnet = ({
+          subnet_virtual_network_name                = "sd-plz-Connectivity-Hub-VNET"                 #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
+          subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-Mgmt-SNET-01" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
+          subnet_virtual_network_resource_group_name = "sd-plz-connectivity-rg-01"                    #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
+        })
+        ip_configuration_public_ip     = null
+        ip_configuration_primary       = true #Is this the Primary IP Configuration? Must be true for the first ip_configuration when multiple are specified. Defaults to false.Must be true for the first ip_configuration when multiple are specified
+        ip_configuration_load_balancer = null
+      }
+    }
+    network_interface_tags = { #(Optional) A mapping of tags to assign to the resource.
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
   }
 }
 
@@ -670,7 +709,7 @@ linux_virtual_machine_variables = {
       os_disk_write_accelerator_enabled = false                #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
     }
     linux_virtual_machine_resource_group_name = "sd-plz-connectivity-rg-01" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
-    linux_virtual_machine_size                = "Standard_D3_v2"            #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
+    linux_virtual_machine_size                = "Standard_DS4_v2"            #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
     linux_virtual_machine_additional_capabilities = {                       #(Optional) A additional_capabilities block as defined below.
       additional_capabilities_ultra_ssd_enabled = false                     #(Optional) Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine? Defaults to false.
     }
@@ -701,7 +740,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_max_bid_price         = "-1"           #(Optional) The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the eviction_policy. Defaults to -1, which means that the Virtual Machine should not be evicted for price reasons.
     linux_virtual_machine_plan = [{
       plan_name      = "byol"             #(Required) Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-      plan_product   = "panorama"         #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
+      plan_product   = "vmseries-flex"         #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
       plan_publisher = "paloaltonetworks" #(Optional) A plan block as defined below. Changing this forces a new resource to be created.
     }]
     linux_virtual_machine_platform_fault_domain = null      #(Optional) Specifies the Platform Fault Domain in which this Linux Virtual Machine should be created. Defaults to -1, which means this will be automatically assigned to a fault domain that best maintains balance across the available fault domains. Changing this forces a new Linux Virtual Machine to be created.
@@ -710,7 +749,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_secure_boot_enabled   = false     #(Optional) Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
     linux_virtual_machine_source_image_reference = {        #Optional) A source_image_reference block as defined below. Changing this forces a new resource to be created.
       source_image_reference_publisher = "paloaltonetworks" #(Optional) Specifies the publisher of the image used to create the virtual machines.
-      source_image_reference_offer     = "panorama"         #(Optional) Specifies the offer of the image used to create the virtual machines.
+      source_image_reference_offer     = "vmseries-flex"         #(Optional) Specifies the offer of the image used to create the virtual machines.
       source_image_reference_sku       = "byol"             #(Optional) Specifies the SKU of the image used to create the virtual machines.
       source_image_reference_version   = "latest"           #(Optional) Specifies the version of the image used to create the virtual machines.
     }
@@ -821,7 +860,7 @@ linux_virtual_machine_variables = {
       os_disk_write_accelerator_enabled = false                #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
     }
     linux_virtual_machine_resource_group_name = "sd-plz-connectivity-rg-01" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
-    linux_virtual_machine_size                = "Standard_D3_v2"            #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
+    linux_virtual_machine_size                = "Standard_DS4_v2"            #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
     linux_virtual_machine_additional_capabilities = {                       #(Optional) A additional_capabilities block as defined below.
       additional_capabilities_ultra_ssd_enabled = false                     #(Optional) Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine? Defaults to false.
     }
@@ -852,7 +891,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_max_bid_price         = "-1"           #(Optional) The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the eviction_policy. Defaults to -1, which means that the Virtual Machine should not be evicted for price reasons.
     linux_virtual_machine_plan = [{
       plan_name      = "byol"             #(Required) Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-      plan_product   = "panorama"         #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
+      plan_product   = "vmseries-flex"         #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
       plan_publisher = "paloaltonetworks" #(Optional) A plan block as defined below. Changing this forces a new resource to be created.
     }]
     linux_virtual_machine_platform_fault_domain = null      #(Optional) Specifies the Platform Fault Domain in which this Linux Virtual Machine should be created. Defaults to -1, which means this will be automatically assigned to a fault domain that best maintains balance across the available fault domains. Changing this forces a new Linux Virtual Machine to be created.
@@ -861,7 +900,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_secure_boot_enabled   = false     #(Optional) Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
     linux_virtual_machine_source_image_reference = {        #Optional) A source_image_reference block as defined below. Changing this forces a new resource to be created.
       source_image_reference_publisher = "paloaltonetworks" #(Optional) Specifies the publisher of the image used to create the virtual machines.
-      source_image_reference_offer     = "panorama"         #(Optional) Specifies the offer of the image used to create the virtual machines.
+      source_image_reference_offer     = "vmseries-flex"         #(Optional) Specifies the offer of the image used to create the virtual machines.
       source_image_reference_sku       = "byol"             #(Optional) Specifies the SKU of the image used to create the virtual machines.
       source_image_reference_version   = "latest"           #(Optional) Specifies the version of the image used to create the virtual machines.
     }
