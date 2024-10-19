@@ -54,7 +54,7 @@ module "destination_virtual_network_peering" {
   depends_on                        = [module.virtual_network]
 }
 
-/*
+
 # NETWORK INTERFACE
 module "network_interface" {
   source = "../Azure/network_interface/v1.3.0"
@@ -64,7 +64,7 @@ module "network_interface" {
   network_interface_variables = var.network_interface_variables
   depends_on                  = [module.resource_group, module.virtual_network, module.subnet]
 }
-*/
+
 /*
 
 #PUBLIC IP

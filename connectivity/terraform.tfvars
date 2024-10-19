@@ -211,7 +211,7 @@ subnet_variables = {
 #NETWORK INTERFACE
 network_interface_variables = {
   "network_interface_1" = {
-    network_interface_name                          = "sd-plz-sdlvmfwp01-untrust-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
+    network_interface_name                          = "sd-plz-sdlvmfwp01-mgmt-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
     network_interface_location                      = "Central India"                 #The location where the Network Interface should exist. Changing this forces a new resource to be created.
     network_interface_resource_group_name           = "sd-plz-connectivity-rg-01"     #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
     network_interface_auxiliary_mode                = null                            # (Optional) Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). Possible values are AcceleratedConnections and Floating.
@@ -230,7 +230,7 @@ network_interface_variables = {
         ip_configuration_private_ip_address_version = "IPv4" #The IP Version to use. Possible values are IPv4 or IPv6.Defaults to IPv4.
         ip_configuration_subnet = ({
           subnet_virtual_network_name                = "sd-plz-Connectivity-Hub-VNET"                    #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
-          subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-UnTrust-SNET-01" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
+          subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-Mgmt-SNET-01" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
           subnet_virtual_network_resource_group_name = "sd-plz-connectivity-rg-01"                       #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
         })
         ip_configuration_public_ip     = null
@@ -289,7 +289,7 @@ network_interface_variables = {
     }
   },
   "network_interface_3" = {
-    network_interface_name                          = "sd-plz-sdlvmfwp01-mgmt-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
+    network_interface_name                          = "sd-plz-sdlvmfwp01-untrust-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
     network_interface_location                      = "Central India"              #The location where the Network Interface should exist. Changing this forces a new resource to be created.
     network_interface_resource_group_name           = "sd-plz-connectivity-rg-01"  #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
     network_interface_auxiliary_mode                = null                         # (Optional) Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). Possible values are AcceleratedConnections and Floating.
@@ -308,7 +308,7 @@ network_interface_variables = {
         ip_configuration_private_ip_address_version = "IPv4" #The IP Version to use. Possible values are IPv4 or IPv6.Defaults to IPv4.
         ip_configuration_subnet = ({
           subnet_virtual_network_name                = "sd-plz-Connectivity-Hub-VNET"                 #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
-          subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-Mgmt-SNET-01" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
+          subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-UnTrust-SNET-01" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
           subnet_virtual_network_resource_group_name = "sd-plz-connectivity-rg-01"                    #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
         })
         ip_configuration_public_ip     = null
@@ -327,8 +327,8 @@ network_interface_variables = {
       Contact        = "Manish.kumar10@adani.com"
     }
   },
-  "network_interface_4" = {
-    network_interface_name                          = "sd-plz-sdlvmfwp02-untrust-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
+  "network_interface_4" = {  
+    network_interface_name                          = "sd-plz-sdlvmfwp02-mgmt-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
     network_interface_location                      = "Central India"                 #The location where the Network Interface should exist. Changing this forces a new resource to be created.
     network_interface_resource_group_name           = "sd-plz-connectivity-rg-01"     #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
     network_interface_auxiliary_mode                = null                            # (Optional) Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). Possible values are AcceleratedConnections and Floating.
@@ -347,7 +347,7 @@ network_interface_variables = {
         ip_configuration_private_ip_address_version = "IPv4" #The IP Version to use. Possible values are IPv4 or IPv6.Defaults to IPv4.
         ip_configuration_subnet = ({
           subnet_virtual_network_name                = "sd-plz-Connectivity-Hub-VNET"                    #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
-          subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-UnTrust-SNET-02" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
+          subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-Mgmt-SNET-01" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
           subnet_virtual_network_resource_group_name = "sd-plz-connectivity-rg-01"                       #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
         })
         ip_configuration_public_ip     = null
@@ -406,7 +406,7 @@ network_interface_variables = {
     }
   },
   "network_interface_6" = {
-    network_interface_name                          = "sd-plz-sdlvmfwp02-mgmt-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
+    network_interface_name                          = "sd-plz-sdlvmfwp02-untrust-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
     network_interface_location                      = "Central India"              #The location where the Network Interface should exist. Changing this forces a new resource to be created.
     network_interface_resource_group_name           = "sd-plz-connectivity-rg-01"  #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
     network_interface_auxiliary_mode                = null                         # (Optional) Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). Possible values are AcceleratedConnections and Floating.
@@ -425,7 +425,7 @@ network_interface_variables = {
         ip_configuration_private_ip_address_version = "IPv4" #The IP Version to use. Possible values are IPv4 or IPv6.Defaults to IPv4.
         ip_configuration_subnet = ({
           subnet_virtual_network_name                = "sd-plz-Connectivity-Hub-VNET"                 #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
-          subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-Mgmt-SNET-01" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
+          subnet_name                                = "sd-plz-Connectivity-Hub-VNET-FW-UnTrust-SNET-02" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
           subnet_virtual_network_resource_group_name = "sd-plz-connectivity-rg-01"                    #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
         })
         ip_configuration_public_ip     = null
@@ -757,7 +757,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_is_vmss_id_required                        = false               #(Required)Boolean value if VMSS id is required
     linux_virtual_machine_network_interface = {                                            #(Required) Map of object for network interface
       "nic1" = {
-        network_interface_name                = "sd-plz-sdlvmfwp01-untrust-nic" #(Required)Name of the network interface
+        network_interface_name                = "sd-plz-sdlvmfwp01-mgmt-nic" #(Required)Name of the network interface
         network_interface_resource_group_name = "sd-plz-connectivity-rg-01"     #(Required)Resource group name of network interface
       },
       "nic2" = {
@@ -765,7 +765,7 @@ linux_virtual_machine_variables = {
         network_interface_resource_group_name = "sd-plz-connectivity-rg-01"   #(Required)Resource group name of network interface
       },
       "nic3" = {
-        network_interface_name                = "sd-plz-sdlvmfwp01-mgmt-nic" #(Required)Name of the network interface
+        network_interface_name                = "sd-plz-sdlvmfwp01-untrust-nic" #(Required)Name of the network interface
         network_interface_resource_group_name = "sd-plz-connectivity-rg-01"  #(Required)Resource group name of network interface
       }
     }
@@ -908,7 +908,7 @@ linux_virtual_machine_variables = {
     linux_virtual_machine_is_vmss_id_required                        = false               #(Required)Boolean value if VMSS id is required
     linux_virtual_machine_network_interface = {                                            #(Required) Map of object for network interface
       "nic1" = {
-        network_interface_name                = "sd-plz-sdlvmfwp02-untrust-nic" #(Required)Name of the network interface
+        network_interface_name                = "sd-plz-sdlvmfwp02-mgmt-nic" #(Required)Name of the network interface
         network_interface_resource_group_name = "sd-plz-connectivity-rg-01"     #(Required)Resource group name of network interface
       },
       "nic2" = {
@@ -916,7 +916,7 @@ linux_virtual_machine_variables = {
         network_interface_resource_group_name = "sd-plz-connectivity-rg-01"   #(Required)Resource group name of network interface
       },
       "nic3" = {
-        network_interface_name                = "sd-plz-sdlvmfwp02-mgmt-nic" #(Required)Name of the network interface
+        network_interface_name                = "sd-plz-sdlvmfwp02-untrust-nic" #(Required)Name of the network interface
         network_interface_resource_group_name = "sd-plz-connectivity-rg-01"  #(Required)Resource group name of network interface
       }
     }
