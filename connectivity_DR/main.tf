@@ -77,7 +77,7 @@ module "public_ip" {
   depends_on          = [module.resource_group]
 }
 
-/*
+
 #APPLICATION GATEWAY
 module "application_gateway" {
   source = "../Azure/application_gateway/v1.3.0"
@@ -87,7 +87,7 @@ module "application_gateway" {
   application_gateway_variables = var.application_gateway_variables
   depends_on                    = [module.subnet, module.public_ip]
 }
-*/
+
 /*
 #LINUX VM
 

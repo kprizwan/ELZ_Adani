@@ -404,20 +404,20 @@ network_interface_variables = {
 #APPLICATION GATEWAY 
 application_gateway_variables = {
   "application_gateway_1" = {
-    application_gateway_name                              = "sd-plz-appgw-01"                          #(Required) The name of the Application Gateway. Changing this forces a new resource to be created.                    
+    application_gateway_name                              = "sd-plz-dr-appgw-01"                          #(Required) The name of the Application Gateway. Changing this forces a new resource to be created.                    
     application_gateway_resource_group_name               = "sd-plz-connectivity-dr-rg-01"                #(Required) The name of the resource group in which to the Application Gateway should exist. Changing this forces a new resource to be created.                 
     application_gateway_location                          = "South India"                            #(Required) The Azure region where the Application Gateway should exist. Changing this forces a new resource to be created.                 
     application_gateway_sku_capacity                      = 2                                          #(Required) The Capacity of the SKU to use for this Application Gateway. When using a V1 SKU this value must be between 1 and 32, and 1 to 125 for a V2 SKU. This property is optional if autoscale_configuration is set.                 
-    application_gateway_vnet_name                         = "sd-plz-Connectivity-Hub-VNET"             #Name of the virtual network to be associated with Application Gateway               
+    application_gateway_vnet_name                         = "sd-plz-dr-Connectivity-Hub-VNET"             #Name of the virtual network to be associated with Application Gateway               
     application_gateway_vnet_resource_group_name          = "sd-plz-connectivity-dr-rg-01"                #name of the virtual network resource group name
-    application_gateway_subnet_name                       = "sd-plz-Connectivity-Hub-VNET-AGW-SNET-01" #Name of the subnet to be associated with Application Gateway                 
+    application_gateway_subnet_name                       = "sd-plz-dr-Connectivity-Hub-VNET-AGW-SNET-01" #Name of the subnet to be associated with Application Gateway                 
     application_gateway_frontend_port                     = 80                                         #(Required) The port used for this Frontend Port.                 
     application_gateway_is_private_frontend_ip_required   = false                                      #(Optional) The Private IP Address to use for the Application Gateway.              
     application_gateway_is_public_frontend_ip_required    = true                                       #(Optional) The ID of a Public IP Address which the Application Gateway should use. The allocation method for the Public IP Address depends on the sku of this Application Gateway. Please refer to the Azure documentation for public IP addresses for details.
     application_gateway_is_waf_policy_required            = false                                      #(Optional) A waf_configuration block                 
     application_gateway_waf_policy_name                   = null                                       #Name of the waf Policy                  
     application_gateway_waf_policy_resource_group_name    = null                                       #Resource Group of the waf policy                
-    application_gateway_public_ip_name                    = "sd-plz-connectivity-pip-agw-01"           #(Optional) The public IP Address which the Application Gateway should use. The allocation method for the Public IP Address depends on the sku of this Application Gateway. Please refer to the Azure documentation for public IP addresses for details.
+    application_gateway_public_ip_name                    = "sd-plz-dr-connectivity-pip-agw-01"           #(Optional) The public IP Address which the Application Gateway should use. The allocation method for the Public IP Address depends on the sku of this Application Gateway. Please refer to the Azure documentation for public IP addresses for details.
     application_gateway_fips_enabled                      = false                                      #(Optional) Is FIPS enabled on the Application Gateway?               
     application_gateway_identity                          = null                                       #(Optional)
     application_gateway_zones                             = null                                       #(Optional) Specifies a list of Availability Zones in which this Application Gateway should be located. Changing this forces a new Application Gateway to be created.
@@ -438,7 +438,7 @@ application_gateway_variables = {
     application_gateway_gateway_ip_configuration = [ #A frontend_ip_configuration block supports the following
       {
         gateway_ip_configuration_name        = "appgateway-gicconfig"                     #(Required) The name of the Frontend IP Configuration.
-        gateway_ip_configuration_subnet_name = "sd-plz-Connectivity-Hub-VNET-AGW-SNET-01" #" #(Required) The Name of the Subnet which the Application Gateway should be connected to.
+        gateway_ip_configuration_subnet_name = "sd-plz-dr-Connectivity-Hub-VNET-AGW-SNET-01" #" #(Required) The Name of the Subnet which the Application Gateway should be connected to.
     }]
 
     application_gateway_waf_configuration = null /*{                   #A waf_configuration block supports the following
