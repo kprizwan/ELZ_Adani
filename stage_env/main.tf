@@ -8,17 +8,17 @@ module "resource_group" {
 }
 
 #VIRTUAL NETWORK
-/*module "virtual_network" {
+module "virtual_network" {
   source = "../Azure/virtual_network/v1.3.0"
   providers = {
     azurerm = azurerm.stage_env
   }
   virtual_network_variables = var.virtual_network_variables
   depends_on                = [module.resource_group]
-}*/
+}
 
 #SUBNET
-/*module "subnet" {
+module "subnet" {
   source = "../Azure/subnet/v1.3.0"
   providers = {
     azurerm = azurerm.stage_env
@@ -26,7 +26,7 @@ module "resource_group" {
   subnet_variables = var.subnet_variables
   depends_on       = [module.virtual_network]
 }
-*/
+
 #AKS CLUSTER
 /*module "kubernetes_cluster" {
   source = "../Azure/kubernetes_cluster/v1.3.0"
@@ -42,8 +42,8 @@ module "resource_group" {
   }
   kubernetes_cluster_variables = var.kubernetes_cluster_variables
   depends_on                   = [module.resource_group, module.subnet]
-}*/
-
+}
+*/
 
 #SOURCE VIRTUAL NETWORK PEERING
 /*module "source_virtual_network_peering" {
