@@ -102,7 +102,7 @@ subnet_variables = {
   }
 }
 #KUBERNETES CLUSTER
-/*kubernetes_cluster_variables = {
+kubernetes_cluster_variables = {
   "aks_1" = {
     kubernetes_cluster_name                                                            = "sdstageaks01"       #(Required) The name of the Managed Kubernetes Cluster to create. Changing this forces a new resource to be created.
     kubernetes_cluster_location                                                        = "Central India"        #(Required) The location where the Managed Kubernetes Cluster should be created. Changing this forces a new resource to be created.
@@ -192,7 +192,7 @@ subnet_variables = {
       identity_ids  = null /*[{
         identity_name = "5bcd79c7-7094-44fc-b87a-f9c2f24f517c"
       identity_resource_group_name = "sd-common-stage-node-rg" }]
-    }
+    }*/
     kubernetes_cluster_ingress_application_gateway = null
     kubernetes_cluster_key_management_service      = null
     kubernetes_cluster_key_vault_secrets_provider  = null
@@ -261,26 +261,26 @@ subnet_variables = {
       Classification = "Diamond",
       IAC            = "Terraform",
       Contact        = "Manish.kumar10@adani.com"
+    }
+    kubernetes_cluster_web_app_routing = null /*(Optional) A web_app_routing block as defined below
+      web_app_routing_dns_zone_name = "dns000001"                      #(Required) Specifies the ID of the DNS Zone in which DNS entries are created for applications deployed to the cluster when Web App Routing is enabled.
+      web_app_routing_dns_zone_resource_group = "rg000001"             #(Required) Specifies the ID of the DNS Zone in which DNS entries are created for applications deployed to the cluster when Web App Routing is enabled.
     }*/
-    #kubernetes_cluster_web_app_routing = null #(Optional) A web_app_routing block as defined below
-    #   web_app_routing_dns_zone_name = "dns000001"                      #(Required) Specifies the ID of the DNS Zone in which DNS entries are created for applications deployed to the cluster when Web App Routing is enabled.
-    #   web_app_routing_dns_zone_resource_group = "rg000001"             #(Required) Specifies the ID of the DNS Zone in which DNS entries are created for applications deployed to the cluster when Web App Routing is enabled.
-    # }
-    #kubernetes_cluster_windows_profile = null /*{                                          #(Optional) Pass as null if not required. Changing any parameter forces a new resource to be created.
-      # windows_profile_admin_username_key_vault_secret_name = "keyvaultsecret000001" #(Required) Pass the secret name where the adminuser name is stored. Pass null if not stored in key vault
-      # windows_profile_admin_username                       = "admin123"             #(Optional) The Admin Username for the Windows VMs if not present in key vault
-      # windows_profile_admin_password_secret_exist          = false                  #(Required) Set true if the password is present in key vault else new password will be generated
-      # windows_profile_admin_password_secret_name           = "akssecret111"         #(Required) If windows_profile_admin_password_secret_exist is true then the Admin Password is read from given secret else the new generated password is stored in the given secret. Length must be between 14 and 123 characters.
-      # windows_profile_admin_password_length                = 14                     #(Required) Password Length. Length must be between 14 and 123 characters. Password generated will contain minimum of 4 lower case, 4 upper case, 2 numeric and 2 special character
-      # windows_profile_license                              = "Windows_Server"       #(Optional) Specifies the type of on-premise license which should be used for Node Pool Windows Virtual Machine. At this time the only possible value is Windows_Server
-      # kubernetes_cluster_gmsa                              = null
-      #     gmsa_dns_server       =   #(Required) Specifies the DNS server for Windows gMSA. Set this to an empty string if you have configured the DNS server in the VNet which was used to create the managed cluster.
-      #     gmsa_root_domain      =   #(Required) Specifies the root domain name for Windows gMSA. Set this to an empty string if you have configured the DNS server in the VNet which was used to create the managed cluster.
-      #   }
-    # }*/
-  
-
-
+    kubernetes_cluster_windows_profile = null /*{                                          #(Optional) Pass as null if not required. Changing any parameter forces a new resource to be created.
+      windows_profile_admin_username_key_vault_secret_name = "keyvaultsecret000001" #(Required) Pass the secret name where the adminuser name is stored. Pass null if not stored in key vault
+      windows_profile_admin_username                       = "admin123"             #(Optional) The Admin Username for the Windows VMs if not present in key vault
+      windows_profile_admin_password_secret_exist          = false                  #(Required) Set true if the password is present in key vault else new password will be generated
+      windows_profile_admin_password_secret_name           = "akssecret111"         #(Required) If windows_profile_admin_password_secret_exist is true then the Admin Password is read from given secret else the new generated password is stored in the given secret. Length must be between 14 and 123 characters.
+      windows_profile_admin_password_length                = 14                     #(Required) Password Length. Length must be between 14 and 123 characters. Password generated will contain minimum of 4 lower case, 4 upper case, 2 numeric and 2 special character
+      windows_profile_license                              = "Windows_Server"       #(Optional) Specifies the type of on-premise license which should be used for Node Pool Windows Virtual Machine. At this time the only possible value is Windows_Server
+      kubernetes_cluster_gmsa                              = null
+          gmsa_dns_server       =   #(Required) Specifies the DNS server for Windows gMSA. Set this to an empty string if you have configured the DNS server in the VNet which was used to create the managed cluster.
+          gmsa_root_domain      =   #(Required) Specifies the root domain name for Windows gMSA. Set this to an empty string if you have configured the DNS server in the VNet which was used to create the managed cluster.
+        }
+    }*/
+  } 
+}
+}
 #SOURCE VIRTUAL NETWORK PEERING
 /*source_virtual_network_peering_variables = {
   "source_virtual_network_peering_1" = {
