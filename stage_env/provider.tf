@@ -10,7 +10,7 @@ terraform {
     }
   }
 }
-# subscription  - Management - Default
+# subscription  - Stage - Default
 
 provider "azurerm" {
   alias = "stage_env"
