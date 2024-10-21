@@ -46,11 +46,11 @@ module "kubernetes_cluster" {
 
 
 #SOURCE VIRTUAL NETWORK PEERING
-/*module "source_virtual_network_peering" {
+module "source_virtual_network_peering" {
   source = "../Azure/virtual_network_peering/v1.3.0"
   providers = {
-    azurerm.source_virtual_network_sub      = azurerm.connectivity
-    azurerm.destination_virtual_network_sub = azurerm.stage_env
+    azurerm.source_virtual_network_sub      = azurerm.stage_env
+    azurerm.destination_virtual_network_sub = azurerm.connectivity
   }
   virtual_network_peering_variables = var.source_virtual_network_peering_variables
   depends_on                        = [module.virtual_network]
@@ -60,8 +60,8 @@ module "kubernetes_cluster" {
 module "destination_virtual_network_peering" {
   source = "../Azure/virtual_network_peering/v1.3.0"
   providers = {
-    azurerm.source_virtual_network_sub      = azurerm.stage_env
-    azurerm.destination_virtual_network_sub = azurerm.connectivity
+    azurerm.source_virtual_network_sub      = azurerm.connectivity
+    azurerm.destination_virtual_network_sub = azurerm.stage_env
   }
   virtual_network_peering_variables = var.destination_virtual_network_peering_variables
   depends_on                        = [module.virtual_network]
