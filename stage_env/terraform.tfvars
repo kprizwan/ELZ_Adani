@@ -100,7 +100,6 @@ subnet_variables = {
       service_delegation_actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action", "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action"] #(Optional) A list of Actions which should be delegated. This list is specific to the service to delegate to. Possible values include Microsoft.Network/publicIPAddresses/read,Microsoft.Network/virtualNetworks/read,Microsoft.Network/networkinterfaces/*, Microsoft.Network/virtualNetworks/subnets/action, Microsoft.Network/virtualNetworks/subnets/join/action, Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action and Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action.
     }]
   }
- 
 }
 #KUBERNETES CLUSTER
 /*kubernetes_cluster_variables = {
@@ -263,22 +262,22 @@ subnet_variables = {
       IAC            = "Terraform",
       Contact        = "Manish.kumar10@adani.com"
     }*/
-    kubernetes_cluster_web_app_routing = null #(Optional) A web_app_routing block as defined below
+    #kubernetes_cluster_web_app_routing = null #(Optional) A web_app_routing block as defined below
     #   web_app_routing_dns_zone_name = "dns000001"                      #(Required) Specifies the ID of the DNS Zone in which DNS entries are created for applications deployed to the cluster when Web App Routing is enabled.
     #   web_app_routing_dns_zone_resource_group = "rg000001"             #(Required) Specifies the ID of the DNS Zone in which DNS entries are created for applications deployed to the cluster when Web App Routing is enabled.
     # }
-    kubernetes_cluster_windows_profile = null /*{                                          #(Optional) Pass as null if not required. Changing any parameter forces a new resource to be created.
-      windows_profile_admin_username_key_vault_secret_name = "keyvaultsecret000001" #(Required) Pass the secret name where the adminuser name is stored. Pass null if not stored in key vault
-      windows_profile_admin_username                       = "admin123"             #(Optional) The Admin Username for the Windows VMs if not present in key vault
-      windows_profile_admin_password_secret_exist          = false                  #(Required) Set true if the password is present in key vault else new password will be generated
-      windows_profile_admin_password_secret_name           = "akssecret111"         #(Required) If windows_profile_admin_password_secret_exist is true then the Admin Password is read from given secret else the new generated password is stored in the given secret. Length must be between 14 and 123 characters.
-      windows_profile_admin_password_length                = 14                     #(Required) Password Length. Length must be between 14 and 123 characters. Password generated will contain minimum of 4 lower case, 4 upper case, 2 numeric and 2 special character
-      windows_profile_license                              = "Windows_Server"       #(Optional) Specifies the type of on-premise license which should be used for Node Pool Windows Virtual Machine. At this time the only possible value is Windows_Server
-      kubernetes_cluster_gmsa                              = null
+    #kubernetes_cluster_windows_profile = null /*{                                          #(Optional) Pass as null if not required. Changing any parameter forces a new resource to be created.
+      # windows_profile_admin_username_key_vault_secret_name = "keyvaultsecret000001" #(Required) Pass the secret name where the adminuser name is stored. Pass null if not stored in key vault
+      # windows_profile_admin_username                       = "admin123"             #(Optional) The Admin Username for the Windows VMs if not present in key vault
+      # windows_profile_admin_password_secret_exist          = false                  #(Required) Set true if the password is present in key vault else new password will be generated
+      # windows_profile_admin_password_secret_name           = "akssecret111"         #(Required) If windows_profile_admin_password_secret_exist is true then the Admin Password is read from given secret else the new generated password is stored in the given secret. Length must be between 14 and 123 characters.
+      # windows_profile_admin_password_length                = 14                     #(Required) Password Length. Length must be between 14 and 123 characters. Password generated will contain minimum of 4 lower case, 4 upper case, 2 numeric and 2 special character
+      # windows_profile_license                              = "Windows_Server"       #(Optional) Specifies the type of on-premise license which should be used for Node Pool Windows Virtual Machine. At this time the only possible value is Windows_Server
+      # kubernetes_cluster_gmsa                              = null
       #     gmsa_dns_server       =   #(Required) Specifies the DNS server for Windows gMSA. Set this to an empty string if you have configured the DNS server in the VNet which was used to create the managed cluster.
       #     gmsa_root_domain      =   #(Required) Specifies the root domain name for Windows gMSA. Set this to an empty string if you have configured the DNS server in the VNet which was used to create the managed cluster.
       #   }
-    }*/
+    # }*/
   
 
 
