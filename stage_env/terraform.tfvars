@@ -191,8 +191,8 @@ kubernetes_cluster_variables = {
       identity_type = "SystemAssigned" #(Required) Specifies the type of Managed Service Identity that should be configured on this Kubernetes Cluster. Possible values are SystemAssigned, UserAssigned, SystemAssigned, UserAssigned (to enable both).
       identity_ids  = null /*[{
         identity_name = "5bcd79c7-7094-44fc-b87a-f9c2f24f517c"
-      identity_resource_group_name = "sd-common-stage-node-rg" }]
-    }*/
+      identity_resource_group_name = "sd-common-stage-node-rg" }]*/
+    }
     kubernetes_cluster_ingress_application_gateway = null
     kubernetes_cluster_key_management_service      = null
     kubernetes_cluster_key_vault_secrets_provider  = null
@@ -280,7 +280,7 @@ kubernetes_cluster_variables = {
     }*/
   } 
 }
-}
+
 #SOURCE VIRTUAL NETWORK PEERING
 /*source_virtual_network_peering_variables = {
   "source_virtual_network_peering_1" = {
