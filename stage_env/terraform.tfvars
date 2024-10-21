@@ -113,7 +113,7 @@ kubernetes_cluster_variables = {
     kubernetes_cluster_default_node_pool_name                                          = "sdstagepool"
     kubernetes_cluster_default_node_pool_capacity_reservation_group_name               = null             #(Optional) provide the linux kubernetes_cluster capacity reservation group name
     kubernetes_cluster_default_node_pool_capacity_reservation_resource_group_name      = null             #(Optional) provide the capacity reservation group resource group name
-    kubernetes_cluster_default_node_pool_vm_size                                       = "Standard_D4ds_v5" #(Required) The size of the Virtual Machine, such as Standard_DS2_v2. Changing this forces a new resource to be created.
+    kubernetes_cluster_default_node_pool_vm_size                                       = "Standard_D8_v3" #(Required) The size of the Virtual Machine, such as Standard_DS2_v2. Changing this forces a new resource to be created.
     kubernetes_cluster_default_node_pool_custom_ca_trust_enabled                       = false            #(Optional) Specifies whether to trust a Custom CA.
     kubernetes_cluster_default_node_pool_key_vault_certificate_name                    = null             #(Optional) Specifies the name of the Key Vault Certificate. If kubernetes_cluster_default_node_pool_custom_ca_trust_enabled = true, then this is Required.
     kubernetes_cluster_default_node_pool_enable_auto_scaling                           = false            #(Optional) Should the Kubernetes Auto Scaler be enabled for this Node Pool? Defaults to false. This requires that the type is set to VirtualMachineScaleSets
