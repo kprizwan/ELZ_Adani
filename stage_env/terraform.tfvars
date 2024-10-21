@@ -279,7 +279,7 @@ subnet_variables = {
       #     gmsa_root_domain      =   #(Required) Specifies the root domain name for Windows gMSA. Set this to an empty string if you have configured the DNS server in the VNet which was used to create the managed cluster.
       #   }
     }*/
-  }
+  
 
 
 #SOURCE VIRTUAL NETWORK PEERING
