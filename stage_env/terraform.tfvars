@@ -283,8 +283,8 @@ kubernetes_cluster_variables = {
 #SOURCE VIRTUAL NETWORK PEERING
 source_virtual_network_peering_variables = {
   "source_virtual_network_peering_1" = {
-    virtual_network_peering_name                             = "sd-common-stage-rg-sd-plz-Connectivity-Hub-VNET" # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
-    virtual_network_peering_destination_resource_group_name  = "sd-plz-Connectivity-Hub-VNET"                                # (Required) The name of the destination virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_name                             = "sd-common-stage-vnet-01-sd-plz-Connectivity-Hub-VNET" # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_destination_resource_group_name  = "sd-plz-connectivity-rg-01"                                # (Required) The name of the destination virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
     virtual_network_peering_destination_virtual_network_name = "sd-plz-Connectivity-Hub-VNET"                              # (Required) The name of the destination virtual network name.
     virtual_network_peering_resource_group_name              = "sd-common-stage-rg"                           # (Required) The name of the source virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
     virtual_network_peering_virtual_network_name             = "sd-common-stage-vnet-01"                        # (Required) The name of the source virtual network name.
@@ -299,7 +299,7 @@ source_virtual_network_peering_variables = {
 #DESTINATION VIRTUAL NETWORK PEERING
 destination_virtual_network_peering_variables = {
   "destination_virtual_network_peering_1" = {
-    virtual_network_peering_name                             = "sd-plz-Connectivity-Hub-VNET-sd-common-stage-rg" # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
+    virtual_network_peering_name                             = "sd-plz-Connectivity-Hub-VNET-sd-common-stage-vnet-01" # (Required) The name of the source virtual network peering. Changing this forces a new resource to be created.
     virtual_network_peering_destination_resource_group_name  = "sd-common-stage-rg"                           # (Required) The name of the destination virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
     virtual_network_peering_destination_virtual_network_name = "sd-common-stage-vnet-01"                        # (Required) The name of the destination virtual network name.
     virtual_network_peering_resource_group_name              = "sd-plz-connectivity-rg-01"                                # (Required) The name of the source virtual network resource group and in which to create the virtual network peering. Changing this forces a new resource to be created.
