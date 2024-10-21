@@ -101,12 +101,9 @@ subnet_variables = {
     }]
   },
  
- 
-  }
-
 
 #KUBERNETES CLUSTER
-kubernetes_cluster_variables = {
+/*kubernetes_cluster_variables = {
   "aks_1" = {
     kubernetes_cluster_name                                                            = "sdstageaks01"       #(Required) The name of the Managed Kubernetes Cluster to create. Changing this forces a new resource to be created.
     kubernetes_cluster_location                                                        = "Central India"        #(Required) The location where the Managed Kubernetes Cluster should be created. Changing this forces a new resource to be created.
@@ -265,7 +262,7 @@ kubernetes_cluster_variables = {
       Classification = "Diamond",
       IAC            = "Terraform",
       Contact        = "Manish.kumar10@adani.com"
-    }
+    }*/
     kubernetes_cluster_web_app_routing = null #(Optional) A web_app_routing block as defined below
     #   web_app_routing_dns_zone_name = "dns000001"                      #(Required) Specifies the ID of the DNS Zone in which DNS entries are created for applications deployed to the cluster when Web App Routing is enabled.
     #   web_app_routing_dns_zone_resource_group = "rg000001"             #(Required) Specifies the ID of the DNS Zone in which DNS entries are created for applications deployed to the cluster when Web App Routing is enabled.
@@ -283,7 +280,7 @@ kubernetes_cluster_variables = {
       #   }
     }*/
   }
-}
+
 
 #SOURCE VIRTUAL NETWORK PEERING
 /*source_virtual_network_peering_variables = {
