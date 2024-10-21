@@ -150,7 +150,6 @@ kubernetes_cluster_variables = {
     kubernetes_cluster_default_node_pool_pod_virtual_network_resource_group_name       = "sd-common-stage-rg"            #(Optional) The name of the resource_group where the pods in the default Node Pool should exist. Changing this forces a new resource to be created.
     kubernetes_cluster_default_node_pool_type                                          = "VirtualMachineScaleSets"         #(Optional) The type of Node Pool which should be created. Possible values are AvailabilitySet and VirtualMachineScaleSets. Defaults to VirtualMachineScaleSets.
     kubernetes_cluster_default_node_pool_tags = {
-
       BU             = "ELZ",
       Role           = "Landing Zone",
       Environment    = "PLZ-Stage",
@@ -240,7 +239,7 @@ kubernetes_cluster_variables = {
     kubernetes_cluster_private_dns_zone_resource_group_name = null  #(Optional)Resource Group name for kubernetes_cluster_private_dns_zone_name.
     kubernetes_cluster_private_cluster_public_fqdn_enabled  = true  #(Optional) Specifies whether a Public FQDN for this Private Cluster should be added. Defaults to false.
     kubernetes_cluster_workload_autoscaler_profile          = null
-    # {                                        #(Optional) A workload_autoscaler_profile block defined below.
+    # {                                      #(Optional) A workload_autoscaler_profile block defined below.
     #   workload_autoscaler_profile_keda_enabled = false                                        #(Optional) Specifies whether KEDA Autoscaler can be used for workloads.
     #   workload_autoscaler_profile_vertical_pod_autoscaler_enabled = bool #(Optional) Specifies whether Vertical Pod Autoscaler should be enabled.
 

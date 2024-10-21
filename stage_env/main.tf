@@ -28,7 +28,7 @@ module "subnet" {
 }
 
 #AKS CLUSTER
-/*module "kubernetes_cluster" {
+module "kubernetes_cluster" {
   source = "../Azure/kubernetes_cluster/v1.3.0"
   providers = {
     azurerm.keyvault_sub                    = azurerm.stage_env
@@ -43,7 +43,7 @@ module "subnet" {
   kubernetes_cluster_variables = var.kubernetes_cluster_variables
   depends_on                   = [module.resource_group, module.subnet]
 }
-*/
+
 
 #SOURCE VIRTUAL NETWORK PEERING
 /*module "source_virtual_network_peering" {
