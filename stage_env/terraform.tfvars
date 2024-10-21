@@ -104,7 +104,6 @@ subnet_variables = {
  
   }
 
-}
 
 #KUBERNETES CLUSTER
 kubernetes_cluster_variables = {
