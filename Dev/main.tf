@@ -7,7 +7,7 @@ module "resource_group" {
   }
   resource_group_variables = var.resource_group_variables
 }
-/*
+
 #VIRTUAL NETWORK
 module "virtual_network" {
   source = "../Azure/virtual_network/v1.3.0"
@@ -27,7 +27,7 @@ module "subnet" {
   subnet_variables = var.subnet_variables
   depends_on       = [module.virtual_network]
 }
-
+/*
 #AKS CLUSTER
 module "kubernetes_cluster" {
   source = "../Azure/kubernetes_cluster/v1.3.0"
