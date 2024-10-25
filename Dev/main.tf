@@ -44,7 +44,7 @@ module "kubernetes_cluster" {
   kubernetes_cluster_variables = var.kubernetes_cluster_variables
   depends_on                   = [module.resource_group, module.subnet]
 }
-
+*/
 
 #SOURCE VIRTUAL NETWORK PEERING
 module "source_virtual_network_peering" {
@@ -67,7 +67,7 @@ module "destination_virtual_network_peering" {
   virtual_network_peering_variables = var.destination_virtual_network_peering_variables
   depends_on                        = [module.virtual_network]
 }
-*/
+
 
 #PRIVATE DNS ZONE
 /*module "private_dns_zone" {
