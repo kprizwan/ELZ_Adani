@@ -408,3 +408,36 @@ private_endpoint_variables = {
     }
   }
 }
+
+# ROUTE TABLE
+route_table_variables = {
+  "route_table_1" = {
+    route_table_name                          = "sd-common-dev-routetable-01" #(Required) The name of the route table. 
+    route_table_location                      = "Central India"         #(Required) The Azure location where the resource should exist.
+    route_table_resource_group_name           = "sd-common-dev-rg"  #(Required) The name of the resource group in which to create the route table.
+    route_table_disable_bgp_route_propagation = false             #(Optional) Boolean flag which controls propagation of routes learned by BGP on that route table. True means disable. Default value "false"
+    route_table_tags = {                                          #(Optional) A mapping of tags to assign to the resource.
+      BU             = "ELZ",
+      Role           = "Dev",
+      Environment    = "PLZ-Dev",
+      Owner          = "Manish Kumar",
+      Criticality    = "Medium",
+      Classification = "Gold",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+    route_table_route = null /* [{                                #(Optional) List of objects representing routes.
+      route_name                   = "route000001" #(Required) The name of the route.
+      route_address_prefix         = "10.3.0.0/16"        #(Required) The destination to which the route applies. Can be CIDR(such as 10.1.0.0/16) or Azure Service Tag (such as ApiManagement, AzureBackup or AzureMonitor) format.
+      route_next_hop_type          = "None"               #(Required) The type of Azure hop the packet should be sent to. Possible values are VirtualNetworkGateway, VnetLocal, Internet, VirtualAppliance and None.
+      route_next_hop_in_ip_address = "10.2.0.0/24"        #(Optional) Contains the IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+      },
+      {
+        route_name                   = "route000002" #(Required) The name of the route.
+        route_address_prefix         = "10.2.0.0/16"        #(Required) The destination to which the route applies. Can be CIDR(such as 10.1.0.0/16) or Azure Service Tag (such as ApiManagement, AzureBackup or AzureMonitor) format.
+        route_next_hop_type          = "None"               #(Required) The type of Azure hop the packet should be sent to. Possible values are VirtualNetworkGateway, VnetLocal, Internet, VirtualAppliance and None.
+        route_next_hop_in_ip_address = "10.2.1.0/24"        #(Optional) Contains the IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance. Default value "null"
+    }]*/
+  }
+}
+

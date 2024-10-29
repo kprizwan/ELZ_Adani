@@ -91,3 +91,10 @@ module "destination_virtual_network_peering" {
   private_endpoint_variables = var.private_endpoint_variables
   depends_on                 = [module.key_vault, module.private_dns_zone]
 }*/
+module "route_table"{
+  source = "../Azure/route_table/v1.3.0"
+  providers={
+     azurerm = azurerm.dev_env
+  }
+  route_table_variables= var.route_table_variables
+}
