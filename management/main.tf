@@ -95,3 +95,11 @@ module "linux_virtual_machine" {
   linux_virtual_machine_variables = var.linux_virtual_machine_variables
   depends_on                      = [module.network_interface]
 }
+
+module "route_table"{
+  source = "../Azure/route_table/v1.3.0"
+  providers={
+     azurerm = azurerm.management
+  }
+  route_table_variables= var.route_table_variables
+}
