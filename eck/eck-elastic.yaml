@@ -1,0 +1,15 @@
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: elastic
+spec:
+  version: 8.15.3 #Make sure you use the version of your choice
+  http:
+    service:
+      spec:
+        type: ClusterIP #Adds a External IP
+  nodeSets:
+  - name: default
+    count: 1
+    config:
+      node.store.allow_mmap: false
