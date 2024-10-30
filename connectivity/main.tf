@@ -157,4 +157,10 @@ module "network_security_group_association" {
   //depends_on            = [module.virtual_]
 }*/
 
-
+module "route_table"{
+  source = "../Azure/route_table/v1.3.0"
+  providers={
+     azurerm = azurerm.connectivity
+  }
+  route_table_variables= var.route_table_variables
+}

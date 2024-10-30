@@ -13,7 +13,7 @@ key_vault_variables = {
     key_vault_sku_name                              = "standard"                                                                                                                                                                                      #(Required) The Name of the SKU used for this Key Vault. Possible values are standard and premium
     key_vault_access_container_agent_name           = "SDLADOVM01"                                                                                                                                                                                    #(Optional) Self hosted conatiner agent name.
     key_vault_access_policy_application_id          = null                                                                                                                                                                                            #(Optional) The object ID of an Application in Azure Active Directory.
-    key_vault_public_network_access_enabled         = false                                                                                                                                                                                           #(Optional) key_vault_public_network_access_enabled
+    key_vault_public_network_access_enabled         = true                                                                                                                                                                                           #(Optional) key_vault_public_network_access_enabled
     key_vault_access_policy_key_permissions         = ["Get", "List", "Create", "Delete", "Recover", "Backup", "Restore", "Purge"]                                                                                                                    #(Optional) List of key permissions, must be one or more from the following: Backup, Create, Decrypt, Delete, Encrypt, Get, Import, List, Purge, Recover, Restore, Sign, UnwrapKey, Update, Verify and WrapKey.
     key_vault_access_policy_secret_permissions      = ["Get", "List", "Delete", "Recover", "Backup", "Restore", "Purge"]                                                                                                                              #(Optional) List of secret permissions, must be one or more from the following: Backup, Delete, Get, List, Purge, Recover, Restore and Set.
     key_vault_access_policy_storage_permissions     = []                                                                                                                                                                                              #(Optional) List of storage permissions, must be one or more from the following: Backup, Delete, DeleteSAS, Get, GetSAS, List, ListSAS, Purge, Recover, RegenerateKey, Restore, Set, SetSAS and Update.
@@ -244,7 +244,7 @@ kubernetes_cluster_variables = {
     kubernetes_cluster_default_node_pool_name                                          = "sdelkpool"
     kubernetes_cluster_default_node_pool_capacity_reservation_group_name               = null             #(Optional) provide the linux kubernetes_cluster capacity reservation group name
     kubernetes_cluster_default_node_pool_capacity_reservation_resource_group_name      = null             #(Optional) provide the capacity reservation group resource group name
-    kubernetes_cluster_default_node_pool_vm_size                                       = "Standard_D3_v2" #(Required) The size of the Virtual Machine, such as Standard_DS2_v2. Changing this forces a new resource to be created.
+    kubernetes_cluster_default_node_pool_vm_size                                       = "Standard_D8_v3" #(Required) The size of the Virtual Machine, such as Standard_DS2_v2. Changing this forces a new resource to be created.
     kubernetes_cluster_default_node_pool_custom_ca_trust_enabled                       = false            #(Optional) Specifies whether to trust a Custom CA.
     kubernetes_cluster_default_node_pool_key_vault_certificate_name                    = null             #(Optional) Specifies the name of the Key Vault Certificate. If kubernetes_cluster_default_node_pool_custom_ca_trust_enabled = true, then this is Required.
     kubernetes_cluster_default_node_pool_enable_auto_scaling                           = false            #(Optional) Should the Kubernetes Auto Scaler be enabled for this Node Pool? Defaults to false. This requires that the type is set to VirtualMachineScaleSets
@@ -272,7 +272,7 @@ kubernetes_cluster_variables = {
     kubernetes_cluster_default_node_pool_proximity_placement_group_name                = null                              #(Optional) Provide proximity placement group name if kubernetes_cluster_is_proximity_placement_group_id_required is set to true
     kubernetes_cluster_default_node_pool_proximity_placement_group_resource_group_name = null                              #(Optional) Provide proximity placement group resource group name if kubernetes_cluster_is_proximity_placement_group_id_required is set to true
     kubernetes_cluster_default_node_pool_pod_virtual_network_name                      = "sd-plz-management-vnet"          #(Optional) The name of the Subnet where the pods in the default Node Pool should exist.
-    kubernetes_cluster_default_node_pool_pod_subnet_name                               = "sd-plz-management-vnet-snet-pod" #(Optional) The name of the Subnet where the pods in the default Node Pool should exist. Changing this forces a new resource to be created.
+    kubernetes_cluster_default_node_pool_pod_subnet_name                               = "sd-plz-management-vnet-snet01-pod" #(Optional) The name of the Subnet where the pods in the default Node Pool should exist. Changing this forces a new resource to be created.
     kubernetes_cluster_default_node_pool_pod_scale_down_mode                           = "Delete"                          #(Optional) Specifies the autoscaling behaviour of the Kubernetes Cluster. Allowed values are Delete and Deallocate. Defaults to Delete.
     kubernetes_cluster_default_node_pool_is_snapshot_id_required                       = false                             #(Required)Boolean value if snapshot id required
     kubernetes_cluster_default_node_pool_snapshot_name                                 = null                              #(Optional) Provide snapshot name if kubernetes_cluster_default_node_pool_is_snapshot_id_required is set to true
@@ -297,8 +297,8 @@ kubernetes_cluster_variables = {
     kubernetes_cluster_default_node_pool_virtual_network_name                = "sd-plz-management-vnet" #(Optional) Name of VNet for assigning default node pool to a subnet
     kubernetes_cluster_default_node_pool_virtual_network_resource_group_name = "sd-plz-management-rg"
     kubernetes_cluster_default_node_pool_subnet_name                         = "sd-plz-management-vnet-elk-snet-01" #(Optional) Name of Subnet for assigning default node pool to a subnet . A Route Table must be configured on this Subnet.
-    kubernetes_cluster_default_node_pool_max_count                           = null                                 #(Optional) The maximum number of nodes which should exist in this Node Pool. If specified this must be between 1 and 1000.
-    kubernetes_cluster_default_node_pool_min_count                           = null                                 #(Optional) The minimum number of nodes which should exist in this Node Pool. If specified this must be between 1 and 1000
+    kubernetes_cluster_default_node_pool_max_count                           = 6                                #(Optional) The maximum number of nodes which should exist in this Node Pool. If specified this must be between 1 and 1000.
+    kubernetes_cluster_default_node_pool_min_count                           = 3                                 #(Optional) The minimum number of nodes which should exist in this Node Pool. If specified this must be between 1 and 1000
     kubernetes_cluster_default_node_pool_node_count                          = 3                                    #(Optional) The initial number of nodes which should exist in this Node Pool. If specified this must be between 1 and 1000 and between min_count and max_count.
     kubernetes_cluster_default_node_pool_availability_zones                  = null                                 #(Optional) Specifies a list of Availability Zones in which this Kubernetes Cluster should be located. Changing this forces a new Kubernetes Cluster to be created.
     kubernetes_cluster_dns_prefix                                            = "sdplzmgmtaks01"                     #(Optional) DNS prefix specified when creating the managed cluster. Changing this forces a new resource to be created. One of dns_prefix or dns_prefix_private_cluster must be specified. The dns_prefix must contain between 3 and 45 characters, and can contain only letters, numbers, and hyphens. It must start with a letter and must end with a letter or a number.
@@ -531,4 +531,223 @@ network_security_group_association_variables = {
   }
 }
 
+#LINUX VM
+linux_virtual_machine_variables = {
+  "linux_virtual_machine_1" = {
+    linux_virtual_machine_admin_username = "palovman1"       #(Required) The username of the local administrator used for the Virtual Machine. Changing this forces a new resource to be created.
+    linux_virtual_machine_location       = "Central India" #(Required) The Azure location where the Linux Virtual Machine should exist. Changing this forces a new resource to be created.
+    linux_virtual_machine_license_type   = null            #(Optional) Specifies the BYOL Type for this Virtual Machine. Possible values are RHEL_BYOS and SLES_BYOS.
+    linux_virtual_machine_name           = "SDLVMFWPAN01"    #(Required) The name of the Linux Virtual Machine. Changing this forces a new resource to be created.
+    linux_virtual_machine_os_disk = {                      #(Required) A os_disk block as defined below.
+      os_disk_caching              = null                  #(Required) The Type of Caching which should be used for the Internal OS Disk. Possible values are None, ReadOnly and ReadWrite.
+      os_disk_storage_account_type = "Standard_LRS"        #(Required) The Type of Storage Account which should back this the Internal OS Disk. Possible values are Standard_LRS, StandardSSD_LRS, Premium_LRS, StandardSSD_ZRS and Premium_ZRS. Changing this forces a new resource to be created.
+      os_disk_diff_disk_settings = {                       #(Optional) A diff_disk_settings block as defined above. Changing this forces a new resource to be created.
+        diff_disk_settings_option    = "Local"             # (Required) Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is Local. Changing this forces a new resource to be created.
+        diff_disk_settings_placement = null                #(Optional) Specifies where to store the Ephemeral Disk. Possible values are CacheDisk and ResourceDisk. Defaults to CacheDisk. Changing this forces a new resource to be created.
+      }
+      os_disk_disk_size_gb              = 120                  #(Optional) The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
+      os_disk_name                      = "SDLVMFWPAN01-disk-01" #(Optional) The name which should be used for the Internal OS Disk. Changing this forces a new resource to be created.
+      os_disk_security_encryption_type  = null                 #(Optional) Encryption Type when the Virtual Machine is a Confidential VM. Possible values are VMGuestStateOnly and DiskWithVMGuestState. Changing this forces a new resource to be created.
+      os_disk_write_accelerator_enabled = false                #(Optional) Should Write Accelerator be Enabled for this OS Disk? Defaults to false.
+    }
+    linux_virtual_machine_resource_group_name = "sd-plz-management-rg" #(Required) The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
+    linux_virtual_machine_size                = "Standard_DS4_v2"            #(Required) The SKU which should be used for this Virtual Machine, such as Standard_F2.
+    linux_virtual_machine_additional_capabilities = {                       #(Optional) A additional_capabilities block as defined below.
+      additional_capabilities_ultra_ssd_enabled = false                     #(Optional) Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine? Defaults to false.
+    }
+    linux_virtual_machine_allow_extension_operations            = false        #(Optional) Should Extension Operations be allowed on this Virtual Machine?
+    linux_virtual_machine_boot_diagnostics_storage_account_name = null         # Provide storage account name value if linux_virtual_machine_is_storage_blob_required or linux_virtual_machine_is_boot_diagnostics_required is set to true
+    linux_virtual_machine_computer_name                         = "SDLVMFWPAN01" #(Optional) Specifies the Hostname which should be used for this Virtual Machine. If unspecified this defaults to the value for the name field. If the value of the name field is not a valid computer_name, then you must specify computer_name. Changing this forces a new resource to be created.
+    linux_virtual_machine_custom_data                           = null         #(Optional) The Base64-Encoded Custom Data which should be used for this Virtual Machine. Changing this forces a new resource to be created.
+    linux_virtual_machine_disable_password_authentication       = false        #(Optional) Should Password Authentication be disabled on this Virtual Machine? Defaults to true. Changing this forces a new resource to be created.
+    linux_virtual_machine_edge_zone                             = null         #(Optional) Specifies the Edge Zone within the Azure Region where this Linux Virtual Machine should exist. Changing this forces a new Linux Virtual Machine to be created.
+    linux_virtual_machine_encryption_at_host_enabled            = false        #(Optional) Should all of the disks (including the temp disk) attached to this Virtual Machine be encrypted by enabling Encryption at Host?
+    linux_virtual_machine_eviction_policy                       = null         #(Optional) Specifies what should happen when the Virtual Machine is evicted for price reasons when using a Spot instance. Possible values are Deallocate and Delete. Changing this forces a new resource to be created.
+    linux_virtual_machine_extensions_time_budget                = null         #(Optional) Specifies the duration allocated for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. Defaults to 90 minutes (PT1H30M).
+    linux_virtual_machine_gallery_application                   = null         #(Optional) A gallery_application block as defined below.
+    /* Sample Code {
+      #gallery_application_configuration_blob_uri = string                               #(Optional) Specifies the URI to an Azure Blob that will replace the default configuration for the package if provided.
+      gallery_application_order                  = 1                               #(Optional) Specifies the order in which the packages have to be installed. Possible values are between 0 and 2,147,483,647.
+      gallery_application_tag                    = null                               #(Optional) Specifies a passthrough value for more generic context. This field can be any valid string value.
+    }  */
+    linux_virtual_machine_identity = {                                  #(Optional)
+      identity_type                                  = "SystemAssigned" #(Required) The type of Managed Service Identity that is configured on this Disk Encryption Set. Possible values are SystemAssigned, UserAssigned, SystemAssigned, UserAssigned (to enable both).
+      linux_virtual_machine_user_assigned_identities = null /* [{
+        user_assigned_identities_name                = "puai000001" #(Required)Name of the user assigned identity
+        user_assigned_identities_resource_group_name = "prg000001"  #(Required)Resource group name of the user assigned identity
+      }]*/
+    }
+    linux_virtual_machine_patch_assessment_mode = null           #(Optional) Specifies the mode of VM Guest Patching for the Virtual Machine. Possible values are AutomaticByPlatform or ImageDefault. Defaults to ImageDefault.
+    linux_virtual_machine_patch_mode            = "ImageDefault" # (Optional) Specifies the mode of in-guest patching to this Linux Virtual Machine. Possible values are AutomaticByPlatform and ImageDefault. Defaults to ImageDefault. For more information on patch modes please see the product documentation.
+    linux_virtual_machine_max_bid_price         = "-1"           #(Optional) The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the eviction_policy. Defaults to -1, which means that the Virtual Machine should not be evicted for price reasons.
+    linux_virtual_machine_plan = [{
+      plan_name      = "byol"             #(Required) Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
+      plan_product   = "panorama"         #(Required) Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
+      plan_publisher = "paloaltonetworks" #(Optional) A plan block as defined below. Changing this forces a new resource to be created.
+    }]
+    linux_virtual_machine_platform_fault_domain = null      #(Optional) Specifies the Platform Fault Domain in which this Linux Virtual Machine should be created. Defaults to -1, which means this will be automatically assigned to a fault domain that best maintains balance across the available fault domains. Changing this forces a new Linux Virtual Machine to be created.
+    linux_virtual_machine_priority              = "Regular" #(Optional) Specifies the priority of this Virtual Machine. Possible values are Regular and Spot. Defaults to Regular. Changing this forces a new resource to be created.
+    linux_virtual_machine_provision_vm_agent    = false     #(Optional) Should the Azure VM Agent be provisioned on this Virtual Machine? Defaults to true. Changing this forces a new resource to be created.
+    linux_virtual_machine_secure_boot_enabled   = false     #(Optional) Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
+    linux_virtual_machine_source_image_reference = {        #Optional) A source_image_reference block as defined below. Changing this forces a new resource to be created.
+      source_image_reference_publisher = "paloaltonetworks" #(Optional) Specifies the publisher of the image used to create the virtual machines.
+      source_image_reference_offer     = "panorama"         #(Optional) Specifies the offer of the image used to create the virtual machines.
+      source_image_reference_sku       = "byol"             #(Optional) Specifies the SKU of the image used to create the virtual machines.
+      source_image_reference_version   = "latest"           #(Optional) Specifies the version of the image used to create the virtual machines.
+    }
+    linux_virtual_machine_termination_notification = null /* [{ #(Optional) A termination_notification block as defined below.
+      termination_notification_enabled = true           #(Required) Should the termination notification be enabled on this Virtual Machine? Defaults to false.
+      termination_notification_timeout = "PT10M"        #(Optional) Length of time (in minutes, between 5 and 15) a notification to be sent to the VM on the instance metadata server till the VM gets deleted. The time duration should be specified in ISO 8601 format.
+    }]*/
+    linux_virtual_machine_user_data                = null  #(Optional) The Base64-Encoded User Data which should be used for this Virtual Machine.
+    linux_virtual_machine_vtpm_enabled             = false #(Optional) Specifies whether vTPM should be enabled on the virtual machine. Changing this forces a new resource to be created.
+    linux_virtual_machine_zone                     = null  #(Optional) Specifies the Availability Zones in which this Linux Virtual Machine should be located. Changing this forces a new Linux Virtual Machine to be created.
+    linux_virtual_machine_tags = {
+      BU             = "ELZ",
+      Role           = "Palo Alto VM",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
 
+    linux_virtual_machine_use_existing_vm_username                   = false             #(Required)should be set true if existing user name is used
+    linux_virtual_machine_generate_new_admin_password                = true              #(Required)admin_password should be generated if disable_password_authentication is false
+    linux_virtual_machine_generate_new_ssh_key                       = true              #(Required)Should be true/false if linux_virtual_machine_disable_password_authentication is true
+    linux_virtual_machine_admin_login_key_vault_name                 = "sdplzmgmtdckv01" #"existingkeyvaultscenario"
+    linux_virtual_machine_tls_private_key_algorithm                  = "RSA"             #Provide Algorithm used for TLS private key if linux_virtual_machine_generate_new_ssh_key is true
+    linux_virtual_machine_tls_private_key_rsa_bits                   = 2048              #Provide number if bits for TLS private key if linux_virtual_machine_generate_new_ssh_key is true
+    linux_virtual_machine_admin_ssh_key_vault_secret_expiration_date = null
+    linux_virtual_machine_admin_ssh_key_vault_secret_content_type    = null
+    linux_virtual_machine_admin_ssh_key_vault_secret_name            = "SDLVMFWPAN01-sshkey" #Key vault secret name to store the ssh key if linux_virtual_machine_generate_new_ssh_key is true
+    linux_virtual_machine_is_disk_encryption_set_required            = false               #(Required)Boolean value if disk encryption set is required or not
+    linux_virtual_machine_is_storage_blob_required                   = false               #(Required)Boolean value if blob storage is required
+    linux_virtual_machine_storage_blob_name                          = null                #Provide blob storage name value if linux_virtual_machine_is_storage_blob_required is set to true.
+    linux_virtual_machine_storage_account_name                       = null                #Provide storage account name value if linux_virtual_machine_is_storage_blob_required or linux_virtual_machine_is_boot_diagnostics_required is set to true
+    linux_virtual_machine_storage_container_name                     = null                #Provide storage container name value if linux_virtual_machine_is_storage_blob_required is set to true.
+    linux_virtual_machine_is_gallery_application_id_required         = false               #(Required)Boolean value if gallery application id is required
+    linux_virtual_machine_gallery_application_version_name           = null                #Provide version name if linux_virtual_machine_is_gallery_application_id_required is set to true
+    linux_virtual_machine_shared_image_gallery_name                  = null                #Name of the shared image gallery. #Provide value if linux_virtual_machine_is_gallery_application_id_required is set to true
+    linux_virtual_machine_gallery_application_name                   = null                #Name of gallery application. #Provide value if linux_virtual_machine_is_gallery_application_id_required is set to true
+    linux_virtual_machine_is_capacity_reservation_group_id_required  = false               #(Required)Boolean value if capacity reservation group id is required
+    linux_virtual_machine_capacity_reservation_group_name            = null                #Provide capacity reservation group name if linux_virtual_machine_is_capacity_reservation_group_id_required is set to true
+    linux_virtual_machine_is_key_vault_certificate_url_required      = false               #(Required)Boolean value if key vault certificate url is required
+    linux_virtual_machine_key_vault_certificate_name                 = null                #Provide key vault certificate name if linux_virtual_machine_is_key_vault_certificate_url_required is set to true
+    linux_virtual_machine_is_vmss_id_required                        = false               #(Required)Boolean value if VMSS id is required
+    linux_virtual_machine_network_interface = {                                            #(Required) Map of object for network interface
+      "nic1" = {
+        network_interface_name                = "sd-plz-sdlvmfwpan01-mgmt-nic" #(Required)Name of the network interface
+        network_interface_resource_group_name = "sd-plz-management-rg"     #(Required)Resource group name of network interface
+      }
+    }
+    linux_virtual_machine_is_secret_required                                     = false                 #(Required)Boolean value if secret is required or not
+    linux_virtual_machine_disk_encryption_set_name                               = null                  #Name of the disk encryption set. Provide value if linux_virtual_machine_is_disk_encryption_set_required is set to true
+    linux_virtual_machine_is_boot_diagnostics_required                           = false                 #(Required)Boolean value if boot diagnostics required
+    linux_virtual_machine_bypass_platform_safety_checks_on_user_schedule_enabled = false                 #(Optional) Specifies whether to skip platform scheduled patching when a user schedule is associated with the VM. Defaults to false.Can only be set to true when patch_mode is set to AutomaticByPlatform.
+    linux_virtual_machine_is_availability_set_id_required                        = false                 #(Required)Boolean value if availability set id required
+    linux_virtual_machine_is_proximity_placement_group_id_required               = false                 #(Required)Boolean value if proximity placement group id required
+    linux_virtual_machine_reboot_setting                                         = null                  # (Optional) Specifies the reboot setting for platform scheduled patching. Possible values are Always, IfRequired and Never. can only be set when patch_mode is set to AutomaticByPlatform.
+    linux_virtual_machine_is_dedicated_host_group_id_required                    = false                 #(Required)Boolean value if dedicated host group id required
+    linux_virtual_machine_is_dedicated_host_id_required                          = false                 #(Required)Boolean value if dedicated host id required
+    linux_virtual_machine_deploy_vm_using_source_image_reference                 = true                  #(Required)Boolean value if VM should be deployed using source image reference
+    linux_virtual_machine_availability_set_name                                  = null                  # Provide availability set name if linux_virtual_machine_is_availability_set_id_required is set true
+    linux_virtual_machine_availability_set_resource_group_name                   = null                  # Provide availability set resource group name if linux_virtual_machine_is_availability_set_id_required is set true
+    linux_virtual_machine_dedicated_host_group_name                              = null                  # Provide host group name if linux_virtual_machine_is_dedicated_host_group_id_required is set true
+    linux_virtual_machine_dedicated_host_group_resource_group_name               = null                  # Provide host group resource group name if linux_virtual_machine_is_dedicated_host_group_id_required is set true
+    linux_virtual_machine_dedicated_host_name                                    = null                  # Provide host name if linux_virtual_machine_is_dedicated_host_id_required is set true
+    linux_virtual_machine_dedicated_host_resource_group_name                     = null                  # Provide host resource group name if linux_virtual_machine_is_dedicated_host_id_required is set true
+    linux_virtual_machine_proximity_placement_group_name                         = null                  # Provide proximity palcement group name if linux_virtual_machine_is_proximity_placement_group_id_required is set true
+    linux_virtual_machine_proximity_placement_group_resource_group_name          = null                  # Provide proximity palcement group resource group name if linux_virtual_machine_is_proximity_placement_group_id_required is set true
+    linux_virtual_machine_generated_admin_password_secret_name                   = "SDLVMFWPAN01-password" #Provide Key vault secret name to store random password if linux_virtual_machine_generate_new_admin_password is true
+    linux_virtual_machine_generated_admin_password_secret_expiration_date        = null
+    linux_virtual_machine_generated_admin_password_secret_content_type           = null
+    linux_virtual_machine_existing_admin_password_secret_name                    = null                   #Provide Key vault secret name where the existing password exists if linux_virtual_machine_generate_new_admin_password is false
+    linux_virtual_machine_virtual_machine_scale_set_name                         = null                   #Provide Vm scale set name if linux_virtual_machine_is_vmss_id_required is true
+    linux_virtual_machine_virtual_machine_scale_set_resource_group_name          = null                   #Provide VM scale set resource group name if linux_virtual_machine_is_vmss_id_required is true
+    linux_virtual_machine_source_image_type                                      = "PlatformImage"        #Provide image type if linux_virtual_machine_deploy_vm_using_source_image_reference is set to false. If you are using existing vm image make image type as "VMImage" if you are using share image give as "SharedImage"
+    linux_virtual_machine_shared_image_name                                      = null                   #Provide image name if linux_virtual_machine_source_image_type is "SharedImage"
+    linux_virtual_machine_shared_image_resource_group_name                       = null                   #Provide image resource group name if linux_virtual_machine_source_image_type is "SharedImage"
+    linux_virtual_machine_existing_image_name                                    = null                   #Provide image name if linux_virtual_machine_source_image_type is "VMImage"
+    linux_virtual_machine_existing_image_resource_group_name                     = null                   #Provide existing image resource group name if image type is "VMImage"
+    linux_virtual_machine_admin_key_vault_resource_group_name                    = "sd-plz-management-rg" #Provide key vault resource group name to store credentials
+    linux_virtual_machine_storage_account_resource_group_name                    = null                   #Provide value if linux_virtual_machine_is_boot_diagnostics_required is set to true
+    linux_virtual_machine_disk_encryption_set_resource_group_name                = null                   #Resource group name of the disk encryption set. Provide value if linux_virtual_machine_is_disk_encryption_set_required is set to true
+    linux_virtual_machine_existing_admin_username_secret_name                    = null                   #Provide Key vault secret name to store admin username. Provide value if linux_virtual_machine_use_existing_vm_username is set to true.
+  }
+
+}
+#NETWORK INTERFACE
+network_interface_variables = {
+  "network_interface_1" = {
+    network_interface_name                          = "sd-plz-sdlvmfwpan01-mgmt-nic" #The name of the Network Interface. Changing this forces a new resource to be created.
+    network_interface_location                      = "Central India"                 #The location where the Network Interface should exist. Changing this forces a new resource to be created.
+    network_interface_resource_group_name           = "sd-plz-management-rg"     #The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
+    network_interface_auxiliary_mode                = null                            # (Optional) Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). Possible values are AcceleratedConnections and Floating.
+    network_interface_auxiliary_sku                 = null                            # (Optional) Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are A1, A2, A4 and A8.
+    network_interface_dns_servers                   = []                              #if provided, it will override the DNS server value defined in vnet module
+    network_interface_edge_zone                     = null                            #Specifies the Edge Zone within the Azure Region where this Network Interface should exist. Changing this forces a new Network Interface to be created
+    network_interface_enable_ip_forwarding          = false                           #Enable only if IP Forwarding is required
+    network_interface_enable_accelerated_networking = false                           #Enable only if accelerated networking is required
+    network_interface_internal_dns_label            = null                            #The (relative) DNS Name used for internal communications between Virtual Machines in the same Virtual Network.
+    network_interface_ip_configuration = {
+      "ip_configuration_1" = {
+        ip_configuration_name                          = "privateconfig1" #A name used for this IP Configuration. Changing this forces a new resource to be created
+        ip_configuration_private_ip_address_allocation = "Dynamic"        #Possible values are Dynamic and Static
+        #ip_configuration_private_ip_address            = "10.0.3.11"                #When private_ip_address_allocation is set to Static, The Static IP Address which should be used
+        ip_configuration_private_ip_address         = null
+        ip_configuration_private_ip_address_version = "IPv4" #The IP Version to use. Possible values are IPv4 or IPv6.Defaults to IPv4.
+        ip_configuration_subnet = ({
+          subnet_virtual_network_name                = "sd-plz-management-vnet"                    #When private_ip_address_version is set to IPv4,The virtual_network_name is required to fetch subnet ID
+          subnet_name                                = "sd-plz-management-vnet-shared-snet-01" #When private_ip_address_version is set to IPv4,The subnet_name is required to fetch subnet ID
+          subnet_virtual_network_resource_group_name = "sd-plz-management-rg"                       #When private_ip_address_version is set to IPv4,The virtual network resource group name  is required to fetch subnet ID
+        })
+        ip_configuration_public_ip     = null
+        ip_configuration_primary       = true #Is this the Primary IP Configuration? Must be true for the first ip_configuration when multiple are specified. Defaults to false.Must be true for the first ip_configuration when multiple are specified
+        ip_configuration_load_balancer = null
+      }
+    }
+    network_interface_tags = { #(Optional) A mapping of tags to assign to the resource.
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+  }
+}
+# ROUTE TABLE
+route_table_variables = {
+  "route_table_1" = {
+    route_table_name                          = "sd-plz-mgmt-routetable-01" #(Required) The name of the route table. 
+    route_table_location                      = "Central India"         #(Required) The Azure location where the resource should exist.
+    route_table_resource_group_name           = "sd-plz-management-rg"  #(Required) The name of the resource group in which to create the route table.
+    route_table_disable_bgp_route_propagation = false             #(Optional) Boolean flag which controls propagation of routes learned by BGP on that route table. True means disable. Default value "false"
+    route_table_tags = {                                          #(Optional) A mapping of tags to assign to the resource.
+      BU             = "ELZ",
+      Role           = "Landing Zone",
+      Environment    = "PLZ-DC",
+      Owner          = "Manish Kumar",
+      Criticality    = "High",
+      Classification = "Diamond",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+    route_table_route = null /* [{                                #(Optional) List of objects representing routes.
+      route_name                   = "route000001" #(Required) The name of the route.
+      route_address_prefix         = "10.3.0.0/16"        #(Required) The destination to which the route applies. Can be CIDR(such as 10.1.0.0/16) or Azure Service Tag (such as ApiManagement, AzureBackup or AzureMonitor) format.
+      route_next_hop_type          = "None"               #(Required) The type of Azure hop the packet should be sent to. Possible values are VirtualNetworkGateway, VnetLocal, Internet, VirtualAppliance and None.
+      route_next_hop_in_ip_address = "10.2.0.0/24"        #(Optional) Contains the IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+      },
+      {
+        route_name                   = "route000002" #(Required) The name of the route.
+        route_address_prefix         = "10.2.0.0/16"        #(Required) The destination to which the route applies. Can be CIDR(such as 10.1.0.0/16) or Azure Service Tag (such as ApiManagement, AzureBackup or AzureMonitor) format.
+        route_next_hop_type          = "None"               #(Required) The type of Azure hop the packet should be sent to. Possible values are VirtualNetworkGateway, VnetLocal, Internet, VirtualAppliance and None.
+        route_next_hop_in_ip_address = "10.2.1.0/24"        #(Optional) Contains the IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance. Default value "null"
+    }]*/
+  }
+}
