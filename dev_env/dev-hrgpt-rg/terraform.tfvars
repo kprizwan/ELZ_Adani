@@ -170,7 +170,7 @@ container_registry_variables = {
 
 #KEY VAULT
 key_vault_variables = {
-  "key_vault_1" = {
+ /* "key_vault_1" = {
     key_vault_name                                  = "sddevailabaml01se"                                                                                                                                                                               #(Required) Specifies the name of the Key Vault, The name must be globally unique.
     key_vault_location                              = "SE Asia"                                                                                                                                                                                 #(Required) Specifies the supported Azure location where the resource exists.
     key_vault_resource_group_name                   = "sd-common-dev-hrgpt-rg"                                                                                                                                                                          #(Required) The name of the resource group in which to create the Key Vault.
@@ -212,13 +212,13 @@ key_vault_variables = {
         key_vault_network_acls_virtual_networks_subscription_id         =  null                    #(Required) Subscription Id where Vnet is created.
         key_vault_network_acls_virtual_networks_virtual_network_rg_name =  null                    #(Required) Resource group where Vnet is created.
       }
-    ]*/
+    ]*//*
     key_vault_contact_information_enabled   = false #(Optional) One or more contact block as defined below to be enabled or disabled.
     key_vault_contact_email                 = null  #(Required) E-mail address of the contact.
     key_vault_contact_name                  = null  #(Optional) Name of the contact.
     key_vault_contact_phone                 = null  #(Optional) Phone number of the contact.
-
-  },
+  },*/
+  
 
   "key_vault_2" = {
     key_vault_name                                  = "sddevkvsi"                                                                                                                                                                               #(Required) Specifies the name of the Key Vault, The name must be globally unique.
