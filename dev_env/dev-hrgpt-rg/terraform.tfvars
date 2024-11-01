@@ -171,7 +171,7 @@ container_registry_variables = {
 #KEY VAULT
 key_vault_variables = {
   "key_vault_1" = {
-    key_vault_name                                  = "sd-dev-ailabaml01se8216991426"                                                                                                                                                                               #(Required) Specifies the name of the Key Vault, The name must be globally unique.
+    key_vault_name                                  = "sddevailabaml01se8216991426"                                                                                                                                                                               #(Required) Specifies the name of the Key Vault, The name must be globally unique.
     key_vault_location                              = "SE Asia"                                                                                                                                                                                 #(Required) Specifies the supported Azure location where the resource exists.
     key_vault_resource_group_name                   = "sd-common-dev-hrgpt-rg"                                                                                                                                                                          #(Required) The name of the resource group in which to create the Key Vault.
     key_vault_enabled_for_disk_encryption           = true                                                                                                                                                                                            #(Optional) Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. Defaults to false.
@@ -221,7 +221,7 @@ key_vault_variables = {
   },
 
   "key_vault_2" = {
-    key_vault_name                                  = "sd-dev-kvsi"                                                                                                                                                                               #(Required) Specifies the name of the Key Vault, The name must be globally unique.
+    key_vault_name                                  = "sddevkvsi"                                                                                                                                                                               #(Required) Specifies the name of the Key Vault, The name must be globally unique.
     key_vault_location                              = "South India"                                                                                                                                                                                 #(Required) Specifies the supported Azure location where the resource exists.
     key_vault_resource_group_name                   = "sd-common-dev-hrgpt-rg"                                                                                                                                                                          #(Required) The name of the resource group in which to create the Key Vault.
     key_vault_enabled_for_disk_encryption           = true                                                                                                                                                                                            #(Optional) Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. Defaults to false.
@@ -271,7 +271,7 @@ key_vault_variables = {
   },
 
   "key_vault_3" = {
-    key_vault_name                                  = "sd-dev-recruitbot"                                                                                                                                                                               #(Required) Specifies the name of the Key Vault, The name must be globally unique.
+    key_vault_name                                  = "sddevrecruitbot"                                                                                                                                                                               #(Required) Specifies the name of the Key Vault, The name must be globally unique.
     key_vault_location                              = "Central India"                                                                                                                                                                                 #(Required) Specifies the supported Azure location where the resource exists.
     key_vault_resource_group_name                   = "sd-common-dev-hrgpt-rg"                                                                                                                                                                          #(Required) The name of the resource group in which to create the Key Vault.
     key_vault_enabled_for_disk_encryption           = true                                                                                                                                                                                            #(Optional) Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. Defaults to false.
@@ -321,7 +321,7 @@ key_vault_variables = {
   },
 
   "key_vault_4" = {
-    key_vault_name                                  = "sd-dev-ailabaml019213655805"                                                                                                                                                                               #(Required) Specifies the name of the Key Vault, The name must be globally unique.
+    key_vault_name                                  = "sddevailabaml019213655805"                                                                                                                                                                               #(Required) Specifies the name of the Key Vault, The name must be globally unique.
     key_vault_location                              = "SE Asia"                                                                                                                                                                                 #(Required) Specifies the supported Azure location where the resource exists.
     key_vault_resource_group_name                   = "sd-common-dev-hrgpt-rg"                                                                                                                                                                          #(Required) The name of the resource group in which to create the Key Vault.
     key_vault_enabled_for_disk_encryption           = true                                                                                                                                                                                            #(Optional) Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. Defaults to false.
