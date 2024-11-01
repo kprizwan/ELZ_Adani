@@ -11,7 +11,8 @@ module "resource_group" {
 module "container_registry" {
   source = "../../Azure/container_registry/v1.3.0"
   providers = {
-    azurerm.container_registry_sub = azurerm.management
+    azurerm.key_vault_sub          = azurerm.dev_env
+    azurerm.container_registry_sub = azurerm.dev_env
   }
   container_registry_variables = var.container_registry_variables
 }
