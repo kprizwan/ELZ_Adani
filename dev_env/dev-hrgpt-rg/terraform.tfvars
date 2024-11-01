@@ -479,6 +479,95 @@ storage_account_variables = {
         retention_policy_days = 7     #(Optional) Specifies the number of days that logs will be retained.
       }
     }
+    storage_account_static_website = {
+      index_document     = "index.html" #Optional) The webpage that Azure Storage serves for requests to the root of a website or any subfolder. For example, index.html. The value is case-sensitive.
+      error_404_document = "404.html"   #(Optional) The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
+    }
+
+    storage_account_share_properties = {
+      cors_enabled = true #(optional) Should cross origin resource sharing be enabled.
+      cors_rule = {
+        allowed_headers    = ["*"]                                   #(Required) A list of headers that are allowed to be a part of the cross-origin request.
+        allowed_methods    = ["GET", "HEAD", "MERGE", "POST", "PUT"] #(Required) A list of HTTP methods that are allowed to be executed by the origin. Valid options are DELETE, GET, HEAD, MERGE, POST, OPTIONS, PUT or PATCH.
+        allowed_origins    = ["*"]                                   #(Required) A list of origin domains that will be allowed by CORS.
+        exposed_headers    = ["*"]                                   #(Required) A list of response headers that are exposed to CORS clients.
+        max_age_in_seconds = 60                                      #(Required) The number of seconds the client should cache a preflight response.
+      }
+
+      retention_policy = {
+        retention_policy_days = 7 #(Optional) Specifies the number of days that the azurerm_storage_share should be retained, between 1 and 365 days. Defaults to 7.
+      }
+
+      smb = {
+        smb_versions                        = ["SMB2.1"]      #(Optional) A set of SMB protocol versions. Possible values are SMB2.1, SMB3.0, and SMB3.1.1.
+        smb_authentication_types            = ["NTLMv2"]      #(Optional) A set of SMB authentication methods. Possible values are NTLMv2, and Kerberos.
+        smb_kerberos_ticket_encryption_type = ["RC4-HMAC"]    #(Optional) A set of Kerberos ticket encryption. Possible values are RC4-HMAC, and AES-256.
+        smb_channel_encryption_type         = ["AES-128-CCM"] #(Optional) A set of SMB channel encryption. Possible values are AES-128-CCM, AES-128-GCM, and AES-256-GCM.
+        smb_multichannel_enabled            = false           #(Optional) Indicates whether multichannel is enabled. Defaults to false. This is only supported on Premium storage accounts.
+      }
+    }
+
+    storage_account_network_rules = null /* {
+      default_action = "Deny"                 #(Required) Specifies the default action of allow or deny when no other rules match. Valid options are Deny or Allow.
+      bypass         = ["Logging", "Metrics"] #(Optional) Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of Logging, Metrics, AzureServices, or None.
+      ip_rules       = ["8.29.228.191"]        #(Optional) List of public IP or IP ranges in CIDR Format. Only IPv4 addresses are allowed. Private IP address ranges (as defined in RFC 1918) are not allowed.
+
+      storage_account_network_rules_vnet_subnets = [{
+        storage_account_network_rules_virtual_network_name = "ploceusvnet000001"                   #(Required) Vitural Network name to be associated.
+        storage_account_network_rules_subnet_name          = "ploceussubnet000001"                 #(Required) Subnet Name to be associated.
+        storage_account_network_rules_vnet_subscription_id = "xxxxxxx-xxxxxxx-xxxxxxxxx-xxxxxxxxx" #(Required) Subscription Id where Vnet is created.
+        storage_account_network_rules_vnet_rg_name         = "ploceusrg000001"                     #(Required) Resource group where Vnet is created.
+        }]
+
+      private_link_access = null /*{
+        "private_link_access_1" = {
+          endpoint_resource_id = "/subscriptions/XXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/XXXXXXXXXXXXXXXXXXXX/providers/Microsoft.Sql/servers/XXXXXXXXXXXXXXXXXXXX"
+          endpoint_tenant_id   = "xxxxxxxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxxxx"
+        }
+      }
+    } */
+
+    storage_account_azure_files_authentication = null
+    # storage_account_azure_files_authentication = {  # Use this block when need to authenticate with Azure active directory domain services or Active Directory.
+    #   directory_type = "AADDS" #(Required) Specifies the directory service used. Possible values are AADDS and AD.
+    #   active_directory = {
+    #     storage_sid         = "xxxxxxxxxx" #(Required) Specifies the security identifier (SID) for Azure Storage.
+    #     domain_name         = "www.ploceus1.com" #(Required) Specifies the primary domain that the AD DNS server is authoritative for.
+    #     domain_sid          = "xxxxxxxxxx" #(Required) Specifies the security identifier (SID).
+    #     domain_guid         = "xxxxxxxxxx" #(Required) Specifies the domain GUID.
+    #     forest_name         = "xxxxxxxxxx" #(Required) Specifies the Active Directory forest.
+    #     netbios_domain_name = "www.ploceus2.com" #(Required) Specifies the NetBIOS domain name.
+    #   }
+    # }
+
+    storage_account_routing = {
+      publish_internet_endpoints  = false             #(Optional) Should internet routing storage endpoints be published? Defaults to false.
+      publish_microsoft_endpoints = false             #(Optional) Should Microsoft routing storage endpoints be published? Defaults to false.
+      choice                      = "InternetRouting" #(Optional) Specifies the kind of network routing opted by the user. Possible values are InternetRouting and MicrosoftRouting. Defaults to MicrosoftRouting.
+    }
+
+    storage_account_immutability_policy = null /* {
+      allow_protected_append_writes = false      #(Required) When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.
+      state                         = "Disabled" #(Required) Defines the mode of the policy. Disabled state disables the policy, Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property, Locked state only allows the increase of the immutability retention time. A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted.
+      period_since_creation_in_days = 7          #(Required) The immutability period for the blobs in the container since the policy creation, in days.
+    } */
+
+    storage_account_sas_policy = {
+      expiration_period = "11:12:13:14" #(Required) The SAS expiration period in format of DD.HH:MM:SS.
+      expiration_action = "Log"         #(Optional) The SAS expiration action. The only possible value is Log at this moment. Defaults to Log.
+    }
+
+    storage_account_tags = { #(Optional) A mapping of tags to assign to the resource.
+      BU             = "ELZ",
+      Role           = "Dev",
+      Environment    = "PLZ-Dev",
+      Owner          = "Manish Kumar",
+      Criticality    = "Medium",
+      Classification = "Gold",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+
   },
 
    "storage_account_2" = {
@@ -588,6 +677,96 @@ storage_account_variables = {
         retention_policy_days = 7     #(Optional) Specifies the number of days that logs will be retained.
       }
     }
+    storage_account_static_website = {
+      index_document     = "index.html" #Optional) The webpage that Azure Storage serves for requests to the root of a website or any subfolder. For example, index.html. The value is case-sensitive.
+      error_404_document = "404.html"   #(Optional) The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
+    }
+
+    storage_account_share_properties = {
+      cors_enabled = true #(optional) Should cross origin resource sharing be enabled.
+      cors_rule = {
+        allowed_headers    = ["*"]                                   #(Required) A list of headers that are allowed to be a part of the cross-origin request.
+        allowed_methods    = ["GET", "HEAD", "MERGE", "POST", "PUT"] #(Required) A list of HTTP methods that are allowed to be executed by the origin. Valid options are DELETE, GET, HEAD, MERGE, POST, OPTIONS, PUT or PATCH.
+        allowed_origins    = ["*"]                                   #(Required) A list of origin domains that will be allowed by CORS.
+        exposed_headers    = ["*"]                                   #(Required) A list of response headers that are exposed to CORS clients.
+        max_age_in_seconds = 60                                      #(Required) The number of seconds the client should cache a preflight response.
+      }
+
+      retention_policy = {
+        retention_policy_days = 7 #(Optional) Specifies the number of days that the azurerm_storage_share should be retained, between 1 and 365 days. Defaults to 7.
+      }
+
+      smb = {
+        smb_versions                        = ["SMB2.1"]      #(Optional) A set of SMB protocol versions. Possible values are SMB2.1, SMB3.0, and SMB3.1.1.
+        smb_authentication_types            = ["NTLMv2"]      #(Optional) A set of SMB authentication methods. Possible values are NTLMv2, and Kerberos.
+        smb_kerberos_ticket_encryption_type = ["RC4-HMAC"]    #(Optional) A set of Kerberos ticket encryption. Possible values are RC4-HMAC, and AES-256.
+        smb_channel_encryption_type         = ["AES-128-CCM"] #(Optional) A set of SMB channel encryption. Possible values are AES-128-CCM, AES-128-GCM, and AES-256-GCM.
+        smb_multichannel_enabled            = false           #(Optional) Indicates whether multichannel is enabled. Defaults to false. This is only supported on Premium storage accounts.
+      }
+    }
+
+    storage_account_network_rules = null /* {
+      default_action = "Deny"                 #(Required) Specifies the default action of allow or deny when no other rules match. Valid options are Deny or Allow.
+      bypass         = ["Logging", "Metrics"] #(Optional) Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of Logging, Metrics, AzureServices, or None.
+      ip_rules       = ["8.29.228.191"]        #(Optional) List of public IP or IP ranges in CIDR Format. Only IPv4 addresses are allowed. Private IP address ranges (as defined in RFC 1918) are not allowed.
+
+      storage_account_network_rules_vnet_subnets = [{
+        storage_account_network_rules_virtual_network_name = "ploceusvnet000001"                   #(Required) Vitural Network name to be associated.
+        storage_account_network_rules_subnet_name          = "ploceussubnet000001"                 #(Required) Subnet Name to be associated.
+        storage_account_network_rules_vnet_subscription_id = "xxxxxxx-xxxxxxx-xxxxxxxxx-xxxxxxxxx" #(Required) Subscription Id where Vnet is created.
+        storage_account_network_rules_vnet_rg_name         = "ploceusrg000001"                     #(Required) Resource group where Vnet is created.
+        }]
+
+      private_link_access = null /*{
+        "private_link_access_1" = {
+          endpoint_resource_id = "/subscriptions/XXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/XXXXXXXXXXXXXXXXXXXX/providers/Microsoft.Sql/servers/XXXXXXXXXXXXXXXXXXXX"
+          endpoint_tenant_id   = "xxxxxxxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxxxx"
+        }
+      }
+    } */
+
+    storage_account_azure_files_authentication = null
+    # storage_account_azure_files_authentication = {  # Use this block when need to authenticate with Azure active directory domain services or Active Directory.
+    #   directory_type = "AADDS" #(Required) Specifies the directory service used. Possible values are AADDS and AD.
+    #   active_directory = {
+    #     storage_sid         = "xxxxxxxxxx" #(Required) Specifies the security identifier (SID) for Azure Storage.
+    #     domain_name         = "www.ploceus1.com" #(Required) Specifies the primary domain that the AD DNS server is authoritative for.
+    #     domain_sid          = "xxxxxxxxxx" #(Required) Specifies the security identifier (SID).
+    #     domain_guid         = "xxxxxxxxxx" #(Required) Specifies the domain GUID.
+    #     forest_name         = "xxxxxxxxxx" #(Required) Specifies the Active Directory forest.
+    #     netbios_domain_name = "www.ploceus2.com" #(Required) Specifies the NetBIOS domain name.
+    #   }
+    # }
+
+    storage_account_routing = {
+      publish_internet_endpoints  = false             #(Optional) Should internet routing storage endpoints be published? Defaults to false.
+      publish_microsoft_endpoints = false             #(Optional) Should Microsoft routing storage endpoints be published? Defaults to false.
+      choice                      = "InternetRouting" #(Optional) Specifies the kind of network routing opted by the user. Possible values are InternetRouting and MicrosoftRouting. Defaults to MicrosoftRouting.
+    }
+
+    storage_account_immutability_policy = null /* {
+      allow_protected_append_writes = false      #(Required) When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.
+      state                         = "Disabled" #(Required) Defines the mode of the policy. Disabled state disables the policy, Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property, Locked state only allows the increase of the immutability retention time. A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted.
+      period_since_creation_in_days = 7          #(Required) The immutability period for the blobs in the container since the policy creation, in days.
+    } */
+
+    storage_account_sas_policy = {
+      expiration_period = "11:12:13:14" #(Required) The SAS expiration period in format of DD.HH:MM:SS.
+      expiration_action = "Log"         #(Optional) The SAS expiration action. The only possible value is Log at this moment. Defaults to Log.
+    }
+
+    storage_account_tags = { #(Optional) A mapping of tags to assign to the resource.
+      BU             = "ELZ",
+      Role           = "Dev",
+      Environment    = "PLZ-Dev",
+      Owner          = "Manish Kumar",
+      Criticality    = "Medium",
+      Classification = "Gold",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+
+    
   }/*,
 
    "storage_account_3" = {
@@ -697,5 +876,93 @@ storage_account_variables = {
         retention_policy_days = 7     #(Optional) Specifies the number of days that logs will be retained.
       }
     }
-  }*/
+    storage_account_static_website = {
+      index_document     = "index.html" #Optional) The webpage that Azure Storage serves for requests to the root of a website or any subfolder. For example, index.html. The value is case-sensitive.
+      error_404_document = "404.html"   #(Optional) The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
+    }
+
+    storage_account_share_properties = {
+      cors_enabled = true #(optional) Should cross origin resource sharing be enabled.
+      cors_rule = {
+        allowed_headers    = ["*"]                                   #(Required) A list of headers that are allowed to be a part of the cross-origin request.
+        allowed_methods    = ["GET", "HEAD", "MERGE", "POST", "PUT"] #(Required) A list of HTTP methods that are allowed to be executed by the origin. Valid options are DELETE, GET, HEAD, MERGE, POST, OPTIONS, PUT or PATCH.
+        allowed_origins    = ["*"]                                   #(Required) A list of origin domains that will be allowed by CORS.
+        exposed_headers    = ["*"]                                   #(Required) A list of response headers that are exposed to CORS clients.
+        max_age_in_seconds = 60                                      #(Required) The number of seconds the client should cache a preflight response.
+      }
+
+      retention_policy = {
+        retention_policy_days = 7 #(Optional) Specifies the number of days that the azurerm_storage_share should be retained, between 1 and 365 days. Defaults to 7.
+      }
+
+      smb = {
+        smb_versions                        = ["SMB2.1"]      #(Optional) A set of SMB protocol versions. Possible values are SMB2.1, SMB3.0, and SMB3.1.1.
+        smb_authentication_types            = ["NTLMv2"]      #(Optional) A set of SMB authentication methods. Possible values are NTLMv2, and Kerberos.
+        smb_kerberos_ticket_encryption_type = ["RC4-HMAC"]    #(Optional) A set of Kerberos ticket encryption. Possible values are RC4-HMAC, and AES-256.
+        smb_channel_encryption_type         = ["AES-128-CCM"] #(Optional) A set of SMB channel encryption. Possible values are AES-128-CCM, AES-128-GCM, and AES-256-GCM.
+        smb_multichannel_enabled            = false           #(Optional) Indicates whether multichannel is enabled. Defaults to false. This is only supported on Premium storage accounts.
+      }
+    }
+
+    storage_account_network_rules = null /* {
+      default_action = "Deny"                 #(Required) Specifies the default action of allow or deny when no other rules match. Valid options are Deny or Allow.
+      bypass         = ["Logging", "Metrics"] #(Optional) Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of Logging, Metrics, AzureServices, or None.
+      ip_rules       = ["8.29.228.191"]        #(Optional) List of public IP or IP ranges in CIDR Format. Only IPv4 addresses are allowed. Private IP address ranges (as defined in RFC 1918) are not allowed.
+
+      storage_account_network_rules_vnet_subnets = [{
+        storage_account_network_rules_virtual_network_name = "ploceusvnet000001"                   #(Required) Vitural Network name to be associated.
+        storage_account_network_rules_subnet_name          = "ploceussubnet000001"                 #(Required) Subnet Name to be associated.
+        storage_account_network_rules_vnet_subscription_id = "xxxxxxx-xxxxxxx-xxxxxxxxx-xxxxxxxxx" #(Required) Subscription Id where Vnet is created.
+        storage_account_network_rules_vnet_rg_name         = "ploceusrg000001"                     #(Required) Resource group where Vnet is created.
+        }]
+
+      private_link_access = null /*{
+        "private_link_access_1" = {
+          endpoint_resource_id = "/subscriptions/XXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/XXXXXXXXXXXXXXXXXXXX/providers/Microsoft.Sql/servers/XXXXXXXXXXXXXXXXXXXX"
+          endpoint_tenant_id   = "xxxxxxxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxxxx"
+        }
+      }
+    } */
+/*
+    storage_account_azure_files_authentication = null
+    # storage_account_azure_files_authentication = {  # Use this block when need to authenticate with Azure active directory domain services or Active Directory.
+    #   directory_type = "AADDS" #(Required) Specifies the directory service used. Possible values are AADDS and AD.
+    #   active_directory = {
+    #     storage_sid         = "xxxxxxxxxx" #(Required) Specifies the security identifier (SID) for Azure Storage.
+    #     domain_name         = "www.ploceus1.com" #(Required) Specifies the primary domain that the AD DNS server is authoritative for.
+    #     domain_sid          = "xxxxxxxxxx" #(Required) Specifies the security identifier (SID).
+    #     domain_guid         = "xxxxxxxxxx" #(Required) Specifies the domain GUID.
+    #     forest_name         = "xxxxxxxxxx" #(Required) Specifies the Active Directory forest.
+    #     netbios_domain_name = "www.ploceus2.com" #(Required) Specifies the NetBIOS domain name.
+    #   }
+    # }
+
+    storage_account_routing = {
+      publish_internet_endpoints  = false             #(Optional) Should internet routing storage endpoints be published? Defaults to false.
+      publish_microsoft_endpoints = false             #(Optional) Should Microsoft routing storage endpoints be published? Defaults to false.
+      choice                      = "InternetRouting" #(Optional) Specifies the kind of network routing opted by the user. Possible values are InternetRouting and MicrosoftRouting. Defaults to MicrosoftRouting.
+    }
+
+    storage_account_immutability_policy = null /* {
+      allow_protected_append_writes = false      #(Required) When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.
+      state                         = "Disabled" #(Required) Defines the mode of the policy. Disabled state disables the policy, Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property, Locked state only allows the increase of the immutability retention time. A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted.
+      period_since_creation_in_days = 7          #(Required) The immutability period for the blobs in the container since the policy creation, in days.
+    } */
+/*
+    storage_account_sas_policy = {
+      expiration_period = "11:12:13:14" #(Required) The SAS expiration period in format of DD.HH:MM:SS.
+      expiration_action = "Log"         #(Optional) The SAS expiration action. The only possible value is Log at this moment. Defaults to Log.
+    }
+
+    storage_account_tags = { #(Optional) A mapping of tags to assign to the resource.
+      BU             = "ELZ",
+      Role           = "Dev",
+      Environment    = "PLZ-Dev",
+      Owner          = "Manish Kumar",
+      Criticality    = "Medium",
+      Classification = "Gold",
+      IAC            = "Terraform",
+      Contact        = "Manish.kumar10@adani.com"
+    }
+*/
 }
