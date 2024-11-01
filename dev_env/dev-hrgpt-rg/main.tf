@@ -8,11 +8,20 @@ module "resource_group" {
 }
 
 #CONTAINER REGISTRY
-module "container_registry" {
+/*module "container_registry" {
   source = "../../Azure/container_registry/v1.3.0"
   providers = {
     azurerm.key_vault_sub          = azurerm.dev_env
     azurerm.container_registry_sub = azurerm.dev_env
   }
   container_registry_variables = var.container_registry_variables
+}*/
+
+#KEYVAULT
+module "key_vault" {
+  source = "../../Azure/key_vault/v1.3.0"
+  providers = {
+    azurerm = azurerm.dev_env
+  }
+  key_vault_variables = var.key_vault_variables
 }
