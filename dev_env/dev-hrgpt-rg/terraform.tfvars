@@ -33,10 +33,10 @@ container_registry_variables = {
     container_registry_quarantine_policy_enabled     = false                  # (Optional) Boolean value that indicates whether quarantine policy is enabled. Defaults to false.
     container_registry_zone_redundancy_enabled       = false                  # (Optional) Whether zone redundancy is enabled for this Container Registry? Changing this forces a new resource to be created. Defaults to false.
     container_registry_anonymous_pull_enabled        = false                  # (Optional) Whether allows anonymous (unauthenticated) pull access to this Container Registry? Defaults to false. This is only supported on resources with the Standard or Premium SKU.
-    container_registry_retention_policy = {
-     /* retention_policy_days    = 7    # (Optional) The number of days to retain an untagged manifest after which it gets purged. Default is 7.
-      retention_policy_enabled = true # (Optional) Boolean value that indicates whether the policy is enabled.*/
-    }
+    container_registry_retention_policy = null/*{
+      retention_policy_days    = 7   # (Optional) The number of days to retain an untagged manifest after which it gets purged. Default is 7.
+      retention_policy_enabled = true # (Optional) Boolean value that indicates whether the policy is enabled.
+    }*/
     container_registry_trust_policy = { # (Optional) Set to null if it is not required.
       trust_policy_enabled = false      #  (Optional) Boolean value that indicates whether the policy is enabled.
     }
@@ -81,10 +81,10 @@ container_registry_variables = {
     container_registry_quarantine_policy_enabled     = false                  # (Optional) Boolean value that indicates whether quarantine policy is enabled. Defaults to false.
     container_registry_zone_redundancy_enabled       = false                  # (Optional) Whether zone redundancy is enabled for this Container Registry? Changing this forces a new resource to be created. Defaults to false.
     container_registry_anonymous_pull_enabled        = false                  # (Optional) Whether allows anonymous (unauthenticated) pull access to this Container Registry? Defaults to false. This is only supported on resources with the Standard or Premium SKU.
-    container_registry_retention_policy = {
-      /*retention_policy_days    = 7    # (Optional) The number of days to retain an untagged manifest after which it gets purged. Default is 7.
-      retention_policy_enabled = true # (Optional) Boolean value that indicates whether the policy is enabled.*/
-    }
+    container_registry_retention_policy =null/* {
+      retention_policy_days    = 7    # (Optional) The number of days to retain an untagged manifest after which it gets purged. Default is 7.
+      retention_policy_enabled = true # (Optional) Boolean value that indicates whether the policy is enabled.
+    }*/
     container_registry_trust_policy = { # (Optional) Set to null if it is not required.
       trust_policy_enabled = false      #  (Optional) Boolean value that indicates whether the policy is enabled.
     }
@@ -129,10 +129,10 @@ container_registry_variables = {
     container_registry_quarantine_policy_enabled     = false                  # (Optional) Boolean value that indicates whether quarantine policy is enabled. Defaults to false.
     container_registry_zone_redundancy_enabled       = false                  # (Optional) Whether zone redundancy is enabled for this Container Registry? Changing this forces a new resource to be created. Defaults to false.
     container_registry_anonymous_pull_enabled        = false                  # (Optional) Whether allows anonymous (unauthenticated) pull access to this Container Registry? Defaults to false. This is only supported on resources with the Standard or Premium SKU.
-    container_registry_retention_policy = {
-     /* retention_policy_days    = 7    # (Optional) The number of days to retain an untagged manifest after which it gets purged. Default is 7.
-      retention_policy_enabled = true # (Optional) Boolean value that indicates whether the policy is enabled.*/
-    }
+    container_registry_retention_policy =null/* {
+      retention_policy_days    = 7    # (Optional) The number of days to retain an untagged manifest after which it gets purged. Default is 7.
+      retention_policy_enabled = true # (Optional) Boolean value that indicates whether the policy is enabled.
+    }*/
     container_registry_trust_policy = { # (Optional) Set to null if it is not required.
       trust_policy_enabled = false      #  (Optional) Boolean value that indicates whether the policy is enabled.
     }
