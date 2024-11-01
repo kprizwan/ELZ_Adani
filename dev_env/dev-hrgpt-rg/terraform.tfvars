@@ -23,7 +23,7 @@ resource_group_variables = {
 #CONTAINER REGISTRY
 container_registry_variables = {
   "container_registry_1" = {
-    container_registry_name                          = "sd-dev-adaniaesl"     #(Required) Specifies the name of the Container Registry. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
+    container_registry_name                          = "sddevadaniaesl"     #(Required) Specifies the name of the Container Registry. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
     container_registry_location                      = "Central India"        # (Required) Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     container_registry_resource_group_name           = "sd-common-dev-hrgpt-rg" # (Required) The name of the resource group in which to create the Container Registry. Changing this forces a new resource to be created.
     container_registry_sku                           = "Standard"              # (Required) The SKU name of the container registry. Possible values are Basic, Standard and Premium.
@@ -71,7 +71,7 @@ container_registry_variables = {
     }
   },
   "container_registry_2" = {
-    container_registry_name                          = "sd-dev-adanitapregistry"     #(Required) Specifies the name of the Container Registry. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
+    container_registry_name                          = "sddevadanitapregistry"     #(Required) Specifies the name of the Container Registry. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
     container_registry_location                      = "Central India"        # (Required) Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     container_registry_resource_group_name           = "sd-common-dev-hrgpt-rg" # (Required) The name of the resource group in which to create the Container Registry. Changing this forces a new resource to be created.
     container_registry_sku                           = "Standard"              # (Required) The SKU name of the container registry. Possible values are Basic, Standard and Premium.
@@ -119,7 +119,7 @@ container_registry_variables = {
     }
   },
     "container_registry_3" = {
-    container_registry_name                          = "sd-dev-steelbot"     #(Required) Specifies the name of the Container Registry. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
+    container_registry_name                          = "sddevsteelbot"     #(Required) Specifies the name of the Container Registry. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
     container_registry_location                      = "Central India"        # (Required) Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     container_registry_resource_group_name           = "sd-common-dev-hrgpt-rg" # (Required) The name of the resource group in which to create the Container Registry. Changing this forces a new resource to be created.
     container_registry_sku                           = "Standard"              # (Required) The SKU name of the container registry. Possible values are Basic, Standard and Premium.
