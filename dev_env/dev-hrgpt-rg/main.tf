@@ -34,5 +34,4 @@ module "storage_account" {
   }
   source                    = "../../Azure/storage_account/v1.3.0"
   storage_account_variables = var.storage_account_variables
-  depends_on                = [module.key_vault_key]
 }
