@@ -25,3 +25,14 @@ module "key_vault" {
   }
   key_vault_variables = var.key_vault_variables
 }
+
+# STORAGE ACCOUNT
+module "storage_account" {
+  providers = {
+    azurerm.storage_account_sub = azurerm.dev_env
+    azurerm.key_vault_sub       = azurerm.dev_env
+  }
+  source                    = "../../Azure/storage_account/v1.3.0"
+  storage_account_variables = var.storage_account_variables
+  depends_on                = [module.key_vault_key]
+}

@@ -370,3 +370,332 @@ key_vault_variables = {
 
   }
 }
+
+storage_account_variables = {
+  "storage_account_1" = {
+    storage_account_key_vault_name                                     = null #(Optional) The name of the Key Vault.
+    storage_account_is_key_vault_key_versionless                       = true
+    storage_account_key_vault_resource_group_name                      = null    #(Optional) The resource group name of the Key Vault.
+    storage_account_key_vault_key_name                                 = null #(Optional) The name of the Key Vault key required for customer managed key.
+    storage_account_user_assigned_identity_name_for_cmk                = null   #(Optional) The name of a user assigned identity for customer managed key.
+    storage_account_user_assigned_identity_resource_group_name_for_cmk = null    #(Optional) The resource group name of a user assigned identity for customer managed key.
+    storage_account_identity_type_for_cmk                              = "SystemAssigned"     #(Optional) The identity type of a user assigned identity for customer managed key.Only Possible value could be "UserAssigned" in order to use customer managed key. Other Possible values are "SystemAssigned", "SystemAssigned, UserAssigned"
+    storage_account_name                                               = "sddevailabshrblob"    #(Required) Specifies the name of the storage account. Only lowercase Alphanumeric characters allowed.This must be unique across the entire Azure service, not just within the resource group.
+    storage_account_resource_group_name                                = "sd-common-dev-hrgpt-rg"    #(Required) The name of the resource group in which to create the storage account.
+    storage_account_location                                           = "Central India"             #(Required) Specifies the supported Azure location where the resource exists.
+    storage_account_account_kind                                       = "StorageV2"          #(Optional) Defines the Kind of account. Valid options are BlobStorage, BlockBlobStorage, FileStorage, Storage and StorageV2. Defaults to StorageV2.
+    storage_account_account_tier                                       = "Standard"           #(Required) Defines the Tier to use for this storage account. Valid options are Standard and Premium. For BlockBlobStorage and FileStorage accounts only Premium is valid.
+    storage_account_account_replication_type                           = "LRS"                #(Required) Defines the type of replication to use for this storage account. Valid options are LRS, GRS, RAGRS, ZRS, GZRS and RAGZRS. Changing this forces a new resource to be created when types LRS, GRS and RAGRS are changed to ZRS, GZRS or RAGZRS and vice versa.
+    storage_account_cross_tenant_replication_enabled                   = true                 #(Optional) Should cross Tenant replication be enabled? Defaults to true.
+    storage_account_access_tier                                        = "Hot"                #(Optional) Defines the access tier for BlobStorage, FileStorage and StorageV2 accounts. Valid options are Hot and Cool, defaults to Hot.
+    storage_account_edge_zone                                          = null                 #(Optional) Specifies the Edge Zone within the Azure Region where this Storage Account should exist.
+    storage_account_enable_https_traffic_only                          = true                 #(Optional) Boolean flag which forces HTTPS if enabled. Defaults to true.
+    storage_account_min_tls_version                                    = "TLS1_2"             #(Optional) The minimum supported TLS version for the storage account. Possible values are TLS1_0, TLS1_1, and TLS1_2. Defaults to TLS1_2 for new storage accounts.
+    storage_account_allow_nested_items_to_be_public                    = true                 #Allow or disallow nested items within this Account to opt into being public. Defaults to true.
+    storage_account_shared_access_key_enabled                          = true                 #Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is true.
+    storage_account_public_network_access_enabled                      = true                 #(Optional) Whether the public network access is enabled? Defaults to true.
+    storage_account_default_to_oauth_authentication                    = false                #(Optional) Default to Azure Active Directory authorization in the Azure portal when accessing the Storage Account. The default value is false
+    storage_account_is_hns_enabled                                     = false                #(Optional) Is Hierarchical Namespace enabled? This can be used with Azure Data Lake Storage Gen 2.
+    storage_account_nfsv3_enabled                                      = false                #(Optional) Is NFSv3 protocol enabled? Defaults to false.
+    storage_account_large_file_share_enabled                           = false                #(Optional) Is Large File Share Enabled?
+    storage_account_queue_encryption_key_type                          = "Service"            #(Optional) The encryption type of the queue service. Possible values are Service and Account.Default value is Service.
+    storage_account_table_encryption_key_type                          = "Service"            #(Optional) The encryption type of the table service. Possible values are Service and Account. Default value is Service.
+    storage_account_infrastructure_encryption_enabled                  = false                #(Optional) Is infrastructure encryption enabled? Defaults to false.
+    storage_account_allowed_copy_scope                                 = null                 #(Optional) Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values are AAD and PrivateLink.
+    storage_account_sftp_enabled                                       = false                #(Optional) Boolean, enable SFTP for the storage account, to enable this, is_hns_enabled should be true as well
+    storage_account_custom_domain                                      = null
+    # storage_account_custom_domain = {
+    #     custom_domain_name = "www.ploceus.com" #(Required) The Custom Domain Name to use for the Storage Account, which will be validated by Azure.
+    #     custom_domain_use_subdomain = false #(Optional) Should the Custom Domain Name be validated by using indirect CNAME validation?
+    # }
+
+    storage_account_identity = null
+    # storage_account_identity = {
+    #   storage_account_identity_type = "UserAssigned" # Possible values could be "UserAssigned", "SystemAssigned", "SystemAssigned, UserAssigned"
+    #   # storage_account_user_assigned_identity_ids = null
+    #   storage_account_user_assigned_identity_ids = [{ # This is required when type is set to UserAssigned or SystemAssigned, UserAssigned.
+    #     identity_name                = "ploceusuai000002"
+    #     identity_resource_group_name = "loceusrg000005"
+    #   }]
+    # }
+
+    storage_account_blob_properties = {
+      versioning_enabled            = true         #(Optional) Is versioning enabled? Default to false.
+      change_feed_enabled           = true         #(Optional) Is the blob service properties for change feed events enabled? Default to false.
+      change_feed_retention_in_days = 7            #(Optional) The duration of change feed events retention in days. The possible values are between 1 and 146000 days (400 years). Setting this to null (or omit this in the configuration file) indicates an infinite retention of the change feed.
+      default_service_version       = "2020-06-12" #(Optional) The API Version which should be used by default for requests to the Data Plane API if an incoming request doesn't specify an API Version. Defaults to 2020-06-12.
+      last_access_time_enabled      = true         #(Optional) Is the last access time based tracking enabled? Default to false.
+
+      cors_enabled = true #(optional) Should cross origin resource sharing be enabled.
+      cors_rule = {
+        allowed_headers    = ["*"]                                                                 #(Required) A list of headers that are allowed to be a part of the cross-origin request.
+        allowed_methods    = ["DELETE", "GET", "HEAD", "MERGE", "POST", "OPTIONS", "PUT", "PATCH"] #(Required) A list of HTTP methods that are allowed to be executed by the origin. Valid options are DELETE, GET, HEAD, MERGE, POST, OPTIONS, PUT or PATCH.
+        allowed_origins    = ["*"]                                                                 #(Required) A list of origin domains that will be allowed by CORS.
+        exposed_headers    = ["*", ]                                                               #(Required) A list of response headers that are exposed to CORS clients.
+        max_age_in_seconds = 60                                                                    #(Required) The number of seconds the client should cache a preflight response.
+      }
+      restore_policy = {
+        restore_policy_days = "4" #(Required) Specifies the number of days that the blob can be restored, between 1 and 365 days. This must be less than the days specified for delete_retention_policy.
+      }
+      delete_retention_policy = {
+        delete_retention_policy_days = "7" #(Optional) Specifies the number of days that the blob should be retained, between 1 and 365 days. Defaults to 7.
+      }
+
+      container_delete_retention_policy = {
+        container_delete_retention_policy_days = "7" #(Optional) Specifies the number of days that the container should be retained, between 1 and 365 days. Defaults to 7.
+      }
+    }
+
+    storage_account_queue_properties = {
+      cors_enabled = true #(optional) Should cross origin resource sharing be enabled.
+      cors_rule = {
+        allowed_headers    = ["*"]                                   #(Required) A list of headers that are allowed to be a part of the cross-origin request.
+        allowed_methods    = ["GET", "HEAD", "MERGE", "POST", "PUT"] #(Required) A list of HTTP methods that are allowed to be executed by the origin. Valid options are DELETE, GET, HEAD, MERGE, POST, OPTIONS, PUT or PATCH.
+        allowed_origins    = ["*"]                                   #(Required) A list of origin domains that will be allowed by CORS.
+        exposed_headers    = ["*"]                                   #(Required) A list of response headers that are exposed to CORS clients.
+        max_age_in_seconds = 60                                      #(Required) The number of seconds the client should cache a preflight response.
+      }
+
+      logging_enabled = true #Should storage account queue properties logging be enabled.
+      logging = {
+        delete                = true  #(Required) Indicates whether all delete requests should be logged.
+        read                  = true  #(Required) Indicates whether all read requests should be logged.
+        version               = "1.0" #(Required) The version of storage analytics to configure.
+        write                 = true  #(Required) Indicates whether all write requests should be logged.
+        retention_policy_days = 7     #(Optional) Specifies the number of days that logs will be retained.
+      }
+
+      minute_metrics = {
+        enabled               = true  #(Required) Indicates whether minute metrics are enabled for the Queue service.
+        version               = "1.0" #(Required) The version of storage analytics to configure.
+        include_apis          = true  #(Optional) Indicates whether metrics should generate summary statistics for called API operations.
+        retention_policy_days = 7     #(Optional) Specifies the number of days that logs will be retained.
+      }
+
+      hour_metrics = {
+        enabled               = true  #(Required) Indicates whether minute metrics are enabled for the Queue service.
+        version               = "1.0" #(Required) The version of storage analytics to configure.
+        include_apis          = true  #(Optional) Indicates whether metrics should generate summary statistics for called API operations.
+        retention_policy_days = 7     #(Optional) Specifies the number of days that logs will be retained.
+      }
+    }
+  },
+
+   "storage_account_2" = {
+    storage_account_key_vault_name                                     = null #(Optional) The name of the Key Vault.
+    storage_account_is_key_vault_key_versionless                       = true
+    storage_account_key_vault_resource_group_name                      = null    #(Optional) The resource group name of the Key Vault.
+    storage_account_key_vault_key_name                                 = null #(Optional) The name of the Key Vault key required for customer managed key.
+    storage_account_user_assigned_identity_name_for_cmk                = null   #(Optional) The name of a user assigned identity for customer managed key.
+    storage_account_user_assigned_identity_resource_group_name_for_cmk = null    #(Optional) The resource group name of a user assigned identity for customer managed key.
+    storage_account_identity_type_for_cmk                              = "SystemAssigned"     #(Optional) The identity type of a user assigned identity for customer managed key.Only Possible value could be "UserAssigned" in order to use customer managed key. Other Possible values are "SystemAssigned", "SystemAssigned, UserAssigned"
+    storage_account_name                                               = "sddevailabaml01"    #(Required) Specifies the name of the storage account. Only lowercase Alphanumeric characters allowed.This must be unique across the entire Azure service, not just within the resource group.
+    storage_account_resource_group_name                                = "sd-common-dev-hrgpt-rg"    #(Required) The name of the resource group in which to create the storage account.
+    storage_account_location                                           = "Central India"             #(Required) Specifies the supported Azure location where the resource exists.
+    storage_account_account_kind                                       = "StorageV2"          #(Optional) Defines the Kind of account. Valid options are BlobStorage, BlockBlobStorage, FileStorage, Storage and StorageV2. Defaults to StorageV2.
+    storage_account_account_tier                                       = "Standard"           #(Required) Defines the Tier to use for this storage account. Valid options are Standard and Premium. For BlockBlobStorage and FileStorage accounts only Premium is valid.
+    storage_account_account_replication_type                           = "LRS"                #(Required) Defines the type of replication to use for this storage account. Valid options are LRS, GRS, RAGRS, ZRS, GZRS and RAGZRS. Changing this forces a new resource to be created when types LRS, GRS and RAGRS are changed to ZRS, GZRS or RAGZRS and vice versa.
+    storage_account_cross_tenant_replication_enabled                   = true                 #(Optional) Should cross Tenant replication be enabled? Defaults to true.
+    storage_account_access_tier                                        = "Hot"                #(Optional) Defines the access tier for BlobStorage, FileStorage and StorageV2 accounts. Valid options are Hot and Cool, defaults to Hot.
+    storage_account_edge_zone                                          = null                 #(Optional) Specifies the Edge Zone within the Azure Region where this Storage Account should exist.
+    storage_account_enable_https_traffic_only                          = true                 #(Optional) Boolean flag which forces HTTPS if enabled. Defaults to true.
+    storage_account_min_tls_version                                    = "TLS1_2"             #(Optional) The minimum supported TLS version for the storage account. Possible values are TLS1_0, TLS1_1, and TLS1_2. Defaults to TLS1_2 for new storage accounts.
+    storage_account_allow_nested_items_to_be_public                    = true                 #Allow or disallow nested items within this Account to opt into being public. Defaults to true.
+    storage_account_shared_access_key_enabled                          = true                 #Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is true.
+    storage_account_public_network_access_enabled                      = true                 #(Optional) Whether the public network access is enabled? Defaults to true.
+    storage_account_default_to_oauth_authentication                    = false                #(Optional) Default to Azure Active Directory authorization in the Azure portal when accessing the Storage Account. The default value is false
+    storage_account_is_hns_enabled                                     = false                #(Optional) Is Hierarchical Namespace enabled? This can be used with Azure Data Lake Storage Gen 2.
+    storage_account_nfsv3_enabled                                      = false                #(Optional) Is NFSv3 protocol enabled? Defaults to false.
+    storage_account_large_file_share_enabled                           = false                #(Optional) Is Large File Share Enabled?
+    storage_account_queue_encryption_key_type                          = "Service"            #(Optional) The encryption type of the queue service. Possible values are Service and Account.Default value is Service.
+    storage_account_table_encryption_key_type                          = "Service"            #(Optional) The encryption type of the table service. Possible values are Service and Account. Default value is Service.
+    storage_account_infrastructure_encryption_enabled                  = false                #(Optional) Is infrastructure encryption enabled? Defaults to false.
+    storage_account_allowed_copy_scope                                 = null                 #(Optional) Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values are AAD and PrivateLink.
+    storage_account_sftp_enabled                                       = false                #(Optional) Boolean, enable SFTP for the storage account, to enable this, is_hns_enabled should be true as well
+    storage_account_custom_domain                                      = null
+    # storage_account_custom_domain = {
+    #     custom_domain_name = "www.ploceus.com" #(Required) The Custom Domain Name to use for the Storage Account, which will be validated by Azure.
+    #     custom_domain_use_subdomain = false #(Optional) Should the Custom Domain Name be validated by using indirect CNAME validation?
+    # }
+
+    storage_account_identity = null
+    # storage_account_identity = {
+    #   storage_account_identity_type = "UserAssigned" # Possible values could be "UserAssigned", "SystemAssigned", "SystemAssigned, UserAssigned"
+    #   # storage_account_user_assigned_identity_ids = null
+    #   storage_account_user_assigned_identity_ids = [{ # This is required when type is set to UserAssigned or SystemAssigned, UserAssigned.
+    #     identity_name                = "ploceusuai000002"
+    #     identity_resource_group_name = "loceusrg000005"
+    #   }]
+    # }
+
+    storage_account_blob_properties = {
+      versioning_enabled            = true         #(Optional) Is versioning enabled? Default to false.
+      change_feed_enabled           = true         #(Optional) Is the blob service properties for change feed events enabled? Default to false.
+      change_feed_retention_in_days = 7            #(Optional) The duration of change feed events retention in days. The possible values are between 1 and 146000 days (400 years). Setting this to null (or omit this in the configuration file) indicates an infinite retention of the change feed.
+      default_service_version       = "2020-06-12" #(Optional) The API Version which should be used by default for requests to the Data Plane API if an incoming request doesn't specify an API Version. Defaults to 2020-06-12.
+      last_access_time_enabled      = true         #(Optional) Is the last access time based tracking enabled? Default to false.
+
+      cors_enabled = true #(optional) Should cross origin resource sharing be enabled.
+      cors_rule = {
+        allowed_headers    = ["*"]                                                                 #(Required) A list of headers that are allowed to be a part of the cross-origin request.
+        allowed_methods    = ["DELETE", "GET", "HEAD", "MERGE", "POST", "OPTIONS", "PUT", "PATCH"] #(Required) A list of HTTP methods that are allowed to be executed by the origin. Valid options are DELETE, GET, HEAD, MERGE, POST, OPTIONS, PUT or PATCH.
+        allowed_origins    = ["*"]                                                                 #(Required) A list of origin domains that will be allowed by CORS.
+        exposed_headers    = ["*", ]                                                               #(Required) A list of response headers that are exposed to CORS clients.
+        max_age_in_seconds = 60                                                                    #(Required) The number of seconds the client should cache a preflight response.
+      }
+      restore_policy = {
+        restore_policy_days = "4" #(Required) Specifies the number of days that the blob can be restored, between 1 and 365 days. This must be less than the days specified for delete_retention_policy.
+      }
+      delete_retention_policy = {
+        delete_retention_policy_days = "7" #(Optional) Specifies the number of days that the blob should be retained, between 1 and 365 days. Defaults to 7.
+      }
+
+      container_delete_retention_policy = {
+        container_delete_retention_policy_days = "7" #(Optional) Specifies the number of days that the container should be retained, between 1 and 365 days. Defaults to 7.
+      }
+    }
+
+    storage_account_queue_properties = {
+      cors_enabled = true #(optional) Should cross origin resource sharing be enabled.
+      cors_rule = {
+        allowed_headers    = ["*"]                                   #(Required) A list of headers that are allowed to be a part of the cross-origin request.
+        allowed_methods    = ["GET", "HEAD", "MERGE", "POST", "PUT"] #(Required) A list of HTTP methods that are allowed to be executed by the origin. Valid options are DELETE, GET, HEAD, MERGE, POST, OPTIONS, PUT or PATCH.
+        allowed_origins    = ["*"]                                   #(Required) A list of origin domains that will be allowed by CORS.
+        exposed_headers    = ["*"]                                   #(Required) A list of response headers that are exposed to CORS clients.
+        max_age_in_seconds = 60                                      #(Required) The number of seconds the client should cache a preflight response.
+      }
+
+      logging_enabled = true #Should storage account queue properties logging be enabled.
+      logging = {
+        delete                = true  #(Required) Indicates whether all delete requests should be logged.
+        read                  = true  #(Required) Indicates whether all read requests should be logged.
+        version               = "1.0" #(Required) The version of storage analytics to configure.
+        write                 = true  #(Required) Indicates whether all write requests should be logged.
+        retention_policy_days = 7     #(Optional) Specifies the number of days that logs will be retained.
+      }
+
+      minute_metrics = {
+        enabled               = true  #(Required) Indicates whether minute metrics are enabled for the Queue service.
+        version               = "1.0" #(Required) The version of storage analytics to configure.
+        include_apis          = true  #(Optional) Indicates whether metrics should generate summary statistics for called API operations.
+        retention_policy_days = 7     #(Optional) Specifies the number of days that logs will be retained.
+      }
+
+      hour_metrics = {
+        enabled               = true  #(Required) Indicates whether minute metrics are enabled for the Queue service.
+        version               = "1.0" #(Required) The version of storage analytics to configure.
+        include_apis          = true  #(Optional) Indicates whether metrics should generate summary statistics for called API operations.
+        retention_policy_days = 7     #(Optional) Specifies the number of days that logs will be retained.
+      }
+    }
+  }/*,
+
+   "storage_account_3" = {
+    storage_account_key_vault_name                                     = null #(Optional) The name of the Key Vault.
+    storage_account_is_key_vault_key_versionless                       = true
+    storage_account_key_vault_resource_group_name                      = null    #(Optional) The resource group name of the Key Vault.
+    storage_account_key_vault_key_name                                 = null #(Optional) The name of the Key Vault key required for customer managed key.
+    storage_account_user_assigned_identity_name_for_cmk                = null   #(Optional) The name of a user assigned identity for customer managed key.
+    storage_account_user_assigned_identity_resource_group_name_for_cmk = null    #(Optional) The resource group name of a user assigned identity for customer managed key.
+    storage_account_identity_type_for_cmk                              = "SystemAssigned"     #(Optional) The identity type of a user assigned identity for customer managed key.Only Possible value could be "UserAssigned" in order to use customer managed key. Other Possible values are "SystemAssigned", "SystemAssigned, UserAssigned"
+    storage_account_name                                               = "sddevailabaml02"    #(Required) Specifies the name of the storage account. Only lowercase Alphanumeric characters allowed.This must be unique across the entire Azure service, not just within the resource group.
+    storage_account_resource_group_name                                = "sd-common-dev-hrgpt-rg"    #(Required) The name of the resource group in which to create the storage account.
+    storage_account_location                                           = "SE Asia"             #(Required) Specifies the supported Azure location where the resource exists.
+    storage_account_account_kind                                       = "StorageV2"          #(Optional) Defines the Kind of account. Valid options are BlobStorage, BlockBlobStorage, FileStorage, Storage and StorageV2. Defaults to StorageV2.
+    storage_account_account_tier                                       = "Standard"           #(Required) Defines the Tier to use for this storage account. Valid options are Standard and Premium. For BlockBlobStorage and FileStorage accounts only Premium is valid.
+    storage_account_account_replication_type                           = "LRS"                #(Required) Defines the type of replication to use for this storage account. Valid options are LRS, GRS, RAGRS, ZRS, GZRS and RAGZRS. Changing this forces a new resource to be created when types LRS, GRS and RAGRS are changed to ZRS, GZRS or RAGZRS and vice versa.
+    storage_account_cross_tenant_replication_enabled                   = true                 #(Optional) Should cross Tenant replication be enabled? Defaults to true.
+    storage_account_access_tier                                        = "Hot"                #(Optional) Defines the access tier for BlobStorage, FileStorage and StorageV2 accounts. Valid options are Hot and Cool, defaults to Hot.
+    storage_account_edge_zone                                          = null                 #(Optional) Specifies the Edge Zone within the Azure Region where this Storage Account should exist.
+    storage_account_enable_https_traffic_only                          = true                 #(Optional) Boolean flag which forces HTTPS if enabled. Defaults to true.
+    storage_account_min_tls_version                                    = "TLS1_2"             #(Optional) The minimum supported TLS version for the storage account. Possible values are TLS1_0, TLS1_1, and TLS1_2. Defaults to TLS1_2 for new storage accounts.
+    storage_account_allow_nested_items_to_be_public                    = true                 #Allow or disallow nested items within this Account to opt into being public. Defaults to true.
+    storage_account_shared_access_key_enabled                          = true                 #Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is true.
+    storage_account_public_network_access_enabled                      = true                 #(Optional) Whether the public network access is enabled? Defaults to true.
+    storage_account_default_to_oauth_authentication                    = false                #(Optional) Default to Azure Active Directory authorization in the Azure portal when accessing the Storage Account. The default value is false
+    storage_account_is_hns_enabled                                     = false                #(Optional) Is Hierarchical Namespace enabled? This can be used with Azure Data Lake Storage Gen 2.
+    storage_account_nfsv3_enabled                                      = false                #(Optional) Is NFSv3 protocol enabled? Defaults to false.
+    storage_account_large_file_share_enabled                           = false                #(Optional) Is Large File Share Enabled?
+    storage_account_queue_encryption_key_type                          = "Service"            #(Optional) The encryption type of the queue service. Possible values are Service and Account.Default value is Service.
+    storage_account_table_encryption_key_type                          = "Service"            #(Optional) The encryption type of the table service. Possible values are Service and Account. Default value is Service.
+    storage_account_infrastructure_encryption_enabled                  = false                #(Optional) Is infrastructure encryption enabled? Defaults to false.
+    storage_account_allowed_copy_scope                                 = null                 #(Optional) Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values are AAD and PrivateLink.
+    storage_account_sftp_enabled                                       = false                #(Optional) Boolean, enable SFTP for the storage account, to enable this, is_hns_enabled should be true as well
+    storage_account_custom_domain                                      = null
+    # storage_account_custom_domain = {
+    #     custom_domain_name = "www.ploceus.com" #(Required) The Custom Domain Name to use for the Storage Account, which will be validated by Azure.
+    #     custom_domain_use_subdomain = false #(Optional) Should the Custom Domain Name be validated by using indirect CNAME validation?
+    # }
+
+    storage_account_identity = null
+    # storage_account_identity = {
+    #   storage_account_identity_type = "UserAssigned" # Possible values could be "UserAssigned", "SystemAssigned", "SystemAssigned, UserAssigned"
+    #   # storage_account_user_assigned_identity_ids = null
+    #   storage_account_user_assigned_identity_ids = [{ # This is required when type is set to UserAssigned or SystemAssigned, UserAssigned.
+    #     identity_name                = "ploceusuai000002"
+    #     identity_resource_group_name = "loceusrg000005"
+    #   }]
+    # }
+
+    storage_account_blob_properties = {
+      versioning_enabled            = true         #(Optional) Is versioning enabled? Default to false.
+      change_feed_enabled           = true         #(Optional) Is the blob service properties for change feed events enabled? Default to false.
+      change_feed_retention_in_days = 7            #(Optional) The duration of change feed events retention in days. The possible values are between 1 and 146000 days (400 years). Setting this to null (or omit this in the configuration file) indicates an infinite retention of the change feed.
+      default_service_version       = "2020-06-12" #(Optional) The API Version which should be used by default for requests to the Data Plane API if an incoming request doesn't specify an API Version. Defaults to 2020-06-12.
+      last_access_time_enabled      = true         #(Optional) Is the last access time based tracking enabled? Default to false.
+
+      cors_enabled = true #(optional) Should cross origin resource sharing be enabled.
+      cors_rule = {
+        allowed_headers    = ["*"]                                                                 #(Required) A list of headers that are allowed to be a part of the cross-origin request.
+        allowed_methods    = ["DELETE", "GET", "HEAD", "MERGE", "POST", "OPTIONS", "PUT", "PATCH"] #(Required) A list of HTTP methods that are allowed to be executed by the origin. Valid options are DELETE, GET, HEAD, MERGE, POST, OPTIONS, PUT or PATCH.
+        allowed_origins    = ["*"]                                                                 #(Required) A list of origin domains that will be allowed by CORS.
+        exposed_headers    = ["*", ]                                                               #(Required) A list of response headers that are exposed to CORS clients.
+        max_age_in_seconds = 60                                                                    #(Required) The number of seconds the client should cache a preflight response.
+      }
+      restore_policy = {
+        restore_policy_days = "4" #(Required) Specifies the number of days that the blob can be restored, between 1 and 365 days. This must be less than the days specified for delete_retention_policy.
+      }
+      delete_retention_policy = {
+        delete_retention_policy_days = "7" #(Optional) Specifies the number of days that the blob should be retained, between 1 and 365 days. Defaults to 7.
+      }
+
+      container_delete_retention_policy = {
+        container_delete_retention_policy_days = "7" #(Optional) Specifies the number of days that the container should be retained, between 1 and 365 days. Defaults to 7.
+      }
+    }
+
+    storage_account_queue_properties = {
+      cors_enabled = true #(optional) Should cross origin resource sharing be enabled.
+      cors_rule = {
+        allowed_headers    = ["*"]                                   #(Required) A list of headers that are allowed to be a part of the cross-origin request.
+        allowed_methods    = ["GET", "HEAD", "MERGE", "POST", "PUT"] #(Required) A list of HTTP methods that are allowed to be executed by the origin. Valid options are DELETE, GET, HEAD, MERGE, POST, OPTIONS, PUT or PATCH.
+        allowed_origins    = ["*"]                                   #(Required) A list of origin domains that will be allowed by CORS.
+        exposed_headers    = ["*"]                                   #(Required) A list of response headers that are exposed to CORS clients.
+        max_age_in_seconds = 60                                      #(Required) The number of seconds the client should cache a preflight response.
+      }
+
+      logging_enabled = true #Should storage account queue properties logging be enabled.
+      logging = {
+        delete                = true  #(Required) Indicates whether all delete requests should be logged.
+        read                  = true  #(Required) Indicates whether all read requests should be logged.
+        version               = "1.0" #(Required) The version of storage analytics to configure.
+        write                 = true  #(Required) Indicates whether all write requests should be logged.
+        retention_policy_days = 7     #(Optional) Specifies the number of days that logs will be retained.
+      }
+
+      minute_metrics = {
+        enabled               = true  #(Required) Indicates whether minute metrics are enabled for the Queue service.
+        version               = "1.0" #(Required) The version of storage analytics to configure.
+        include_apis          = true  #(Optional) Indicates whether metrics should generate summary statistics for called API operations.
+        retention_policy_days = 7     #(Optional) Specifies the number of days that logs will be retained.
+      }
+
+      hour_metrics = {
+        enabled               = true  #(Required) Indicates whether minute metrics are enabled for the Queue service.
+        version               = "1.0" #(Required) The version of storage analytics to configure.
+        include_apis          = true  #(Optional) Indicates whether metrics should generate summary statistics for called API operations.
+        retention_policy_days = 7     #(Optional) Specifies the number of days that logs will be retained.
+      }
+    }
+  }*/
+}
